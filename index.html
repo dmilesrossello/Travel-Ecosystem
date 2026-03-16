@@ -230,6 +230,69 @@ body {
 .fa::before { content:''; position:absolute; left:30%; right:30%; top:50%; height:1px; background:var(--border); }
 .fa .fl { background:white; padding:0 8px; font-size:0.58rem; color:var(--teal); font-weight:600; z-index:1; }
 
+/* GRID VIEW */
+#grid-view {
+  display: none;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 48px 48px;
+}
+
+.gv-section {
+  margin-bottom: 26px;
+  animation: gvIn 0.4s ease both;
+}
+
+@keyframes gvIn { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+
+.gv-hdr {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 10px;
+  padding-bottom: 7px;
+  border-bottom: 2px solid var(--border);
+}
+
+.gv-num {
+  width: 26px; height: 26px; border-radius: 5px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.68rem; font-weight: 800; color: white; flex-shrink: 0;
+}
+
+.gv-title {
+  font-size: 1rem; font-weight: 700; color: var(--dark);
+}
+
+.gv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 10px;
+}
+
+.gv-card {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  padding: 13px 15px;
+  transition: all 0.2s;
+}
+
+.gv-card:hover { border-color: var(--teal-mid); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.gv-card.hj { border-left: 3px solid var(--teal); }
+
+.gv-card .gct { font-size: 0.76rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+
+.gv-card .gcs {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 3px 0; border-bottom: 1px solid #EDEEF2;
+}
+
+.gv-card .gcs:last-child { border-bottom: none; }
+.gv-card .gcn { font-size: 0.68rem; color: var(--text); }
+.gv-card .gcm { display: flex; align-items: center; gap: 4px; }
+.gv-card .gcc { font-size: 0.58rem; color: var(--teal); font-weight: 600; }
+
 /* TOOLTIP */
 .tip {
   position: fixed;
@@ -290,6 +353,7 @@ body {
 <div class="ctrls">
   <button class="cb on" data-v="ring">Concentric Map</button>
   <button class="cb" data-v="detail">Value Chain Detail</button>
+  <button class="cb" data-v="grid">Detail Grid</button>
 </div>
 
 <div class="wrap">
@@ -299,6 +363,8 @@ body {
 </div>
 
 <div id="detail-view"></div>
+
+<div id="grid-view"></div>
 
 <div class="tip" id="tip"></div>
 
@@ -764,9 +830,44 @@ function buildDetail() {
   const tv = document.createElement('div'); tv.className='fa'; tv.innerHTML='<span class="fl" style="font-size:0.68rem">▼ Traveler</span>'; w.appendChild(tv);
 }
 
+// ======== GRID VIEW (detail cards) ========
+let gridBuilt = false;
+function buildGrid() {
+  if (gridBuilt) return; gridBuilt = true;
+  const w = document.getElementById('grid-view');
+  DETAIL.forEach((l, li) => {
+    const sec = document.createElement('div');
+    sec.className = 'gv-section';
+    sec.style.animationDelay = (li * 0.04) + 's';
+    const hdr = document.createElement('div');
+    hdr.className = 'gv-hdr';
+    hdr.innerHTML = `<div class="gv-num" style="background:${l.color}">${l.id}</div><div class="gv-title">${l.name}</div>`;
+    sec.appendChild(hdr);
+    const grid = document.createElement('div');
+    grid.className = 'gv-grid';
+    l.groups.forEach(g => {
+      const card = document.createElement('div');
+      const hasJ = g.items.some(i => i.j && i.j !== 'gap');
+      card.className = `gv-card${hasJ ? ' hj' : ''}`;
+      let h = `<div class="gct">${g.label}</div>`;
+      g.items.forEach(it => {
+        h += `<div class="gcs"><span class="gcn">${it.f || it.n}</span><div class="gcm">`;
+        if (it.c) h += `<span class="gcc">${it.c.split(',')[0].trim()}</span>`;
+        if (it.j) h += badge(it.j);
+        h += '</div></div>';
+      });
+      card.innerHTML = h;
+      grid.appendChild(card);
+    });
+    sec.appendChild(grid);
+    w.appendChild(sec);
+  });
+}
+
 // ======== VIEW SWITCHING ========
 const ringC = document.getElementById('ring-container');
 const detV = document.getElementById('detail-view');
+const grdV = document.getElementById('grid-view');
 
 document.querySelectorAll('.cb').forEach(b => {
   b.addEventListener('click', () => {
@@ -775,8 +876,10 @@ document.querySelectorAll('.cb').forEach(b => {
     const v = b.dataset.v;
     ringC.style.display = v === 'ring' ? 'block' : 'none';
     detV.style.display = v === 'detail' ? 'block' : 'none';
+    grdV.style.display = v === 'grid' ? 'block' : 'none';
     if (v === 'ring') draw();
     if (v === 'detail') buildDetail();
+    if (v === 'grid') buildGrid();
   });
 });
 
