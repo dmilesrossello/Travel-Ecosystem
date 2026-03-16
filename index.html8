@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Technology Distribution Ecosystem</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal: #009B9B;
+  --teal-light: #E6F5F5;
+  --teal-mid: #B3E0E0;
+  --dark: #1A1A2E;
+  --text: #1A1A2E;
+  --text-mid: #555570;
+  --text-light: #8888A0;
+  --bg: #FFFFFF;
+  --bg-off: #F7F8FA;
+  --border: #E2E4EA;
+  --green: #00A676;
+  --green-bg: #E8F7F1;
+  --yellow: #D4920B;
+  --yellow-bg: #FFF8E8;
+  --purple: #6B4FBB;
+  --purple-bg: #F0ECF9;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* HEADER */
+.hdr {
+  padding: 32px 48px 0;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.tags { display: flex; gap: 8px; margin-bottom: 12px; }
+
+.tag {
+  font-size: 0.58rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: white;
+}
+
+.tag.dk { background: var(--dark); }
+.tag.tl { background: var(--teal); }
+
+.hdr h1 {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--dark);
+  line-height: 1.25;
+  max-width: 1000px;
+}
+
+.hdr h1 em { font-style: normal; color: var(--teal); }
+
+.hdr .sub {
+  font-size: 0.8rem;
+  color: var(--text-mid);
+  margin-top: 5px;
+}
+
+/* LEGEND */
+.leg {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px 48px;
+  max-width: 1600px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.leg .lt {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.leg .li {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 0.66rem; color: var(--text-mid);
+}
+
+.leg .ld {
+  width: 9px; height: 9px; border-radius: 3px;
+}
+
+.ld.g { background: var(--green); }
+.ld.y { background: var(--yellow); }
+.ld.p { background: var(--purple); }
+.ld.x { background: var(--border); border: 1px dashed var(--text-light); }
+
+.leg .sep { width: 1px; height: 14px; background: var(--border); }
+
+.leg .ring-leg {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 0.62rem; color: var(--text-light);
+}
+
+.ring-leg .rl-dot {
+  width: 18px; height: 6px; border-radius: 3px; opacity: 0.6;
+}
+
+/* CONTROLS */
+.ctrls {
+  display: flex; justify-content: center; gap: 5px;
+  padding: 14px 48px 8px;
+}
+
+.cb {
+  background: var(--bg-off);
+  border: 1px solid var(--border);
+  color: var(--text-mid);
+  padding: 6px 16px;
+  border-radius: 5px;
+  font-family: inherit;
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cb.on { background: var(--teal); border-color: var(--teal); color: white; }
+.cb:hover:not(.on) { background: var(--teal-light); color: var(--teal); }
+
+/* CANVAS AREA */
+.wrap {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+  position: relative;
+}
+
+#ring-container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+#ring-canvas {
+  display: block;
+  margin: 0 auto;
+}
+
+/* DETAIL VIEW */
+#detail-view {
+  display: none;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 48px 48px;
+}
+
+/* Swim lanes — same as before */
+.swim-lane { display: flex; align-items: stretch; min-height: 76px; }
+.lane-label {
+  width: 130px; min-width: 130px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 8px 6px;
+  font-size: 0.66rem; font-weight: 700; color: white;
+  text-align: center; line-height: 1.2;
+}
+.ll1{background:#009B9B}.ll2{background:#0086A8}.ll3{background:#006B8A}.ll4{background:#00526D}.ll5{background:#3A4A5C}.ll6{background:#2D3044}.ll7{background:#1A1A2E}
+
+.lane-body {
+  flex: 1; display: flex; flex-wrap: wrap; gap: 6px;
+  padding: 9px 12px; border-bottom: 1px solid #EDEEF2;
+  align-items: flex-start; align-content: flex-start;
+}
+
+.grp {
+  border: 1.5px solid var(--border); border-radius: 6px;
+  padding: 7px 8px; background: var(--bg-off);
+  display: flex; flex-wrap: wrap; gap: 5px; position: relative;
+}
+
+.grp .gl {
+  position: absolute; top: -8px; left: 8px;
+  background: var(--bg-off); padding: 0 4px;
+  font-size: 0.56rem; font-weight: 700; color: var(--text-light);
+  text-transform: uppercase; letter-spacing: 0.03em;
+}
+
+.sg {
+  background: var(--bg); border: 1.5px solid var(--border);
+  border-radius: 5px; padding: 6px 9px;
+  min-width: 90px; max-width: 220px;
+  transition: all 0.2s; cursor: default;
+}
+
+.sg:hover { border-color: var(--teal-mid); box-shadow: 0 2px 8px rgba(0,0,0,0.08); transform: translateY(-1px); }
+
+.sg.jh { border-color: var(--teal); background: var(--teal-light); position: relative; }
+.sg.jh::after { content:''; position:absolute; top:-1.5px; left:-1.5px; right:-1.5px; height:3px; background:var(--teal); border-radius:5px 5px 0 0; }
+
+.sg .sh { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
+.sg .sn { font-size: 0.68rem; font-weight: 700; color: var(--dark); line-height: 1.2; }
+
+.sb {
+  font-size: 0.52rem; font-weight: 700; padding: 1px 5px;
+  border-radius: 3px; white-space: nowrap;
+}
+
+.sb.core{background:var(--green-bg);color:var(--green);border:1px solid #B5E4D0}
+.sb.partial{background:var(--yellow-bg);color:var(--yellow);border:1px solid #F0D68A}
+.sb.gap{background:#F5F0F0;color:#999;border:1px dashed #D8CCCC}
+.sb.future{background:var(--purple-bg);color:var(--purple);border:1px solid #C5B8E8}
+
+.sg .si { display: flex; flex-wrap: wrap; gap: 2px; margin-top: 2px; }
+.sg .si span { font-size: 0.55rem; padding: 1px 4px; border-radius: 3px; }
+.sg .si .co { background: var(--teal-light); color: var(--teal); border: 1px solid var(--teal-mid); font-weight: 600; }
+.sg .si .nt { background: var(--bg-off); color: var(--text-light); border: 1px solid #EDEEF2; font-style: italic; }
+
+.fa { display:flex; align-items:center; justify-content:center; height:14px; margin-left:130px; position:relative; }
+.fa::before { content:''; position:absolute; left:30%; right:30%; top:50%; height:1px; background:var(--border); }
+.fa .fl { background:white; padding:0 8px; font-size:0.58rem; color:var(--teal); font-weight:600; z-index:1; }
+
+/* TOOLTIP */
+.tip {
+  position: fixed;
+  background: var(--dark);
+  color: white;
+  border-radius: 7px;
+  padding: 10px 14px;
+  font-size: 0.7rem;
+  pointer-events: none;
+  z-index: 9999;
+  max-width: 280px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  opacity: 0;
+  transition: opacity 0.15s;
+  line-height: 1.4;
+}
+.tip.show { opacity: 1; }
+.tip b { display: block; margin-bottom: 2px; }
+.tip .tc { color: rgba(255,255,255,0.5); font-size: 0.6rem; margin-bottom: 4px; }
+.tip .tb { font-size: 0.56rem; padding: 1px 5px; border-radius: 3px; }
+.tip .tb.core { background: rgba(0,166,118,0.2); color: #69f0ae; }
+.tip .tb.partial { background: rgba(212,146,11,0.2); color: #ffd740; }
+.tip .tb.gap { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4); }
+.tip .tb.future { background: rgba(107,79,187,0.2); color: #b388ff; }
+.tip .tco { color: rgba(255,255,255,0.6); font-size: 0.6rem; margin-top: 3px; }
+
+.ftr {
+  display: flex; justify-content: space-between; padding: 14px 48px;
+  max-width: 1600px; margin: 0 auto;
+  border-top: 1px solid var(--border);
+  font-size: 0.6rem; color: var(--text-light);
+}
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="tags"><span class="tag dk">Travel Tech Ecosystem</span><span class="tag tl">Juniper Positioning</span></div>
+  <h1>The travel product sits at the centre — each outward ring represents a layer of technology that <em>connects supply to the traveler</em></h1>
+  <p class="sub">Concentric model inspired by Shiji Distribution Chart 2025 — adapted for the full travel value chain</p>
+</div>
+
+<div class="leg">
+  <span class="lt">Juniper</span>
+  <div class="li"><div class="ld g"></div> Core / Current</div>
+  <div class="li"><div class="ld y"></div> Partial</div>
+  <div class="li"><div class="ld p"></div> Future</div>
+  <div class="li"><div class="ld x"></div> Gap</div>
+  <div class="sep"></div>
+  <span class="lt">Rings (inside → out)</span>
+  <div class="ring-leg"><div class="rl-dot" style="background:#009B9B"></div> Core Systems</div>
+  <div class="ring-leg"><div class="rl-dot" style="background:#0086A8"></div> Distribution</div>
+  <div class="ring-leg"><div class="rl-dot" style="background:#006B8A"></div> Retail & Packaging</div>
+  <div class="ring-leg"><div class="rl-dot" style="background:#3A4A5C"></div> Operations & Data</div>
+  <div class="ring-leg"><div class="rl-dot" style="background:#1A1A2E"></div> End Channels</div>
+</div>
+
+<div class="ctrls">
+  <button class="cb on" data-v="ring">Concentric Map</button>
+  <button class="cb" data-v="detail">Value Chain Detail</button>
+</div>
+
+<div class="wrap">
+  <div id="ring-container">
+    <canvas id="ring-canvas"></canvas>
+  </div>
+</div>
+
+<div id="detail-view"></div>
+
+<div class="tip" id="tip"></div>
+
+<div class="ftr">
+  <span>Source: Company taxonomy, Shiji Distribution Chart 2025/2026, desk research</span>
+  <span>Juniper Travel Technology Ecosystem</span>
+</div>
+
+<script>
+// ======== RING DATA ========
+// Center: Travel Products
+const CENTER_ITEMS = [
+  { label: "Hotels", icon: "🏨" },
+  { label: "Airlines", icon: "✈️" },
+  { label: "Cruise", icon: "🚢" },
+  { label: "Rail", icon: "🚄" },
+  { label: "Car Rental", icon: "🚗" },
+  { label: "Activities", icon: "🎯" },
+  { label: "Vacation\nRental", icon: "🏡" },
+];
+
+// Ring layers (inside → out), each with sector segments
+const RINGS = [
+  {
+    name: "Core Systems",
+    color: "#009B9B",
+    colorLight: "#E6F5F5",
+    items: [
+      { n: "PMS", f: "Property Management System", sec: "Accommodation", j: "gap" },
+      { n: "CRS", f: "Central Reservation System", sec: "Accommodation", j: "partial", c: "Hotetec" },
+      { n: "RMS", f: "Revenue Management System", sec: "Accommodation", j: "gap" },
+      { n: "Guest Experience", sec: "Accommodation" },
+      { n: "Hotel Ops", sec: "Accommodation" },
+      { n: "Loyalty Ops", sec: "Accommodation" },
+      { n: "PSS", f: "Passenger Service System", sec: "Airlines", j: "gap" },
+      { n: "Airline Res.", sec: "Airlines" },
+      { n: "DCS", sec: "Airlines" },
+      { n: "Crew Mgmt", sec: "Airlines" },
+      { n: "Revenue Mgmt", sec: "Airlines" },
+      { n: "Cruise Res.", f: "Cruise Reservation System", sec: "Cruise", j: "current", c: "IST" },
+      { n: "Fleet Ops", sec: "Cruise" },
+      { n: "Rail Res.", sec: "Rail" },
+      { n: "Ticketing", sec: "Rail" },
+      { n: "VR PMS", f: "Vacation Rental PMS", sec: "Vacation Rental" },
+      { n: "Smart Lock", sec: "Vacation Rental" },
+    ]
+  },
+  {
+    name: "Distribution & Connectivity",
+    color: "#0086A8",
+    colorLight: "#E2F0F5",
+    items: [
+      { n: "GDS", f: "Global Distribution System", sec: "Global" },
+      { n: "Connectivity Hub", f: "Connectivity Hub / Switch", sec: "Global", j: "core", c: "Juniper TT, DS" },
+      { n: "Channel Mgr", f: "Channel Manager", sec: "Accommodation", j: "gap", c: "Hotetec" },
+      { n: "XML / API Agg.", sec: "Global" },
+      { n: "Content Mapping", sec: "Global" },
+      { n: "Supplier Extranet", sec: "Global" },
+      { n: "Bedbank", f: "Bedbank / Wholesale Platform", sec: "Accommodation", j: "partial", c: "DOME" },
+      { n: "Air Aggregator", sec: "Airlines", j: "current", c: "Lleego" },
+      { n: "NDC / LCC Agg.", sec: "Airlines" },
+      { n: "Train Agg.", sec: "Rail" },
+      { n: "Car Rental Agg.", sec: "Car Rental" },
+      { n: "STR Channel Mgr", sec: "Vacation Rental" },
+    ]
+  },
+  {
+    name: "Retail, Packaging & Commerce",
+    color: "#006B8A",
+    colorLight: "#E2EDF2",
+    items: [
+      { n: "Booking Engine", sec: "Global", j: "current", c: "Juniper TT, Traveltek, Hotetec, Cangoroo, Inspiretec" },
+      { n: "Dynamic Pkg", f: "Dynamic Packaging Engine", sec: "Global", j: "core", c: "Peakwork" },
+      { n: "Ancillary Mgmt", sec: "Global", j: "partial", c: "Juniper TT" },
+      { n: "Offer Mgmt", sec: "Global" },
+      { n: "B2B Portal", sec: "Global" },
+      { n: "CBT", f: "Corporate Booking Tool", sec: "Corporate" },
+      { n: "Tour Op. System", sec: "TA / TO" },
+      { n: "Agency Back-Office", sec: "TA / TO" },
+      { n: "Itinerary Builder", sec: "TA / TO" },
+      { n: "DMC Software", sec: "TA / TO" },
+      { n: "Contracting", sec: "TA / TO" },
+    ]
+  },
+  {
+    name: "Payments & Customer",
+    color: "#3A4A5C",
+    colorLight: "#EAECF0",
+    items: [
+      { n: "Payment Gateway", sec: "Payments", j: "gap" },
+      { n: "PSP", f: "Payment Service Provider", sec: "Payments", j: "gap" },
+      { n: "VCC", f: "Virtual Credit Card", sec: "Payments", j: "partial" },
+      { n: "Fraud Detection", sec: "Payments", j: "gap" },
+      { n: "Travel Insurance", sec: "Payments" },
+      { n: "BNPL", sec: "Payments" },
+      { n: "Travel CRM", sec: "Customer", j: "current", c: "Inspiretec" },
+      { n: "Customer Support", sec: "Customer", j: "partial", c: "Inspiretec" },
+      { n: "CDP", f: "Customer Data Platform", sec: "Customer", j: "emerging" },
+      { n: "Loyalty", sec: "Customer", j: "gap", c: "Inspiretec" },
+      { n: "Personalization", sec: "Customer", j: "future" },
+      { n: "Marketing Auto.", sec: "Customer" },
+      { n: "Chatbot / AI", sec: "Customer" },
+    ]
+  },
+  {
+    name: "Data, Ops & End Channels",
+    color: "#1A1A2E",
+    colorLight: "#EAEBF0",
+    items: [
+      { n: "Data Warehouse", sec: "Data", j: "core", c: "Juniper TT" },
+      { n: "BI", f: "Business Intelligence", sec: "Data", j: "current", c: "Juniper TT" },
+      { n: "AI Optimization", sec: "Data", j: "future" },
+      { n: "Pricing Intel.", sec: "Data" },
+      { n: "Demand Forecast", sec: "Data" },
+      { n: "Trip Mgmt", sec: "Operations" },
+      { n: "Disruption Mgmt", sec: "Operations" },
+      { n: "Check-in / Kiosk", sec: "Operations" },
+      { n: "OTA Platform", sec: "Online", j: "gap" },
+      { n: "Metasearch", sec: "Online" },
+      { n: "Travel Marketplace", sec: "Online" },
+      { n: "CMS / DXP", sec: "Digital" },
+      { n: "API Platform", sec: "Digital" },
+      { n: "Mobile App", sec: "Digital" },
+      { n: "KYC", sec: "Compliance" },
+      { n: "Regulatory", sec: "Compliance" },
+    ]
+  },
+];
+
+// ======== CANVAS DRAWING ========
+const canvas = document.getElementById('ring-canvas');
+const ctx = canvas.getContext('2d');
+let hitItems = [];
+let W, H, CX, CY, dpr;
+
+function juniperColor(j) {
+  if (!j) return null;
+  if (j === 'core' || j === 'current') return '#00A676';
+  if (j === 'partial' || j === 'emerging') return '#D4920B';
+  if (j === 'future') return '#6B4FBB';
+  return '#BBBBCC';
+}
+
+function juniperLabel(j) {
+  const m = { core:'Core',current:'Current',partial:'Partial',gap:'Gap',emerging:'Emerging',future:'Future' };
+  return m[j] || '';
+}
+
+function draw() {
+  dpr = window.devicePixelRatio || 1;
+  const container = document.getElementById('ring-container');
+  const cw = container.clientWidth;
+  const size = Math.min(cw, 1100);
+  W = size; H = size;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  CX = W / 2; CY = H / 2;
+  hitItems = [];
+
+  const maxR = W * 0.47;
+  const centerR = W * 0.085;
+  const ringGap = 3;
+  const ringCount = RINGS.length;
+  const ringW = (maxR - centerR - ringGap * ringCount) / ringCount;
+
+  // ---- DRAW RINGS (back to front) ----
+  for (let ri = ringCount - 1; ri >= 0; ri--) {
+    const ring = RINGS[ri];
+    const innerR = centerR + (ringW + ringGap) * ri;
+    const outerR = innerR + ringW;
+
+    // Ring fill
+    ctx.beginPath();
+    ctx.arc(CX, CY, outerR, 0, Math.PI * 2);
+    ctx.arc(CX, CY, innerR, 0, Math.PI * 2, true);
+    ctx.fillStyle = ring.colorLight + '80';
+    ctx.fill();
+
+    // Ring border
+    ctx.beginPath();
+    ctx.arc(CX, CY, outerR, 0, Math.PI * 2);
+    ctx.strokeStyle = ring.color + '18';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // Ring label (left side)
+    ctx.save();
+    const labelR = (innerR + outerR) / 2;
+    ctx.translate(CX, CY);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillStyle = ring.color + '50';
+    ctx.font = `700 ${Math.max(7, W * 0.007)}px 'Plus Jakarta Sans'`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(ring.name.toUpperCase(), 0, -labelR);
+    ctx.restore();
+
+    // Place items around the ring
+    const items = ring.items;
+    const count = items.length;
+    items.forEach((item, ii) => {
+      const angle = (ii / count) * Math.PI * 2 - Math.PI / 2;
+      const midR = (innerR + outerR) / 2;
+      const px = CX + Math.cos(angle) * midR;
+      const py = CY + Math.sin(angle) * midR;
+
+      const jc = juniperColor(item.j);
+      const isJuniper = item.j && item.j !== 'gap';
+      const dotR = isJuniper ? W * 0.007 : W * 0.005;
+
+      // Glow for juniper items
+      if (isJuniper) {
+        const grd = ctx.createRadialGradient(px, py, 0, px, py, dotR * 4);
+        grd.addColorStop(0, jc + '30');
+        grd.addColorStop(1, jc + '00');
+        ctx.fillStyle = grd;
+        ctx.beginPath();
+        ctx.arc(px, py, dotR * 4, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Dot
+      ctx.beginPath();
+      ctx.arc(px, py, dotR, 0, Math.PI * 2);
+      ctx.fillStyle = jc || ring.color + '60';
+      ctx.fill();
+
+      if (isJuniper) {
+        ctx.strokeStyle = jc;
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+
+      // Label
+      const lblR = midR + (outerR - innerR) * 0.32;
+      const lx = CX + Math.cos(angle) * lblR;
+      const ly = CY + Math.sin(angle) * lblR;
+
+      ctx.save();
+      ctx.translate(lx, ly);
+      let rot = angle;
+      const flipped = angle > Math.PI * 0.5 || angle < -Math.PI * 0.5;
+      if (flipped) { rot += Math.PI; ctx.rotate(rot); ctx.textAlign = 'right'; }
+      else { ctx.rotate(rot); ctx.textAlign = 'left'; }
+
+      const fontSize = Math.max(6.5, W * 0.0068);
+      ctx.font = `${isJuniper ? '700' : '500'} ${fontSize}px 'Plus Jakarta Sans'`;
+      ctx.fillStyle = isJuniper ? jc : ring.color + 'AA';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(item.n, 0, 0);
+
+      // Company name for juniper items
+      if (item.c && isJuniper) {
+        const cName = item.c.split(',')[0].trim();
+        ctx.font = `600 ${fontSize * 0.78}px 'Plus Jakarta Sans'`;
+        ctx.fillStyle = jc + '90';
+        ctx.fillText(cName, 0, fontSize * 1.1);
+      }
+
+      ctx.restore();
+
+      // Hit area
+      hitItems.push({
+        x: px, y: py, r: Math.max(dotR * 2, W * 0.018),
+        item, ring: ring.name
+      });
+    });
+  }
+
+  // ---- CENTER: Travel Products ----
+  // White center circle
+  ctx.beginPath();
+  ctx.arc(CX, CY, centerR, 0, Math.PI * 2);
+  ctx.fillStyle = '#FFFFFF';
+  ctx.fill();
+  ctx.strokeStyle = var_teal + '40';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // "Travel Product" label
+  ctx.fillStyle = var_teal;
+  ctx.font = `800 ${W * 0.0095}px 'Plus Jakarta Sans'`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('TRAVEL', CX, CY - W * 0.016);
+  ctx.fillText('PRODUCT', CX, CY + W * 0.002);
+
+  // Products around center
+  CENTER_ITEMS.forEach((p, i) => {
+    const angle = (i / CENTER_ITEMS.length) * Math.PI * 2 - Math.PI / 2;
+    const r = centerR * 0.62;
+    const px = CX + Math.cos(angle) * r;
+    const py = CY + Math.sin(angle) * r;
+
+    ctx.font = `${W * 0.014}px sans-serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(p.icon, px, py - W * 0.006);
+
+    ctx.font = `600 ${Math.max(5.5, W * 0.006)}px 'Plus Jakarta Sans'`;
+    ctx.fillStyle = '#1A1A2E';
+    ctx.fillText(p.label.replace('\n', ' '), px, py + W * 0.012);
+    ctx.fillStyle = var_teal;
+  });
+
+  // ---- OUTER SECTOR LABELS (like Shiji's "01 Online", "02 Travel Agencies") ----
+  const outerLabelR = maxR + W * 0.022;
+  const sectorLabels = [
+    { label: "01 Online & Digital", angle: 0 },
+    { label: "02 Travel Agencies & TOs", angle: Math.PI * 0.4 },
+    { label: "03 Payments & Risk", angle: Math.PI * 0.75 },
+    { label: "04 Customer & CRM", angle: Math.PI * 1.1 },
+    { label: "05 Data & Intelligence", angle: Math.PI * 1.45 },
+    { label: "06 Operations & Fulfillment", angle: Math.PI * 1.75 },
+  ];
+
+  sectorLabels.forEach(sl => {
+    const a = sl.angle - Math.PI / 2;
+    const lx = CX + Math.cos(a) * outerLabelR;
+    const ly = CY + Math.sin(a) * outerLabelR;
+
+    ctx.save();
+    ctx.translate(lx, ly);
+    let rot = a;
+    const flipped = a > Math.PI * 0.5 || a < -Math.PI * 0.5;
+    if (flipped) { rot += Math.PI; ctx.rotate(rot); ctx.textAlign = 'right'; }
+    else { ctx.rotate(rot); ctx.textAlign = 'left'; }
+
+    // Number badge
+    const num = sl.label.substring(0, 2);
+    const rest = sl.label.substring(3);
+
+    ctx.font = `800 ${W * 0.009}px 'Plus Jakarta Sans'`;
+    ctx.fillStyle = '#1A1A2E';
+    ctx.textBaseline = 'middle';
+
+    const numW = ctx.measureText(num).width;
+
+    // Draw number in a box
+    const bx = flipped ? -numW - 4 : 0;
+    ctx.fillStyle = '#1A1A2E';
+    ctx.beginPath();
+    ctx.roundRect(bx - 2, -7, numW + 6, 14, 3);
+    ctx.fill();
+    ctx.fillStyle = 'white';
+    ctx.fillText(num, bx + 1, 0);
+
+    // Rest of label
+    ctx.fillStyle = '#1A1A2E';
+    ctx.font = `700 ${W * 0.008}px 'Plus Jakarta Sans'`;
+    const offset = flipped ? -numW - 12 : numW + 8;
+    ctx.fillText(rest, offset, 0);
+
+    ctx.restore();
+  });
+
+  // Sector divider lines
+  sectorLabels.forEach(sl => {
+    const a = sl.angle - Math.PI / 2 - 0.15;
+    ctx.beginPath();
+    ctx.moveTo(CX + Math.cos(a) * centerR, CY + Math.sin(a) * centerR);
+    ctx.lineTo(CX + Math.cos(a) * maxR, CY + Math.sin(a) * maxR);
+    ctx.strokeStyle = '#E2E4EA';
+    ctx.lineWidth = 0.5;
+    ctx.setLineDash([4, 4]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  });
+}
+
+const var_teal = '#009B9B';
+
+// ======== TOOLTIP ========
+const tip = document.getElementById('tip');
+
+function showTip(e, h) {
+  tip.innerHTML = h; tip.classList.add('show');
+  const r = tip.getBoundingClientRect();
+  let x = e.clientX + 12, y = e.clientY + 12;
+  if (x + r.width > window.innerWidth - 12) x = e.clientX - r.width - 12;
+  if (y + r.height > window.innerHeight - 12) y = e.clientY - r.height - 12;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+}
+
+function hideTip() { tip.classList.remove('show'); }
+
+function tipBadge(j) {
+  const m = { core:['🟢 Core','core'], current:['🟢 Current','core'], partial:['🟡 Partial','partial'], gap:['⚪ Gap','gap'], emerging:['🟡 Emerging','partial'], future:['🟣 Future','future'] };
+  const v = m[j]; return v ? `<span class="tb ${v[1]}">${v[0]}</span>` : '';
+}
+
+canvas.addEventListener('mousemove', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  const mx = (e.clientX - rect.left);
+  const my = (e.clientY - rect.top);
+
+  let hit = null;
+  for (const h of hitItems) {
+    const dx = mx - h.x, dy = my - h.y;
+    if (dx * dx + dy * dy < h.r * h.r) { hit = h; break; }
+  }
+
+  if (hit) {
+    canvas.style.cursor = 'pointer';
+    const it = hit.item;
+    let t = `<b>${it.f || it.n}</b>`;
+    t += `<div class="tc">${hit.ring} › ${it.sec}</div>`;
+    if (it.j) t += tipBadge(it.j);
+    if (it.c) t += `<div class="tco">${it.c}</div>`;
+    showTip(e, t);
+  } else {
+    canvas.style.cursor = 'default';
+    hideTip();
+  }
+});
+
+canvas.addEventListener('mouseleave', hideTip);
+
+// ======== DETAIL VIEW (value chain swim lanes) ========
+const DETAIL = [
+  {id:1,name:"Core Reservation & Inventory",short:"Supply",lc:"ll1",color:"#009B9B",groups:[{label:"Accommodation",items:[{n:"PMS",f:"Property Management System",j:"gap"},{n:"CRS",f:"Central Reservation System",j:"partial",c:"Hotetec"},{n:"RMS",f:"Revenue Management System",j:"gap"},{n:"Guest Experience"},{n:"Hotel Operations"},{n:"Hotel Loyalty"}]},{label:"Airlines",items:[{n:"PSS",f:"Passenger Service System",j:"gap"},{n:"Airline Reservations"},{n:"DCS"},{n:"Crew Mgmt"},{n:"Revenue Mgmt"}]},{label:"Rail / Ground",items:[{n:"Rail Reservation"},{n:"Ticketing & Fares"}]},{label:"Cruise",items:[{n:"Cruise Reservation",j:"current",c:"IST"},{n:"Fleet Ops"}]},{label:"Vacation Rental",items:[{n:"VR PMS"},{n:"Smart Lock"},{n:"Guest Messaging"}]}]},
+  {id:2,name:"Distribution & Connectivity",short:"Distribution",lc:"ll2",color:"#0086A8",groups:[{label:"Core Distribution",items:[{n:"GDS"},{n:"Connectivity Hub",j:"core",c:"Juniper TT, DS"},{n:"XML / API Aggregation"},{n:"Content Mapping"},{n:"Channel Manager",j:"gap",c:"Hotetec"},{n:"Supplier Extranet"}]},{label:"Aggregation",items:[{n:"Air Aggregator",j:"current",c:"Lleego"},{n:"Bedbank Platform",j:"partial",c:"DOME"},{n:"NDC / LCC Aggregator"},{n:"Train Aggregator"},{n:"Car Rental Aggregator"},{n:"STR Channel Mgr"}]}]},
+  {id:3,name:"Retail, Packaging & Commerce",short:"Packaging & Retail",lc:"ll3",color:"#006B8A",groups:[{label:"Sales Platforms",items:[{n:"Booking Engine",j:"current",c:"Juniper TT, Traveltek, Hotetec, Cangoroo, Inspiretec"},{n:"OTA Platform",j:"gap"},{n:"Metasearch"},{n:"B2B Portal"},{n:"Corporate Booking Tool"}]},{label:"Packaging",items:[{n:"Dynamic Packaging",j:"core",c:"Peakwork"},{n:"Ancillary Mgmt",j:"partial",c:"Juniper TT"},{n:"Offer Management"},{n:"NDC Offer & Order Mgmt"}]},{label:"TA / TO Software",items:[{n:"Tour Operator System"},{n:"Agency Back-Office"},{n:"Itinerary Builder"},{n:"DMC Software"},{n:"Contracting & Supplier Mgmt"}]}]},
+  {id:4,name:"Payments, Fintech & Risk",short:"Payments",lc:"ll4",color:"#00526D",groups:[{label:"Payments Stack",items:[{n:"Payment Gateway",j:"gap"},{n:"PSP",j:"gap"},{n:"VCC",j:"partial"},{n:"Fraud Detection",j:"gap"},{n:"Settlement & Reconciliation"},{n:"Travel Insurance"},{n:"BNPL / Financing"}]}]},
+  {id:5,name:"Customer Lifecycle & Engagement",short:"Customer",lc:"ll5",color:"#3A4A5C",groups:[{label:"CRM & Engagement",items:[{n:"Travel CRM",j:"current",c:"Inspiretec"},{n:"Customer Support",j:"partial",c:"Inspiretec"},{n:"Marketing Automation"},{n:"Loyalty & Rewards",j:"gap",c:"Inspiretec"},{n:"CDP",j:"emerging"},{n:"Personalization",j:"future"},{n:"Chatbot / AI"}]}]},
+  {id:6,name:"Data, Intelligence & Platform",short:"Data & AI",lc:"ll6",color:"#2D3044",groups:[{label:"Data & AI",items:[{n:"Data Warehouse",j:"core",c:"Juniper TT"},{n:"Business Intelligence",j:"current",c:"Juniper TT"},{n:"Pricing Intelligence"},{n:"Demand Forecasting"},{n:"AI Optimization",j:"future"},{n:"Reporting & KPI"}]}]},
+  {id:7,name:"Operations, Digital & Compliance",short:"Ops & Compliance",lc:"ll7",color:"#1A1A2E",groups:[{label:"Operations",items:[{n:"Check-in / Kiosk"},{n:"Trip Management"},{n:"Disruption Mgmt"},{n:"Airport Operations"}]},{label:"Digital Infra",items:[{n:"CMS / DXP"},{n:"API Management"},{n:"Mobile App Platform"},{n:"Identity & Access Mgmt"}]},{label:"Compliance",items:[{n:"KYC / Identity"},{n:"Border & Immigration"},{n:"Duty of Care"},{n:"Regulatory Reporting"}]}]},
+];
+
+function badge(j){const m={core:['Core','core'],current:['Current','core'],partial:['Partial','partial'],gap:['Gap','gap'],emerging:['Emerging','future'],future:['Future','future']};const v=m[j];return v?`<span class="sb ${v[1]}">${v[0]}</span>`:''}
+
+let detailBuilt = false;
+function buildDetail() {
+  if (detailBuilt) return; detailBuilt = true;
+  const w = document.getElementById('detail-view');
+  let prevLC = '';
+  DETAIL.forEach((l, i) => {
+    if (i > 0 && l.lc !== prevLC) { const a = document.createElement('div'); a.className='fa'; a.innerHTML='<span class="fl">▼</span>'; w.appendChild(a); }
+    prevLC = l.lc;
+    const lane = document.createElement('div'); lane.className = 'swim-lane';
+    const lb = document.createElement('div'); lb.className = `lane-label ${l.lc}`; lb.textContent = `${l.id}. ${l.short}`; lane.appendChild(lb);
+    const bd = document.createElement('div'); bd.className = 'lane-body';
+    l.groups.forEach(g => {
+      const ge = document.createElement('div'); ge.className = 'grp'; ge.innerHTML = `<span class="gl">${g.label}</span>`;
+      g.items.forEach(it => {
+        const isH = it.j && (it.j === 'core' || it.j === 'current');
+        const s = document.createElement('div'); s.className = `sg${isH ? ' jh' : ''}`;
+        let h = `<div class="sh"><span class="sn">${it.n}</span>${it.j ? badge(it.j) : ''}</div>`;
+        if (it.c) { h += '<div class="si">'; it.c.split(',').forEach(c => { h += `<span class="co">${c.trim()}</span>`; }); h += '</div>'; }
+        s.innerHTML = h;
+        s.addEventListener('mouseenter', e => { let t = `<b>${it.f||it.n}</b><div class="tc">${l.name} › ${g.label}</div>`; if(it.j)t+=tipBadge(it.j); if(it.c)t+=`<div class="tco">${it.c}</div>`; showTip(e,t); });
+        s.addEventListener('mousemove', e => { const r=tip.getBoundingClientRect(); let x=e.clientX+12,y=e.clientY+12; if(x+r.width>window.innerWidth-12)x=e.clientX-r.width-12; if(y+r.height>window.innerHeight-12)y=e.clientY-r.height-12; tip.style.left=x+'px';tip.style.top=y+'px'; });
+        s.addEventListener('mouseleave', hideTip);
+        ge.appendChild(s);
+      });
+      bd.appendChild(ge);
+    });
+    lane.appendChild(bd); w.appendChild(lane);
+  });
+  const tv = document.createElement('div'); tv.className='fa'; tv.innerHTML='<span class="fl" style="font-size:0.68rem">▼ Traveler</span>'; w.appendChild(tv);
+}
+
+// ======== VIEW SWITCHING ========
+const ringC = document.getElementById('ring-container');
+const detV = document.getElementById('detail-view');
+
+document.querySelectorAll('.cb').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('.cb').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    const v = b.dataset.v;
+    ringC.style.display = v === 'ring' ? 'block' : 'none';
+    detV.style.display = v === 'detail' ? 'block' : 'none';
+    if (v === 'ring') draw();
+    if (v === 'detail') buildDetail();
+  });
+});
+
+// ======== INIT ========
+draw();
+window.addEventListener('resize', () => { if (ringC.style.display !== 'none') draw(); });
+</script>
+</body>
+</html>
