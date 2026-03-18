@@ -59,8 +59,8 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 .bu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px;margin-bottom:32px}
 .bu-card{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:18px 20px;transition:all .25s;cursor:pointer;position:relative;display:flex;gap:14px;align-items:flex-start}
 .bu-card:hover{border-color:var(--red-mid);box-shadow:0 4px 16px rgba(192,57,43,.08);transform:translateY(-2px)}
-.bu-logo{width:64px;height:64px;border-radius:8px;background:var(--bg-off);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
-.bu-logo img{width:52px;height:52px;object-fit:contain}
+.bu-logo{width:88px;height:88px;border-radius:10px;background:var(--bg-off);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.bu-logo img{width:72px;height:72px;object-fit:contain}
 .bu-info{flex:1;min-width:0}
 .bu-info .bi-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:3px}
 .bu-info .bi-name{font-size:.85rem;font-weight:800;color:var(--charcoal)}
@@ -372,7 +372,7 @@ function showBU(buId){
 
   h+=`<div style="text-align:center"><div class="sec-title" style="font-size:1.3rem;display:block">Travel & Hospitality Portfolio</div><div class="sec-bar" style="margin:6px auto 6px"></div><div style="font-size:.78rem;color:var(--text-light);margin-bottom:20px">15+ Business Units · $30B GMV · 48M bookings/yr</div></div><div class="bu-grid">`;
   BUS.forEach(bu=>{
-    h+=`<div class="bu-card" onclick="showBU('${bu.id}')"><div class="bu-info"><div class="bi-top"><div class="bi-name"><img src="${LOGOS[bu.id]||''}" style="height:60px;object-fit:contain;display:block" onerror="this.outerHTML='${bu.name}'"></div><div class="bi-acq">Acq. ${bu.a}</div></div><div class="bi-meta">${bu.hq} · Est. ${bu.f}</div><div class="bi-desc">${bu.desc}</div><div class="bi-tags">${bu.tags.map(t=>`<span class="bi-tag">${t}</span>`).join('')}</div></div><div class="bc-arrow">→</div></div>`;
+    h+=`<div class="bu-card" onclick="showBU('${bu.id}')"><div class="bu-logo"><img src="${LOGOS[bu.id]||''}" onerror="this.parentElement.innerHTML='<span style=font-size:1.2rem>🏢</span>'"></div><div class="bu-info"><div class="bi-top"><div class="bi-name">${bu.name}</div><div class="bi-acq">Acq. ${bu.a}</div></div><div class="bi-meta">${bu.hq} · Est. ${bu.f}</div><div class="bi-desc">${bu.desc}</div><div class="bi-tags">${bu.tags.map(t=>`<span class="bi-tag">${t}</span>`).join('')}</div></div><div class="bc-arrow">→</div></div>`;
   });
   h+=`</div>`;
 
