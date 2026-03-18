@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Juniper Group — Travel Software Companies</title>
+<title>Juniper Group — Travel & Hospitality Software Companies</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--red:#C0392B;--red-light:#FDECEA;--red-mid:#E6A8A2;--charcoal:#2C2C2C;--dark:#1A1A1A;--text:#2C2C2C;--text-mid:#555;--text-light:#888;--bg:#FFF;--bg-off:#F5F5F3;--bg-warm:#FAF8F5;--border:#E5E2DD;--teal:#009B9B;--teal-light:#E6F5F5;--teal-mid:#B3E0E0;--green:#00A676;--green-bg:#E8F7F1;--yellow:#D4920B;--yellow-bg:#FFF8E8;--purple:#6B4FBB;--purple-bg:#F0ECF9;--shadow:0 2px 8px rgba(0,0,0,.06)}
@@ -106,8 +106,8 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 
 .cf-nodes{display:flex;flex-direction:column;gap:6px;width:100%;padding:0 8px}
 
-.cf-arrow{display:flex;align-items:center;justify-content:center;width:44px;flex-shrink:0;align-self:center;margin-top:40px}
-.cf-arrow svg{width:32px;height:24px}
+.cf-arrow{display:flex;align-items:center;justify-content:center;width:20px;flex-shrink:0;align-self:stretch}
+.cf-arrow::after{content:'';width:1px;height:60%;background:var(--border);display:block}
 
 .cn{background:#fff;border:2px solid var(--border);border-radius:8px;padding:10px 14px;font-size:.76rem;font-weight:500;color:var(--text);cursor:pointer;transition:all .2s;position:relative;text-align:left}
 .cn:hover{border-color:var(--red);box-shadow:0 3px 12px rgba(192,57,43,.12);transform:translateY(-2px);z-index:10}
@@ -185,7 +185,7 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 <nav class="nav" id="nav"></nav>
 <div id="views-container"></div>
 <div class="detail-panel" id="dp"><button class="dp-close" id="dp-close">✕</button><div id="dp-content"></div></div>
-<div class="ftr"><span>Juniper Group — Vela Software / Constellation Software Inc. (TSX: CSU)</span><span>Travel Software Companies</span></div>
+<div class="ftr"><span>Juniper Group — Vela Software / Constellation Software Inc. (TSX: CSU)</span><span>Travel & Hospitality Software Companies</span></div>
 
 <script>
 // ====== BU DATA ======
@@ -343,9 +343,9 @@ function showBU(buId){
 // ====== HOME ======
 (function(){
   const w=document.getElementById('view-home');
-  let h=`<div class="home-hero"><div class="dot-grid">${'<span></span>'.repeat(12)}</div><div class="hh-tag">Constellation Software › Vela Software › Juniper Group</div><h1>Travel Software Companies</h1><div class="sec-bar"></div><div class="hh-sub">An Operating Portfolio of Vela Software, a Constellation Software ("CSI") company. Since 1995, CSI acquires, manages and builds vertical market software businesses, listed on the Toronto Stock Exchange (TSX: CSU) since 2006.</div><div class="csi-stats"><div class="csi-stat"><div class="cs-val">US$70B+</div><div class="cs-lab">Market Capitalization</div></div><div class="csi-stat"><div class="cs-val">6</div><div class="cs-lab">Operating Groups</div></div><div class="csi-stat"><div class="cs-val">1,100+</div><div class="cs-lab">Businesses · 150+ Verticals</div></div><div class="csi-stat"><div class="cs-val">125,000+</div><div class="cs-lab">Customers · 100+ Countries</div></div><div class="csi-stat"><div class="cs-val">55,000+</div><div class="cs-lab">Employees Globally</div></div></div></div>`;
+  let h=`<div class="home-hero"><div class="dot-grid">${'<span></span>'.repeat(12)}</div><div class="hh-tag">Constellation Software › Vela Software › Juniper Group</div><h1>Travel & Hospitality Software Companies</h1><div class="sec-bar"></div><div class="hh-sub">An Operating Portfolio of Vela Software, a Constellation Software ("CSI") company. Since 1995, CSI acquires, manages and builds vertical market software businesses, listed on the Toronto Stock Exchange (TSX: CSU) since 2006.</div><div class="csi-stats"><div class="csi-stat"><div class="cs-val">US$70B+</div><div class="cs-lab">Market Capitalization</div></div><div class="csi-stat"><div class="cs-val">6</div><div class="cs-lab">Operating Groups</div></div><div class="csi-stat"><div class="cs-val">1,100+</div><div class="cs-lab">Businesses · 150+ Verticals</div></div><div class="csi-stat"><div class="cs-val">125,000+</div><div class="cs-lab">Customers · 100+ Countries</div></div><div class="csi-stat"><div class="cs-val">55,000+</div><div class="cs-lab">Employees Globally</div></div></div></div>`;
 
-  h+=`<div style="text-align:center;margin:32px auto 36px;max-width:400px"><div style="font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:20px">Corporate Structure</div><div style="display:flex;flex-direction:column;align-items:center;gap:0"><div style="background:var(--bg);border:2px solid var(--border);border-radius:12px;padding:22px 32px;text-align:center;width:100%"><img src="https://www.google.com/s2/favicons?domain=csisoftware.com&sz=128" style="height:48px;margin-bottom:8px;display:block;margin-left:auto;margin-right:auto"><div style="font-size:.95rem;font-weight:800;color:var(--charcoal)">Constellation Software</div><div style="font-size:.6rem;color:var(--text-light);margin-top:3px">TSX: CSU · US$70B+ Market Cap</div><div style="font-size:.54rem;color:var(--text-light);margin-top:2px">1,100+ businesses · 55,000+ employees</div></div><div style="width:2px;height:24px;background:linear-gradient(180deg,var(--border),var(--red));flex-shrink:0"></div><div style="background:var(--bg);border:2px solid var(--border);border-radius:12px;padding:22px 32px;text-align:center;width:100%"><img src="https://www.google.com/s2/favicons?domain=velasoftwaregroup.com&sz=128" style="height:48px;margin-bottom:8px;display:block;margin-left:auto;margin-right:auto"><div style="font-size:.95rem;font-weight:800;color:var(--charcoal)">Vela Software</div><div style="font-size:.6rem;color:var(--text-light);margin-top:3px">Operating Division</div><div style="font-size:.54rem;color:var(--text-light);margin-top:2px">10,000+ people · 180+ offices · 200+ companies</div></div><div style="width:2px;height:24px;background:var(--red);flex-shrink:0"></div><div style="background:var(--red-light);border:2px solid var(--red);border-radius:12px;padding:22px 32px;text-align:center;width:100%"><img src="https://www.google.com/s2/favicons?domain=juniper-group.com&sz=128" style="height:48px;margin-bottom:8px;display:block;margin-left:auto;margin-right:auto"><div style="font-size:.95rem;font-weight:800;color:var(--red)">Juniper Group</div><div style="font-size:.6rem;color:var(--red);opacity:.7;margin-top:3px">Travel & Hospitality Portfolio</div><div style="font-size:.54rem;color:var(--text-light);margin-top:2px">15+ BUs · $30B GMV · 48M bookings/yr</div></div></div></div>`;
+  h+=`<div style="display:flex;align-items:center;justify-content:center;gap:0;margin:28px 0 32px;flex-direction:column"><div style="display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap"><a href="https://www.csisoftware.com" target="_blank" rel="noopener" style="display:block;opacity:.7;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.7"><img src="https://www.google.com/s2/favicons?domain=csisoftware.com&sz=128" style="height:44px;display:block" alt="Constellation Software"></a><div style="font-size:1.2rem;color:var(--border)">›</div><a href="https://www.velasoftwaregroup.com" target="_blank" rel="noopener" style="display:block;opacity:.7;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.7"><img src="https://www.google.com/s2/favicons?domain=velasoftwaregroup.com&sz=128" style="height:44px;display:block" alt="Vela Software"></a><div style="font-size:1.2rem;color:var(--border)">›</div><a href="https://juniper-group.com" target="_blank" rel="noopener" style="display:block;transition:opacity .2s"><img src="https://www.google.com/s2/favicons?domain=juniper-group.com&sz=128" style="height:44px;display:block" alt="Juniper Group"></a></div></div>`;
 
 
 
@@ -356,7 +356,7 @@ function showBU(buId){
   h+=`</div>`;
 
   // Other CSI Travel BUs — Jonas Hospitality
-  h+=`<div style="margin-top:40px"><div style="text-align:center;cursor:pointer" onclick="document.getElementById('jonas-section').style.display=document.getElementById('jonas-section').style.display==='none'?'block':'none';this.querySelector('.jonas-toggle').textContent=document.getElementById('jonas-section').style.display==='none'?'▼ Show':'▲ Hide'"><div class="sec-title" style="font-size:1.15rem;display:block">Other CSI Travel Business Units</div><div class="sec-bar" style="margin:6px auto 8px"></div><div style="font-size:.7rem;color:var(--text-light);margin-bottom:12px">Jonas Hospitality — a portfolio of Vertus Group (Jonas Software / CSI) serving 60,000+ hotels globally <span class="jonas-toggle" style="color:var(--red);font-weight:700">▼ Show</span></div></div><div id="jonas-section" style="display:none"><div class="bu-grid">`;
+  h+=`<div style="margin-top:40px"><div style="text-align:center"><div class="sec-title" style="font-size:1.15rem;display:block">Other CSI Travel Business Units</div><div class="sec-bar" style="margin:6px auto 8px"></div><div style="font-size:.7rem;color:var(--text-light);margin-bottom:16px">Jonas Hospitality — a portfolio of Vertus Group (Jonas Software / CSI) serving 60,000+ hotels globally</div></div><div class="bu-grid">`;
 
   const JONAS=[
     {name:"Aptech",domain:"aptechsolutions.com",desc:"Pioneer in hospitality-specific financial software — enterprise accounting, BI, budgeting and forecasting for hotels and resorts.",tags:["Accounting","BI","Budgeting"]},
@@ -375,7 +375,30 @@ function showBU(buId){
     h+=`<div class="bu-card" onclick="window.open('https://www.jonashospitality.com/','_blank')" style="cursor:pointer"><div class="bu-logo"><img src="https://www.google.com/s2/favicons?domain=${j.domain}&sz=64" onerror="this.parentElement.innerHTML='<span style=font-size:1.2rem>🏨</span>'"></div><div class="bu-info"><div class="bi-top"><div class="bi-name">${j.name}</div><div class="bi-acq" style="background:#f0f0ee;color:var(--text-light)">Jonas / CSI</div></div><div class="bi-meta">Part of Jonas Hospitality (Vertus Group)</div><div class="bi-desc">${j.desc}</div><div class="bi-tags">${j.tags.map(t=>`<span class="bi-tag">${t}</span>`).join('')}</div></div></div>`;
   });
 
-  h+=`</div></div></div>`;
+  h+=`</div></div>`;
+
+  // Industry Insights & Trends
+  h+=`<div style="margin-top:44px"><div style="text-align:center"><div class="sec-title" style="font-size:1.15rem;display:block">Industry Insights & Trends</div><div class="sec-bar" style="margin:6px auto 8px"></div><div style="font-size:.7rem;color:var(--text-light);margin-bottom:18px">Curated reading from leading strategy firms on the future of travel technology</div></div>`;
+  h+=`<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px">`;
+
+  const ARTICLES=[
+    {title:"Agentic AI Could Upend the Travel Industry",source:"McKinsey",color:"#003C71",url:"https://www.mckinsey.com/industries/travel/our-insights"},
+    {title:"Four Emerging Themes in Business Travel",source:"McKinsey",color:"#003C71",url:"https://www.mckinsey.com/industries/travel/our-insights/four-emerging-themes-in-business-travel"},
+    {title:"Travel Industry Trends & the PE Opportunity",source:"McKinsey",color:"#003C71",url:"https://www.mckinsey.com/industries/private-capital/our-insights/travel-industry-trends-and-the-opportunity-for-private-equity"},
+    {title:"The Promise of Travel in the Age of AI",source:"McKinsey & Skift",color:"#003C71",url:"https://www.mckinsey.com/featured-insights/mckinsey-explainers/what-is-the-future-of-travel"},
+    {title:"2026 Travel Industry Outlook",source:"Deloitte",color:"#86BC25",url:"https://www.deloitte.com/us/en/insights/industry/transportation/travel-hospitality-industry-outlook.html"},
+    {title:"2025 Corporate Travel Study",source:"Deloitte",color:"#86BC25",url:"https://www.deloitte.com/us/en/insights/industry/transportation/corporate-business-travel-survey.html"},
+    {title:"Future of Hospitality: AI-Driven Trends",source:"Deloitte",color:"#86BC25",url:"https://www.deloitte.com/us/en/Industries/consumer/articles/future-of-hospitality-ai-innovation.html"},
+    {title:"Travel & Tourism Thought Leadership",source:"BCG",color:"#2D8C3C",url:"https://www.bcg.com/industries/travel-tourism/insights"},
+    {title:"Travel, Logistics & Infrastructure: M&A 2025",source:"McKinsey",color:"#003C71",url:"https://www.mckinsey.com/capabilities/m-and-a/our-insights/travel-logistics-and-infrastructure-firms-are-finding-opportunities-in-technology-changing-consumer-demographics-and-global-trade"},
+    {title:"7 Travel & Hospitality Trends That Defined 2025",source:"Lighthouse",color:"#FF6B35",url:"https://www.mylighthouse.com/resources/blog/7-travel-and-hospitality-trends-2025"},
+  ];
+
+  ARTICLES.forEach(a=>{
+    h+=`<a href="${a.url}" target="_blank" rel="noopener" style="text-decoration:none;display:block;border-radius:10px;overflow:hidden;border:1px solid var(--border);transition:all .25s;cursor:pointer" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'"><div style="background:${a.color};padding:28px 22px 24px;position:relative;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end"><div style="position:absolute;top:12px;right:14px;font-size:.5rem;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;border:1px solid rgba(255,255,255,.2);padding:2px 8px;border-radius:3px">${a.source}</div><div style="font-size:.92rem;font-weight:800;color:#fff;line-height:1.25">${a.title}</div></div><div style="background:var(--bg);padding:10px 16px;display:flex;align-items:center;justify-content:space-between"><span style="font-size:.6rem;color:var(--text-light)">Read report →</span><img src="https://www.google.com/s2/favicons?domain=${a.url.split('/')[2]}&sz=32" style="height:16px;opacity:.5"></div></a>`;
+  });
+
+  h+=`</div></div>`;
 
   w.innerHTML=h;
 })();
@@ -462,7 +485,6 @@ function renderVC(){
     chain.layers.forEach((layer,li)=>{
       // Arrow
       const arrow=document.createElement('div');arrow.className='cf-arrow';
-      arrow.innerHTML=`<svg viewBox="0 0 32 24"><path d="M4 12h20M18 6l8 6-8 6" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
       flow.appendChild(arrow);
 
       // Column
