@@ -3,889 +3,427 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Travel Technology Distribution Ecosystem</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800&display=swap" rel="stylesheet">
+<title>Juniper Group — Travel Software Companies</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root {
-  --teal: #009B9B;
-  --teal-light: #E6F5F5;
-  --teal-mid: #B3E0E0;
-  --dark: #1A1A2E;
-  --text: #1A1A2E;
-  --text-mid: #555570;
-  --text-light: #8888A0;
-  --bg: #FFFFFF;
-  --bg-off: #F7F8FA;
-  --border: #E2E4EA;
-  --green: #00A676;
-  --green-bg: #E8F7F1;
-  --yellow: #D4920B;
-  --yellow-bg: #FFF8E8;
-  --purple: #6B4FBB;
-  --purple-bg: #F0ECF9;
-}
+:root{--red:#C0392B;--red-light:#FDECEA;--red-mid:#E6A8A2;--charcoal:#2C2C2C;--dark:#1A1A1A;--text:#2C2C2C;--text-mid:#555;--text-light:#888;--bg:#FFF;--bg-off:#F5F5F3;--bg-warm:#FAF8F5;--border:#E5E2DD;--teal:#009B9B;--teal-light:#E6F5F5;--teal-mid:#B3E0E0;--green:#00A676;--green-bg:#E8F7F1;--yellow:#D4920B;--yellow-bg:#FFF8E8;--purple:#6B4FBB;--purple-bg:#F0ECF9;--shadow:0 2px 8px rgba(0,0,0,.06)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;-webkit-font-smoothing:antialiased}
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* NAV */
+.topbar{background:var(--charcoal);padding:10px 32px;display:flex;align-items:center;gap:16px}
+.topbar img{height:28px}
+.topbar .tb-title{color:#fff;font-size:.82rem;font-weight:700;letter-spacing:-.01em}
+.topbar .tb-sub{color:rgba(255,255,255,.4);font-size:.6rem;margin-left:4px}
+.nav{display:flex;gap:0;padding:0 32px;max-width:1600px;margin:0 auto;border-bottom:2px solid var(--border);overflow-x:auto;background:var(--bg)}
+.nav-btn{background:none;border:none;border-bottom:3px solid transparent;color:var(--text-light);padding:11px 16px;font-family:inherit;font-size:.7rem;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
+.nav-btn:hover{color:var(--red)}
+.nav-btn.on{color:var(--red);border-bottom-color:var(--red)}
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
+/* VIEWS */
+.view{display:none;max-width:1600px;margin:0 auto;padding:24px 48px 48px}
+.view.active{display:block}
 
-/* HEADER */
-.hdr {
-  padding: 32px 48px 0;
-  max-width: 1600px;
-  margin: 0 auto;
-}
+/* ===== SHARED SECTION STYLES ===== */
+.sec-title{font-size:1.8rem;font-weight:800;color:var(--charcoal);margin-bottom:6px;line-height:1.15}
+.sec-bar{width:60px;height:4px;background:var(--red);border-radius:2px;margin-bottom:16px}
+.sec-sub{font-size:.82rem;color:var(--text-mid);line-height:1.6;max-width:700px}
+.dot-grid{position:absolute;display:grid;grid-template-columns:repeat(4,6px);gap:8px;opacity:.15}
+.dot-grid span{width:6px;height:6px;border-radius:50%;background:var(--charcoal)}
 
-.tags { display: flex; gap: 8px; margin-bottom: 12px; }
+/* ===== HOME TAB ===== */
+.home-hero{background:var(--bg-warm);border:1px solid var(--border);border-radius:12px;padding:40px 44px;margin-bottom:28px;position:relative;overflow:hidden;text-align:center}
+.home-hero .dot-grid{top:16px;right:20px}
+.home-hero .hh-tag{font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--red);margin-bottom:8px}
+.home-hero h1{font-size:2.2rem;font-weight:800;color:var(--charcoal);line-height:1.15;margin-bottom:6px}
+.home-hero .hh-sub{font-size:.88rem;color:var(--text-mid);margin:0 auto 20px;max-width:680px;line-height:1.6}
+.csi-stats{display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
+.csi-stat{text-align:center;padding:12px 18px;background:var(--bg);border:1px solid var(--border);border-radius:8px}
+.csi-stat .cs-val{font-size:1.3rem;font-weight:800;color:var(--charcoal)}
+.csi-stat .cs-lab{font-size:.58rem;color:var(--text-light);margin-top:2px}
 
-.tag {
-  font-size: 0.58rem;
-  font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 3px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: white;
-}
+/* Hierarchy */
+.hier{display:flex;align-items:center;gap:10px;margin-bottom:28px;flex-wrap:wrap}
+.hier-box{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:10px 18px;text-align:center;transition:all .2s}
+.hier-box:hover{border-color:var(--red-mid);box-shadow:var(--shadow)}
+.hier-box .hb-n{font-size:.78rem;font-weight:700;color:var(--charcoal)}
+.hier-box .hb-s{font-size:.56rem;color:var(--text-light);margin-top:2px}
+.hier-box.active{border-color:var(--red);background:var(--red-light)}
+.hier-arr{color:var(--red);font-size:1rem;font-weight:700}
 
-.tag.dk { background: var(--dark); }
-.tag.tl { background: var(--teal); }
+/* Stock chart */
+.stock-section{margin-bottom:32px}
+.stock-embed{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--bg)}
 
-.hdr h1 {
-  font-size: 1.55rem;
-  font-weight: 800;
-  color: var(--dark);
-  line-height: 1.25;
-  max-width: 1000px;
-}
+/* BU Grid */
+.bu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px;margin-bottom:32px}
+.bu-card{background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:18px 20px;transition:all .25s;cursor:pointer;position:relative;display:flex;gap:14px;align-items:flex-start}
+.bu-card:hover{border-color:var(--red-mid);box-shadow:0 4px 16px rgba(192,57,43,.08);transform:translateY(-2px)}
+.bu-logo{width:48px;height:48px;border-radius:8px;background:var(--bg-off);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.bu-logo img{width:36px;height:36px;object-fit:contain}
+.bu-info{flex:1;min-width:0}
+.bu-info .bi-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:3px}
+.bu-info .bi-name{font-size:.85rem;font-weight:800;color:var(--charcoal)}
+.bu-info .bi-acq{font-size:.5rem;font-weight:700;padding:2px 7px;border-radius:3px;background:var(--red-light);color:var(--red)}
+.bu-info .bi-meta{font-size:.58rem;color:var(--text-light);margin-bottom:5px}
+.bu-info .bi-desc{font-size:.68rem;color:var(--text-mid);line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.bu-info .bi-tags{display:flex;flex-wrap:wrap;gap:3px;margin-top:6px}
+.bu-info .bi-tag{font-size:.52rem;padding:2px 6px;border-radius:3px;background:var(--bg-off);border:1px solid var(--border);color:var(--text-mid)}
+.bu-card .bc-arrow{position:absolute;bottom:12px;right:14px;font-size:.6rem;color:var(--red);font-weight:700}
 
-.hdr h1 em { font-style: normal; color: var(--teal); }
+/* ===== BU DETAIL PANEL ===== */
+.bu-d-back{font-size:.7rem;color:var(--red);cursor:pointer;font-weight:600;margin-bottom:12px;display:inline-flex;align-items:center;gap:4px}
+.bu-d-back:hover{text-decoration:underline}
+.bu-d-top{display:flex;gap:20px;align-items:flex-start;margin-bottom:20px}
+.bu-d-logo{width:64px;height:64px;border-radius:10px;background:var(--bg-off);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden}
+.bu-d-logo img{width:48px;height:48px;object-fit:contain}
+.bu-d-name{font-size:1.5rem;font-weight:800;color:var(--charcoal)}
+.bu-d-meta{display:flex;gap:14px;font-size:.7rem;color:var(--text-light);margin-top:4px;flex-wrap:wrap}
+.bu-d-desc{font-size:.85rem;color:var(--text-mid);line-height:1.65;max-width:800px;margin-bottom:16px}
+.bu-d-link{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;color:#fff;background:var(--red);font-weight:600;text-decoration:none;padding:7px 18px;border-radius:6px;transition:all .2s}
+.bu-d-link:hover{background:#A93226}
 
-.hdr .sub {
-  font-size: 0.8rem;
-  color: var(--text-mid);
-  margin-top: 5px;
-}
+.kf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin:16px 0 20px}
+.kf{background:var(--red-light);border:1px solid var(--red-mid);border-radius:8px;padding:10px;text-align:center}
+.kf .kv{font-size:1rem;font-weight:800;color:var(--red)}
+.kf .kl{font-size:.55rem;color:var(--text-light);margin-top:2px}
 
-/* LEGEND */
-.leg {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 12px 48px;
-  max-width: 1600px;
-  margin: 0 auto;
-  border-bottom: 1px solid var(--border);
-  flex-wrap: wrap;
-}
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-top:10px}
+.prod-card{background:var(--bg-off);border:1px solid var(--border);border-radius:8px;padding:14px}
+.prod-card .pc-n{font-size:.78rem;font-weight:700;color:var(--charcoal);margin-bottom:4px}
+.prod-card .pc-d{font-size:.68rem;color:var(--text-mid);line-height:1.5}
 
-.leg .lt {
-  font-size: 0.62rem;
-  font-weight: 700;
-  color: var(--text-light);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
+/* ===== VALUE CHAIN (connectivity map) ===== */
+.vc-hint{font-size:.7rem;color:var(--text-light);text-align:center;margin-bottom:8px}.vc-hint b{color:var(--red)}
+.conn-map{position:relative;min-width:1150px;height:650px;background:var(--bg-warm);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.conn-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.conn-svg path{transition:stroke-opacity .2s,stroke-width .2s}
+.conn-map.has-focus .conn-svg path{stroke-opacity:.03!important}
+.conn-map.has-focus .conn-svg path.lit{stroke-opacity:.6!important;stroke-width:2.5!important}
+.col{position:absolute;display:flex;flex-direction:column;gap:5px;z-index:2}
+.col-title{font-size:.54rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;padding:4px 10px;border-radius:4px;text-align:center;margin-bottom:2px}
+.cn{background:#fff;border:1.5px solid var(--border);border-radius:6px;padding:5px 10px;font-size:.64rem;font-weight:500;color:var(--text);cursor:pointer;transition:all .15s;position:relative;white-space:nowrap}
+.cn:hover{border-color:var(--red);box-shadow:0 2px 8px rgba(192,57,43,.12);z-index:10}
+.cn.j{background:var(--red-light);border-color:var(--red);font-weight:700;color:var(--red)}
+.cn.j::before{content:'';position:absolute;left:-1.5px;top:-1.5px;bottom:-1.5px;width:3px;background:var(--red);border-radius:6px 0 0 6px}
+.cn .cn-sub{display:block;font-size:.48rem;font-weight:600;color:var(--red);margin-top:1px}
+.conn-map.has-focus .cn{opacity:.25}
+.conn-map.has-focus .cn.lit{opacity:1!important;border-color:var(--red);box-shadow:0 2px 8px rgba(192,57,43,.12)}
 
-.leg .li {
-  display: flex; align-items: center; gap: 5px;
-  font-size: 0.66rem; color: var(--text-mid);
-}
+/* Detail panel overlay */
+.detail-panel{display:none;position:fixed;top:0;right:0;width:420px;height:100vh;background:var(--bg);border-left:2px solid var(--border);box-shadow:-4px 0 20px rgba(0,0,0,.1);z-index:9999;overflow-y:auto;padding:24px;animation:slideIn .25s ease}
+@keyframes slideIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+.detail-panel.open{display:block}
+.dp-close{position:absolute;top:12px;right:14px;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--text-light);padding:4px}
+.dp-close:hover{color:var(--red)}
+.dp-title{font-size:1.1rem;font-weight:800;color:var(--charcoal);margin-bottom:4px;padding-right:30px}
+.dp-layer{font-size:.6rem;color:var(--text-light);text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px}
+.dp-desc{font-size:.78rem;color:var(--text-mid);line-height:1.6;margin-bottom:14px}
+.dp-section-title{font-size:.68rem;font-weight:700;color:var(--charcoal);margin-bottom:6px;margin-top:14px;padding-top:10px;border-top:1px solid var(--border)}
+.dp-conn-list{display:flex;flex-direction:column;gap:4px}
+.dp-conn{font-size:.66rem;padding:4px 8px;border-radius:4px;background:var(--bg-off);border:1px solid var(--border);color:var(--text-mid);cursor:pointer}
+.dp-conn:hover{border-color:var(--red);color:var(--red)}
+.dp-conn.j{background:var(--red-light);border-color:var(--red-mid);color:var(--red);font-weight:600}
+.dp-juniper{background:var(--red-light);border:1px solid var(--red-mid);border-radius:8px;padding:10px;margin-top:10px}
+.dp-juniper .dpj-name{font-size:.72rem;font-weight:700;color:var(--red)}
+.dp-juniper .dpj-desc{font-size:.64rem;color:var(--text-mid);margin-top:3px;line-height:1.4}
 
-.leg .ld {
-  width: 9px; height: 9px; border-radius: 3px;
-}
+/* Flow & Grid tabs — keep compact */
+.fl-row{display:flex;align-items:flex-start}
+.fl-label{width:110px;min-width:110px;padding:10px 8px;font-size:.62rem;font-weight:700;color:#fff;text-align:center;display:flex;align-items:center;justify-content:center;line-height:1.2}
+.fl-label.l1{background:var(--red)}.fl-label.l2{background:#8B3A3A}.fl-label.l3{background:#6B3030}.fl-label.l4{background:#4A2424}.fl-label.l5{background:var(--charcoal)}
+.fl-body{flex:1;display:flex;flex-wrap:wrap;gap:8px;padding:12px 16px;background:var(--bg-off);border-bottom:1px solid var(--border);align-items:flex-start;min-height:60px}
+.fgroup{border:1.5px solid var(--border);border-radius:8px;padding:8px 10px;background:#fff;display:flex;flex-wrap:wrap;gap:6px;position:relative;cursor:pointer;transition:all .2s}
+.fgroup:hover{border-color:var(--red-mid);box-shadow:var(--shadow)}
+.fgroup .fg-label{position:absolute;top:-8px;left:10px;background:#fff;padding:0 5px;font-size:.54rem;font-weight:700;color:var(--text-light);text-transform:uppercase;letter-spacing:.03em}
+.fbox{background:#fff;border:1.5px solid var(--border);border-radius:7px;padding:6px 10px;min-width:90px;max-width:200px;cursor:pointer;transition:all .2s}
+.fbox:hover{border-color:var(--red-mid);box-shadow:var(--shadow);transform:translateY(-1px)}
+.fbox .fx-t{font-size:.66rem;font-weight:700;color:var(--charcoal)}
+.fbox .fx-c{font-size:.52rem;color:var(--red);font-weight:600;margin-top:1px}
+.fbox.fj{border-color:var(--red);background:var(--red-light)}
+.fbox .fx-b{display:inline-block;font-size:.48rem;font-weight:700;padding:1px 4px;border-radius:3px;margin-left:3px}
+.fx-b.core{background:var(--green);color:#fff}.fx-b.current{background:#00A676CC;color:#fff}.fx-b.partial{background:var(--yellow);color:#fff}.fx-b.gap{background:#CCC;color:#fff}
+.flow-arrow-row{display:flex;align-items:center;justify-content:center;height:24px;position:relative}
+.flow-arrow-row::before{content:'';position:absolute;left:15%;right:15%;top:50%;height:1px;background:var(--border)}
+.flow-arrow-row span{background:#fff;padding:0 12px;font-size:.56rem;color:var(--red);font-weight:700;z-index:1}
+.traveler-box{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 24px;background:var(--bg-off);border:2px solid var(--border);border-radius:10px;font-size:.82rem;font-weight:700;color:var(--charcoal);margin-top:4px}
 
-.ld.g { background: var(--green); }
-.ld.y { background: var(--yellow); }
-.ld.p { background: var(--purple); }
-.ld.x { background: var(--border); border: 1px dashed var(--text-light); }
+/* Grid */
+.gv-sec{margin-bottom:24px;animation:gvIn .4s ease both}
+@keyframes gvIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.gv-hdr{display:flex;align-items:center;gap:9px;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--border)}
+.gv-num{width:24px;height:24px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.64rem;font-weight:800;color:#fff;flex-shrink:0}
+.gv-ttl{font-size:.95rem;font-weight:700;color:var(--charcoal)}
+.gv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:9px}
+.gv-card{background:var(--bg);border:1.5px solid var(--border);border-radius:7px;padding:12px 14px;transition:all .2s;cursor:pointer}
+.gv-card:hover{border-color:var(--red-mid);box-shadow:var(--shadow)}
+.gv-card.hj{border-left:3px solid var(--red)}
+.gv-card .gc-t{font-size:.74rem;font-weight:700;color:var(--charcoal);margin-bottom:5px}
+.gv-card .gc-r{display:flex;align-items:center;justify-content:space-between;padding:2px 0;border-bottom:1px solid #EDEEF2;font-size:.66rem}
+.gv-card .gc-r:last-child{border-bottom:none}
+.gc-n{color:var(--text)}.gc-c{font-size:.56rem;color:var(--red);font-weight:600}
+.sb{font-size:.5rem;font-weight:700;padding:1px 5px;border-radius:3px;white-space:nowrap}
+.sb.core{background:var(--green-bg);color:var(--green);border:1px solid #B5E4D0}.sb.partial{background:var(--yellow-bg);color:var(--yellow);border:1px solid #F0D68A}.sb.gap{background:#F5F0F0;color:#999;border:1px dashed #D8CCCC}.sb.future{background:var(--purple-bg);color:var(--purple);border:1px solid #C5B8E8}
 
-.leg .sep { width: 1px; height: 14px; background: var(--border); }
-
-.leg .ring-leg {
-  display: flex; align-items: center; gap: 5px;
-  font-size: 0.62rem; color: var(--text-light);
-}
-
-.ring-leg .rl-dot {
-  width: 18px; height: 6px; border-radius: 3px; opacity: 0.6;
-}
-
-/* CONTROLS */
-.ctrls {
-  display: flex; justify-content: center; gap: 5px;
-  padding: 14px 48px 8px;
-}
-
-.cb {
-  background: var(--bg-off);
-  border: 1px solid var(--border);
-  color: var(--text-mid);
-  padding: 6px 16px;
-  border-radius: 5px;
-  font-family: inherit;
-  font-size: 0.7rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.cb.on { background: var(--teal); border-color: var(--teal); color: white; }
-.cb:hover:not(.on) { background: var(--teal-light); color: var(--teal); }
-
-/* CANVAS AREA */
-.wrap {
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 0 24px 40px;
-  position: relative;
-}
-
-#ring-container {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-#ring-canvas {
-  display: block;
-  margin: 0 auto;
-}
-
-/* DETAIL VIEW */
-#detail-view {
-  display: none;
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 0 48px 48px;
-}
-
-/* Swim lanes — same as before */
-.swim-lane { display: flex; align-items: stretch; min-height: 76px; }
-.lane-label {
-  width: 130px; min-width: 130px;
-  display: flex; align-items: center; justify-content: center;
-  padding: 8px 6px;
-  font-size: 0.66rem; font-weight: 700; color: white;
-  text-align: center; line-height: 1.2;
-}
-.ll1{background:#009B9B}.ll2{background:#0086A8}.ll3{background:#006B8A}.ll4{background:#00526D}.ll5{background:#3A4A5C}.ll6{background:#2D3044}.ll7{background:#1A1A2E}
-
-.lane-body {
-  flex: 1; display: flex; flex-wrap: wrap; gap: 6px;
-  padding: 9px 12px; border-bottom: 1px solid #EDEEF2;
-  align-items: flex-start; align-content: flex-start;
-}
-
-.grp {
-  border: 1.5px solid var(--border); border-radius: 6px;
-  padding: 7px 8px; background: var(--bg-off);
-  display: flex; flex-wrap: wrap; gap: 5px; position: relative;
-}
-
-.grp .gl {
-  position: absolute; top: -8px; left: 8px;
-  background: var(--bg-off); padding: 0 4px;
-  font-size: 0.56rem; font-weight: 700; color: var(--text-light);
-  text-transform: uppercase; letter-spacing: 0.03em;
-}
-
-.sg {
-  background: var(--bg); border: 1.5px solid var(--border);
-  border-radius: 5px; padding: 6px 9px;
-  min-width: 90px; max-width: 220px;
-  transition: all 0.2s; cursor: default;
-}
-
-.sg:hover { border-color: var(--teal-mid); box-shadow: 0 2px 8px rgba(0,0,0,0.08); transform: translateY(-1px); }
-
-.sg.jh { border-color: var(--teal); background: var(--teal-light); position: relative; }
-.sg.jh::after { content:''; position:absolute; top:-1.5px; left:-1.5px; right:-1.5px; height:3px; background:var(--teal); border-radius:5px 5px 0 0; }
-
-.sg .sh { display: flex; align-items: center; justify-content: space-between; gap: 4px; }
-.sg .sn { font-size: 0.68rem; font-weight: 700; color: var(--dark); line-height: 1.2; }
-
-.sb {
-  font-size: 0.52rem; font-weight: 700; padding: 1px 5px;
-  border-radius: 3px; white-space: nowrap;
-}
-
-.sb.core{background:var(--green-bg);color:var(--green);border:1px solid #B5E4D0}
-.sb.partial{background:var(--yellow-bg);color:var(--yellow);border:1px solid #F0D68A}
-.sb.gap{background:#F5F0F0;color:#999;border:1px dashed #D8CCCC}
-.sb.future{background:var(--purple-bg);color:var(--purple);border:1px solid #C5B8E8}
-
-.sg .si { display: flex; flex-wrap: wrap; gap: 2px; margin-top: 2px; }
-.sg .si span { font-size: 0.55rem; padding: 1px 4px; border-radius: 3px; }
-.sg .si .co { background: var(--teal-light); color: var(--teal); border: 1px solid var(--teal-mid); font-weight: 600; }
-.sg .si .nt { background: var(--bg-off); color: var(--text-light); border: 1px solid #EDEEF2; font-style: italic; }
-
-.fa { display:flex; align-items:center; justify-content:center; height:14px; margin-left:130px; position:relative; }
-.fa::before { content:''; position:absolute; left:30%; right:30%; top:50%; height:1px; background:var(--border); }
-.fa .fl { background:white; padding:0 8px; font-size:0.58rem; color:var(--teal); font-weight:600; z-index:1; }
-
-/* GRID VIEW */
-#grid-view {
-  display: none;
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 0 48px 48px;
-}
-
-.gv-section {
-  margin-bottom: 26px;
-  animation: gvIn 0.4s ease both;
-}
-
-@keyframes gvIn { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
-
-.gv-hdr {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin-bottom: 10px;
-  padding-bottom: 7px;
-  border-bottom: 2px solid var(--border);
-}
-
-.gv-num {
-  width: 26px; height: 26px; border-radius: 5px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.68rem; font-weight: 800; color: white; flex-shrink: 0;
-}
-
-.gv-title {
-  font-size: 1rem; font-weight: 700; color: var(--dark);
-}
-
-.gv-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 10px;
-}
-
-.gv-card {
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: 7px;
-  padding: 13px 15px;
-  transition: all 0.2s;
-}
-
-.gv-card:hover { border-color: var(--teal-mid); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
-.gv-card.hj { border-left: 3px solid var(--teal); }
-
-.gv-card .gct { font-size: 0.76rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
-
-.gv-card .gcs {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 3px 0; border-bottom: 1px solid #EDEEF2;
-}
-
-.gv-card .gcs:last-child { border-bottom: none; }
-.gv-card .gcn { font-size: 0.68rem; color: var(--text); }
-.gv-card .gcm { display: flex; align-items: center; gap: 4px; }
-.gv-card .gcc { font-size: 0.58rem; color: var(--teal); font-weight: 600; }
-
-/* TOOLTIP */
-.tip {
-  position: fixed;
-  background: var(--dark);
-  color: white;
-  border-radius: 7px;
-  padding: 10px 14px;
-  font-size: 0.7rem;
-  pointer-events: none;
-  z-index: 9999;
-  max-width: 280px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-  opacity: 0;
-  transition: opacity 0.15s;
-  line-height: 1.4;
-}
-.tip.show { opacity: 1; }
-.tip b { display: block; margin-bottom: 2px; }
-.tip .tc { color: rgba(255,255,255,0.5); font-size: 0.6rem; margin-bottom: 4px; }
-.tip .tb { font-size: 0.56rem; padding: 1px 5px; border-radius: 3px; }
-.tip .tb.core { background: rgba(0,166,118,0.2); color: #69f0ae; }
-.tip .tb.partial { background: rgba(212,146,11,0.2); color: #ffd740; }
-.tip .tb.gap { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.4); }
-.tip .tb.future { background: rgba(107,79,187,0.2); color: #b388ff; }
-.tip .tco { color: rgba(255,255,255,0.6); font-size: 0.6rem; margin-top: 3px; }
-
-.ftr {
-  display: flex; justify-content: space-between; padding: 14px 48px;
-  max-width: 1600px; margin: 0 auto;
-  border-top: 1px solid var(--border);
-  font-size: 0.6rem; color: var(--text-light);
-}
+.ftr{display:flex;justify-content:space-between;padding:14px 48px;max-width:1600px;margin:0 auto;border-top:1px solid var(--border);font-size:.58rem;color:var(--text-light)}
+@media(max-width:900px){.view{padding:16px 16px 32px}.home-hero{padding:24px}.home-hero h1{font-size:1.4rem}.bu-grid{grid-template-columns:1fr}.detail-panel{width:100%}}
 </style>
 </head>
 <body>
 
-<div class="hdr">
-  <div class="tags"><span class="tag dk">Travel Tech Ecosystem</span><span class="tag tl">Juniper Positioning</span></div>
-  <h1>The travel product sits at the centre — each outward ring represents a layer of technology that <em>connects supply to the traveler</em></h1>
-  <p class="sub">Concentric model inspired by Shiji Distribution Chart 2025 — adapted for the full travel value chain</p>
+<div class="topbar">
+  <div class="tb-title">Juniper Group <span class="tb-sub">CSI Company</span></div>
 </div>
-
-<div class="leg">
-  <span class="lt">Juniper</span>
-  <div class="li"><div class="ld g"></div> Core / Current</div>
-  <div class="li"><div class="ld y"></div> Partial</div>
-  <div class="li"><div class="ld p"></div> Future</div>
-  <div class="li"><div class="ld x"></div> Gap</div>
-  <div class="sep"></div>
-  <span class="lt">Rings (inside → out)</span>
-  <div class="ring-leg"><div class="rl-dot" style="background:#009B9B"></div> Core Systems</div>
-  <div class="ring-leg"><div class="rl-dot" style="background:#0086A8"></div> Distribution</div>
-  <div class="ring-leg"><div class="rl-dot" style="background:#006B8A"></div> Retail & Packaging</div>
-  <div class="ring-leg"><div class="rl-dot" style="background:#3A4A5C"></div> Operations & Data</div>
-  <div class="ring-leg"><div class="rl-dot" style="background:#1A1A2E"></div> End Channels</div>
-</div>
-
-<div class="ctrls">
-  <button class="cb on" data-v="ring">Concentric Map</button>
-  <button class="cb" data-v="detail">Value Chain Detail</button>
-  <button class="cb" data-v="grid">Detail Grid</button>
-</div>
-
-<div class="wrap">
-  <div id="ring-container">
-    <canvas id="ring-canvas"></canvas>
-  </div>
-</div>
-
-<div id="detail-view"></div>
-
-<div id="grid-view"></div>
-
-<div class="tip" id="tip"></div>
-
-<div class="ftr">
-  <span>Source: Company taxonomy, Shiji Distribution Chart 2025/2026, desk research</span>
-  <span>Juniper Travel Technology Ecosystem</span>
-</div>
+<nav class="nav" id="nav"></nav>
+<div id="views-container"></div>
+<div class="detail-panel" id="dp"><button class="dp-close" id="dp-close">✕</button><div id="dp-content"></div></div>
+<div class="ftr"><span>Juniper Group — Vela Software / Constellation Software Inc. (TSX: CSU)</span><span>Travel Software Companies</span></div>
 
 <script>
-// ======== RING DATA ========
-// Center: Travel Products
-const CENTER_ITEMS = [
-  { label: "Hotels", icon: "🏨" },
-  { label: "Airlines", icon: "✈️" },
-  { label: "Cruise", icon: "🚢" },
-  { label: "Rail", icon: "🚄" },
-  { label: "Car Rental", icon: "🚗" },
-  { label: "Activities", icon: "🎯" },
-  { label: "Vacation\nRental", icon: "🏡" },
+// ====== BU DATA ======
+const BUS=[
+{id:"juniper-tt",name:"Juniper Travel Technology",hq:"Palma, Spain",f:2003,a:2014,url:"https://ejuniper.com",logo:"ejuniper.com",gm:"Juan Mateos",
+desc:"Juniper provides leading booking and connectivity solutions globally to OTAs, DMCs, Bed Banks, Tour Operators and Wholesalers. 400+ platforms and 1,000+ travel companies use Juniper's XML and web service solutions.",
+products:[{n:"Booking Engine",d:"Multi-channel B2B/B2C/B2B2C booking platform with white labels, call centers, mobile POS."},{n:"XML / API Connectivity",d:"High-performance API layer linking 500+ suppliers with 550+ clients."},{n:"Business Intelligence",d:"Analytics and reporting for travel distribution optimization."},{n:"Data Warehouse",d:"Centralized data aggregation across the Juniper ecosystem."},{n:"Juniper Cruises (by IST)",d:"Combined booking engine + IST cruise tech."},{n:"Juniper Flights (by Lleego)",d:"Booking engine + Lleego flight aggregation."},{n:"Juniper Vervotech",d:"AI hotel/room mapping integrated into content layer."},{n:"Ancillary Management",d:"Upsell engine for insurance, transfers, activities."}],
+facts:[{v:"550+",l:"Clients"},{v:"500+",l:"Suppliers"},{v:"50+",l:"Countries"},{v:"48M",l:"Bookings/yr"}],tags:["Booking Engine","XML","BI","Cruise","Flights","Mapping"]},
+{id:"peakwork",name:"Peakwork",hq:"Düsseldorf, Germany",f:2009,a:2023,url:"https://peakwork.com",logo:"peakwork.com",gm:"Manuel Saballus",
+desc:"Leading specialist in distribution connectivity and dynamic packaging. Player-Hub® technology connects leisure suppliers and distributors worldwide for real-time package creation.",
+products:[{n:"Player-Hub®",d:"High-performance connectivity hub for real-time dynamic packaging."},{n:"Dynamic Packaging Engine",d:"Combines flights, hotels, transfers into custom packages."},{n:"Distribution Network",d:"Global marketplace connecting TOs, airlines, accommodation."}],
+facts:[{v:"100+",l:"Partners"},{v:"Real-time",l:"Packaging"},{v:"Global",l:"Network"}],tags:["Dynamic Packaging","Player-Hub®"]},
+{id:"cangooroo",name:"Cangooroo",hq:"São Paulo, Brazil",f:2008,a:2017,url:"https://cangooroo.net",logo:"cangooroo.net",gm:"Werner Heilbrun",
+desc:"Online tourism distribution platform for OTAs, DMCs, Bed Banks, TOs and Wholesalers. Connected via XML with 300+ external suppliers.",
+products:[{n:"Booking Engine",d:"B2B distribution platform with 300+ XML supplier integrations."},{n:"Supplier Hub",d:"XML integration connecting hotels, flights, transfers, activities."}],
+facts:[{v:"300+",l:"Suppliers"},{v:"LATAM",l:"Focus"}],tags:["Booking Engine","LATAM"]},
+{id:"vervotech",name:"Vervotech",hq:"Pune, India",f:2018,a:2023,url:"https://vervotech.com",logo:"vervotech.com",gm:"Sanjay Ghare",
+desc:"Specializes in NLP-powered Hotel Mapping, Room Mapping, and Hotel Curated Content — streamlining travel processes and enhancing data accuracy.",
+products:[{n:"AI Hotel Mapping",d:"NLP-powered property mapping across suppliers, eliminating duplicates."},{n:"Room Mapping",d:"Room-level normalization across suppliers."},{n:"Curated Content",d:"Clean hotel content aggregation — images, descriptions, amenities."}],
+facts:[{v:"AI",l:"Powered"},{v:"99%+",l:"Accuracy"}],tags:["Hotel Mapping","AI/NLP","Content"]},
+{id:"ist",name:"IST",hq:"Barcelona, Spain",f:1999,a:2022,url:"https://ist-solutions.com",logo:"ist-solutions.com",gm:"Liliana Guerra",
+desc:"Technology expert in online distribution and sale of cruises. API integrations with 30+ cruise lines and real-time booking systems.",
+products:[{n:"Cruise API",d:"Real-time integrations with 30+ cruise lines."},{n:"Cruise Booking System",d:"End-to-end reservation with cabin selection and itinerary mgmt."}],
+facts:[{v:"30+",l:"Cruise Lines"},{v:"API-first",l:"Architecture"}],tags:["Cruise API","Booking"]},
+{id:"roibos",name:"Roibos",hq:"Palma, Spain",f:2019,a:2023,url:"https://roibos.com",logo:"roibos.com",gm:"Patricia Rossello",
+desc:"B2B marketplace enabling hoteliers to distribute content and rates to TOs, TAs and OTAs worldwide through a single connection.",
+products:[{n:"B2B Marketplace",d:"Hotels distribute directly to B2B buyers via single connection."},{n:"Channel Distribution",d:"Simplified multi-channel for independent hotels."}],
+facts:[{v:"B2B",l:"Focus"},{v:"Single",l:"Connection"}],tags:["Hotel Distribution","B2B"]},
+{id:"alturos",name:"Alturos",hq:"Pfäffikon, Switzerland",f:2002,a:2024,url:"https://alturos.com",logo:"alturos.com",gm:"Michael Saringer",
+desc:"SaaS platform 'Destination OS' for destination marketplace solutions — transforming how touristic destinations market to consumers and resellers.",
+products:[{n:"Destination OS",d:"SaaS for DMOs to sell tourism products directly to consumers."},{n:"Digital Marketing",d:"Tools for tourism offices, ski resorts, transport operators."}],
+facts:[{v:"SaaS",l:"Platform"},{v:"B2C+B2B",l:"Channels"}],tags:["Destination OS","DMO","SaaS"]},
+{id:"lleego",name:"Lleego",hq:"Málaga, Spain",f:2016,a:2024,url:"https://lleego.com",logo:"lleego.com",gm:"Pablo Canivell",
+desc:"Streamlines interactions between travel companies and transport suppliers (airlines, trains, car rental) through a single interface and API.",
+products:[{n:"Flight Aggregation",d:"Unified API — GDS, NDC, direct connections."},{n:"Multi-modal Hub",d:"Flights + rail + car rental via standardized connectivity."},{n:"Air Distribution Tools",d:"Ticketing and post-booking for TAs and TOs."}],
+facts:[{v:"GDS+NDC",l:"Coverage"},{v:"Single API",l:"Integration"}],tags:["Flight Aggregation","NDC","GDS"]},
+{id:"traveltek",name:"Traveltek",hq:"Glasgow, UK",f:1999,a:2024,url:"https://traveltek.com",logo:"traveltek.com",gm:"Mal Barritt",
+desc:"Market-leading booking and dynamic packaging software with strong cruise focus. Package flights, hotels, cruises, ancillaries via single search.",
+products:[{n:"iSell Platform",d:"Multi-product booking engine — search, compare, book from single interface."},{n:"Dynamic Packaging",d:"Real-time multi-supplier package builder."},{n:"Cruise Module",d:"Specialized cruise search with cabin selection."}],
+facts:[{v:"1999",l:"Est."},{v:"Cruise",l:"Focus"}],tags:["iSell","Dynamic Packaging","Cruise"]},
+{id:"dome",name:"Dome",hq:"Palma, Spain",f:2019,a:2024,url:"https://dfrgroup.com",logo:"dfrgroup.com",gm:"Antonio Nieto",
+desc:"All-in-one system for DMCs — service contracting to distribution and sales at destination, including tours, transfers, activities management.",
+products:[{n:"DMC Platform",d:"Contracting, operations, distribution, sales — all-in-one."},{n:"Tours & Transfers",d:"Scheduling, pricing, resource allocation."},{n:"B2B Distribution",d:"Connect DMCs with global travel sellers."}],
+facts:[{v:"All-in-One",l:"Platform"},{v:"DMC",l:"Focused"}],tags:["DMC Software","Tours","Distribution"]},
+{id:"hotetec",name:"Hotetec",hq:"Palma, Spain",f:2002,a:2024,url:"https://hotetec.com",logo:"hotetec.com",gm:"Victor Sánchez",
+desc:"Software for marketing, distribution, and sale of hotel inventory — booking engines, channel management, website development, payments.",
+products:[{n:"Hotel Booking Engine",d:"Direct booking for hotel websites."},{n:"Channel Manager",d:"Multi-channel rate/availability sync."},{n:"Website Builder",d:"Optimized hotel website platform."},{n:"CRS",d:"Central inventory and rate management."}],
+facts:[{v:"Hotels",l:"Focus"},{v:"Direct+Indirect",l:"Distribution"}],tags:["Channel Manager","Booking Engine","CRS"]},
+{id:"interes",name:"InteRES",hq:"Darmstadt, Germany",f:1997,a:2025,url:"https://interes.com",logo:"interes.com",
+desc:"Air content aggregation and customized distribution — connecting TAs and TOs with airlines via GDS, NDC, and direct connections.",
+products:[{n:"Air Content Aggregation",d:"Normalized airline content from GDS + NDC + direct."},{n:"Custom Distribution",d:"Tailored air distribution with configurable business rules."}],
+facts:[{v:"1997",l:"Est."},{v:"GDS+NDC",l:"Coverage"}],tags:["Air Aggregation","NDC"]},
+{id:"rezmagic",name:"RezMagic",hq:"Florida, USA",f:2011,a:2025,url:"https://rezmagic.com",logo:"rezmagic.com",gm:"Mark Brumby",
+desc:"Event management software focused on cruise sector — booking engine, ship inventory replication, interactive mapping, group itinerary automation.",
+products:[{n:"Event Platform",d:"End-to-end cruise event booking and management."},{n:"Cruise Booking Engine",d:"Ship inventory, cabin selection, deck maps."},{n:"Group Automation",d:"Itineraries, manifests, rooming lists."}],
+facts:[{v:"Cruise",l:"Focus"},{v:"Events",l:"Specialty"}],tags:["Event Management","Cruise"]},
+{id:"inspiretec",name:"Inspiretec",hq:"Cardiff, UK",f:2016,a:2025,url:"https://inspiretec.com",logo:"inspiretec.com",gm:"Simon Powell",
+desc:"25+ years delivering integrated solutions for TAs and TOs — reservation systems, travel CRM, digital tools, self-service portal, quotation tools.",
+products:[{n:"Travel CRM",d:"Full customer lifecycle management for travel."},{n:"Reservation System",d:"Multi-supplier booking for TOs and TAs."},{n:"Self-Service Portal",d:"Traveler booking management and payments."},{n:"Quotation Tools",d:"Proposal builder with pricing and follow-ups."},{n:"Loyalty & Rewards",d:"Points system for retention."}],
+facts:[{v:"25+",l:"Years"},{v:"CRM+Booking",l:"Integrated"}],tags:["CRM","Reservations","Loyalty"]},
 ];
 
-// Ring layers (inside → out), each with sector segments
-const RINGS = [
-  {
-    name: "Core Systems",
-    color: "#009B9B",
-    colorLight: "#E6F5F5",
-    items: [
-      { n: "PMS", f: "Property Management System", sec: "Accommodation", j: "gap" },
-      { n: "CRS", f: "Central Reservation System", sec: "Accommodation", j: "partial", c: "Hotetec" },
-      { n: "RMS", f: "Revenue Management System", sec: "Accommodation", j: "gap" },
-      { n: "Guest Experience", sec: "Accommodation" },
-      { n: "Hotel Ops", sec: "Accommodation" },
-      { n: "Loyalty Ops", sec: "Accommodation" },
-      { n: "PSS", f: "Passenger Service System", sec: "Airlines", j: "gap" },
-      { n: "Airline Res.", sec: "Airlines" },
-      { n: "DCS", sec: "Airlines" },
-      { n: "Crew Mgmt", sec: "Airlines" },
-      { n: "Revenue Mgmt", sec: "Airlines" },
-      { n: "Cruise Res.", f: "Cruise Reservation System", sec: "Cruise", j: "current", c: "IST" },
-      { n: "Fleet Ops", sec: "Cruise" },
-      { n: "Rail Res.", sec: "Rail" },
-      { n: "Ticketing", sec: "Rail" },
-      { n: "VR PMS", f: "Vacation Rental PMS", sec: "Vacation Rental" },
-      { n: "Smart Lock", sec: "Vacation Rental" },
-    ]
-  },
-  {
-    name: "Distribution & Connectivity",
-    color: "#0086A8",
-    colorLight: "#E2F0F5",
-    items: [
-      { n: "GDS", f: "Global Distribution System", sec: "Global" },
-      { n: "Connectivity Hub", f: "Connectivity Hub / Switch", sec: "Global", j: "core", c: "Juniper TT, DS" },
-      { n: "Channel Mgr", f: "Channel Manager", sec: "Accommodation", j: "gap", c: "Hotetec" },
-      { n: "XML / API Agg.", sec: "Global" },
-      { n: "Content Mapping", sec: "Global" },
-      { n: "Supplier Extranet", sec: "Global" },
-      { n: "Bedbank", f: "Bedbank / Wholesale Platform", sec: "Accommodation", j: "partial", c: "DOME" },
-      { n: "Air Aggregator", sec: "Airlines", j: "current", c: "Lleego" },
-      { n: "NDC / LCC Agg.", sec: "Airlines" },
-      { n: "Train Agg.", sec: "Rail" },
-      { n: "Car Rental Agg.", sec: "Car Rental" },
-      { n: "STR Channel Mgr", sec: "Vacation Rental" },
-    ]
-  },
-  {
-    name: "Retail, Packaging & Commerce",
-    color: "#006B8A",
-    colorLight: "#E2EDF2",
-    items: [
-      { n: "Booking Engine", sec: "Global", j: "current", c: "Juniper TT, Traveltek, Hotetec, Cangoroo, Inspiretec" },
-      { n: "Dynamic Pkg", f: "Dynamic Packaging Engine", sec: "Global", j: "core", c: "Peakwork" },
-      { n: "Ancillary Mgmt", sec: "Global", j: "partial", c: "Juniper TT" },
-      { n: "Offer Mgmt", sec: "Global" },
-      { n: "B2B Portal", sec: "Global" },
-      { n: "CBT", f: "Corporate Booking Tool", sec: "Corporate" },
-      { n: "Tour Op. System", sec: "TA / TO" },
-      { n: "Agency Back-Office", sec: "TA / TO" },
-      { n: "Itinerary Builder", sec: "TA / TO" },
-      { n: "DMC Software", sec: "TA / TO" },
-      { n: "Contracting", sec: "TA / TO" },
-    ]
-  },
-  {
-    name: "Payments & Customer",
-    color: "#3A4A5C",
-    colorLight: "#EAECF0",
-    items: [
-      { n: "Payment Gateway", sec: "Payments", j: "gap" },
-      { n: "PSP", f: "Payment Service Provider", sec: "Payments", j: "gap" },
-      { n: "VCC", f: "Virtual Credit Card", sec: "Payments", j: "partial" },
-      { n: "Fraud Detection", sec: "Payments", j: "gap" },
-      { n: "Travel Insurance", sec: "Payments" },
-      { n: "BNPL", sec: "Payments" },
-      { n: "Travel CRM", sec: "Customer", j: "current", c: "Inspiretec" },
-      { n: "Customer Support", sec: "Customer", j: "partial", c: "Inspiretec" },
-      { n: "CDP", f: "Customer Data Platform", sec: "Customer", j: "emerging" },
-      { n: "Loyalty", sec: "Customer", j: "gap", c: "Inspiretec" },
-      { n: "Personalization", sec: "Customer", j: "future" },
-      { n: "Marketing Auto.", sec: "Customer" },
-      { n: "Chatbot / AI", sec: "Customer" },
-    ]
-  },
-  {
-    name: "Data, Ops & End Channels",
-    color: "#1A1A2E",
-    colorLight: "#EAEBF0",
-    items: [
-      { n: "Data Warehouse", sec: "Data", j: "core", c: "Juniper TT" },
-      { n: "BI", f: "Business Intelligence", sec: "Data", j: "current", c: "Juniper TT" },
-      { n: "AI Optimization", sec: "Data", j: "future" },
-      { n: "Pricing Intel.", sec: "Data" },
-      { n: "Demand Forecast", sec: "Data" },
-      { n: "Trip Mgmt", sec: "Operations" },
-      { n: "Disruption Mgmt", sec: "Operations" },
-      { n: "Check-in / Kiosk", sec: "Operations" },
-      { n: "OTA Platform", sec: "Online", j: "gap" },
-      { n: "Metasearch", sec: "Online" },
-      { n: "Travel Marketplace", sec: "Online" },
-      { n: "CMS / DXP", sec: "Digital" },
-      { n: "API Platform", sec: "Digital" },
-      { n: "Mobile App", sec: "Digital" },
-      { n: "KYC", sec: "Compliance" },
-      { n: "Regulatory", sec: "Compliance" },
-    ]
-  },
+// ====== NAV ======
+const TABS=[{id:'home',label:'Home'},{id:'vc',label:'Value Chain'},{id:'flow',label:'Flow Diagram'},{id:'grid',label:'Detail Grid'}];
+const nav=document.getElementById('nav');const vc_c=document.getElementById('views-container');
+TABS.forEach((t,i)=>{const b=document.createElement('button');b.className=`nav-btn${i===0?' on':''}`;b.dataset.tab=t.id;b.textContent=t.label;nav.appendChild(b)});
+TABS.forEach(t=>{const v=document.createElement('div');v.className=`view${t.id==='home'?' active':''}`;v.id=`view-${t.id}`;vc_c.appendChild(v)});
+const buDV=document.createElement('div');buDV.className='view';buDV.id='view-bu';vc_c.appendChild(buDV);
+
+function showTab(id){document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('on',b.dataset.tab===id));document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(`view-${id}`).classList.add('active');closePanel();if(id==='vc'&&!vcB)buildVC();if(id==='flow'&&!flB)buildFlow();if(id==='grid'&&!grB)buildGrid()}
+nav.addEventListener('click',e=>{if(e.target.classList.contains('nav-btn'))showTab(e.target.dataset.tab)});
+
+// ====== DETAIL PANEL ======
+const dp=document.getElementById('dp'),dpC=document.getElementById('dp-content');
+document.getElementById('dp-close').onclick=closePanel;
+function closePanel(){dp.classList.remove('open')}
+function openPanel(html){dpC.innerHTML=html;dp.classList.add('open')}
+
+// Panel for a node in the connectivity/flow/grid
+const NODE_INFO={
+  'hotels':{title:'Hotels',layer:'Supply',desc:'Hotel properties — independent, chains, resorts, boutique — producing accommodation inventory distributed through the travel technology stack. Hotels are the largest category of travel supply and connect to the tech ecosystem via PMS, CRS, channel managers, and direct booking engines.',conns:['PMS','CRS','RMS','Channel Manager','Connectivity Hub']},
+  'airlines':{title:'Airlines',layer:'Supply',desc:'Airline carriers producing flight inventory (seats, ancillaries, fare classes) distributed via GDS, NDC, aggregators, and direct connections. Airlines are moving toward NDC for richer content and direct distribution.',conns:['PSS','GDS','Air Aggregator','NDC / LCC']},
+  'cruise':{title:'Cruise Lines',layer:'Supply',desc:'Cruise operators producing cabin and itinerary inventory. Cruise distribution is highly specialized, requiring dedicated APIs for cabin selection, deck plans, dining preferences, and shore excursion booking.',conns:['Cruise Reservation (IST)','Connectivity Hub','GDS']},
+  'rail':{title:'Rail Operators',layer:'Supply',desc:'Rail companies (national and private) producing seat inventory, passes, and route-based products. Rail distribution is fragmented, often requiring specialized aggregators for cross-border ticketing.',conns:['Rail Reservation','Train Aggregator','Connectivity Hub']},
+  'car':{title:'Car Rental Companies',layer:'Supply',desc:'Car rental and transfer operators providing vehicle inventory by location, date, and category. Distribution happens via dedicated aggregators and connectivity hubs.',conns:['Car Rental Aggregator','Connectivity Hub']},
+  'activities':{title:'Tours & Activities',layer:'Supply',desc:'Experience providers — tours, excursions, attraction tickets, activities. A fast-growing segment now distributed via APIs, DMC platforms, and OTAs.',conns:['DMC Software (Dome)','Booking Engine','OTA Platforms']},
+  'vr':{title:'Vacation Rentals',layer:'Supply',desc:'Short-term rental properties (apartments, villas, holiday homes) requiring specialized PMS, channel management, and guest communication tools.',conns:['VR PMS','Channel Manager','Connectivity Hub']},
+  'pms':{title:'Property Management System (PMS)',layer:'Core Systems',desc:'The hotel\'s operational core — managing room inventory, reservations, check-in/out, housekeeping, and billing. PMS connects outward to channel managers and connectivity hubs for distribution. It is the single source of truth for hotel availability.',conns:['Hotels','Channel Manager','Connectivity Hub'],juniper:{status:'Gap',note:'Strategic acquisition target for Juniper Group. No current BU covers PMS.'}},
+  'crs':{title:'Central Reservation System (CRS)',layer:'Core Systems',desc:'Centralized inventory and rate management for hotel chains, managing availability across all distribution channels from a single platform. CRS sits between PMS and distribution, ensuring rate parity and inventory control.',conns:['Hotels','Channel Manager','Connectivity Hub','GDS'],juniper:{status:'Partial',bu:'Hotetec',note:'Hotetec provides CRS and channel management capabilities for hotels and chains.'}},
+  'rms':{title:'Revenue Management System (RMS)',layer:'Core Systems',desc:'Pricing optimization platform using demand data, competitor rates, and historical patterns to set optimal room prices. RMS drives yield management and is critical for hotel profitability.',conns:['Hotels','PMS','CRS'],juniper:{status:'Gap',note:'No current Juniper BU. Strategic acquisition target.'}},
+  'pss':{title:'Passenger Service System (PSS)',layer:'Core Systems',desc:'The airline\'s core operational system managing reservations, inventory, ticketing, and departure control. PSS is the equivalent of PMS for airlines and feeds all downstream distribution.',conns:['Airlines','GDS','Air Aggregator','NDC / LCC'],juniper:{status:'Gap',note:'Complex system — partnership path rather than build/acquire.'}},
+  'cruise_res':{title:'Cruise Reservation System',layer:'Core Systems',desc:'Specialized system managing cabin inventory, itinerary planning, dining/entertainment preferences, and shore excursion booking. Cruise reservation requires deep vertical expertise.',conns:['Cruise Lines','Connectivity Hub','GDS','Booking Engine'],juniper:{status:'Current',bu:'IST',note:'IST provides API integrations with 30+ cruise lines and real-time booking systems.'}},
+  'rail_res':{title:'Rail Reservation System',layer:'Core Systems',desc:'Manages train schedules, seat inventory, fare calculations, and ticketing across operators and routes. Often fragmented by country/operator.',conns:['Rail','Train Aggregator','Connectivity Hub']},
+  'vr_pms':{title:'Vacation Rental PMS',layer:'Core Systems',desc:'Property management system designed for short-term rentals — managing calendars, pricing, guest communication, cleaning schedules, and owner reporting across multiple properties.',conns:['Vacation Rentals','Channel Manager','Connectivity Hub']},
+  'conn_hub':{title:'Connectivity Hub / Switch',layer:'Distribution',desc:'Middleware routing shopping and booking messages between suppliers and sellers. The connectivity hub normalizes different APIs and protocols into a standard interface, enabling any seller to access any supplier through a single integration.',conns:['PMS','CRS','Cruise Res.','Rail Res.','VR PMS','Booking Engine','Dynamic Packaging','Ancillary Mgmt','Tour Op. System','Agency Back-Office'],juniper:{status:'Core Strength',bu:'Juniper Travel Technology',note:'Core platform connecting 500+ suppliers with 550+ clients in 50+ countries. This is the backbone of the Juniper ecosystem.'}},
+  'gds':{title:'Global Distribution System (GDS)',layer:'Distribution',desc:'Legacy but still dominant platforms (Amadeus, Sabre, Travelport) linking airlines, hotels, and car rentals with travel agencies via real-time inventory. GDS charges transaction fees and is being disrupted by NDC and direct connections.',conns:['PSS','CRS','Cruise Res.','Booking Engine','Tour Op. System','Agency Back-Office']},
+  'ch_mgr':{title:'Channel Manager',layer:'Distribution',desc:'Software that synchronizes hotel rates and availability across multiple OTAs, GDS, metasearch, and direct channels simultaneously. Prevents overbooking and ensures rate parity.',conns:['PMS','CRS','OTA Platforms','Metasearch','Connectivity Hub'],juniper:{status:'Gap',bu:'Hotetec',note:'Hotetec has channel management capabilities. Full standalone channel manager is a gap.'}},
+  'air_agg':{title:'Air Aggregator',layer:'Distribution',desc:'Aggregates airline content from GDS, NDC, and direct connections into a unified, normalized search and booking interface. Simplifies air distribution for travel sellers by providing a single API.',conns:['PSS','NDC / LCC','GDS','Booking Engine','Dynamic Packaging','Tour Op. System'],juniper:{status:'Current',bu:'Lleego + InteRES',note:'Lleego and InteRES aggregate air content via GDS + NDC + direct connections, forming the Juniper Flights division.'}},
+  'bedbank':{title:'Bedbank / Wholesale Platform',layer:'Distribution',desc:'Aggregated hotel supply marketplace — contracts with hotels at wholesale rates and distributes to OTAs, tour operators, and travel agencies. Bedbanks provide global contracting scale that individual sellers cannot achieve alone.',conns:['Channel Manager','Hotels','Booking Engine','OTA Platforms','Tour Op. System'],juniper:{status:'Partial',bu:'DOME',note:'DOME provides bedbank/wholesale capabilities for DMC distribution.'}},
+  'content':{title:'Content Mapping & Normalization',layer:'Distribution',desc:'AI-powered system that maps and normalizes hotel properties and room types across different supplier feeds — eliminating duplicates, standardizing names, and ensuring accurate content. Critical for any platform aggregating from multiple sources.',conns:['Connectivity Hub','Booking Engine','Bedbank'],juniper:{status:'Current',bu:'Vervotech',note:'Vervotech\'s NLP engine achieves 99%+ mapping accuracy across global hotel inventory.'}},
+  'ndc':{title:'NDC / LCC Connections',layer:'Distribution',desc:'New Distribution Capability (NDC) is an airline-driven standard enabling richer content and direct distribution bypassing GDS. LCC (Low Cost Carrier) connections are typically direct APIs. Both are growing as airlines seek to control their distribution.',conns:['PSS','Airlines','Air Aggregator','Booking Engine']},
+  'train_agg':{title:'Train Aggregator',layer:'Distribution',desc:'Aggregates rail inventory from multiple operators and countries into a single booking interface. Handles cross-border ticketing, passes, and multi-operator journeys.',conns:['Rail Reservation','Booking Engine']},
+  'car_agg':{title:'Car Rental Aggregator',layer:'Distribution',desc:'Aggregates vehicle inventory from multiple car rental companies by location and date, providing comparison and booking via a single API.',conns:['Car Rental Companies','Booking Engine']},
+  'booking':{title:'Booking Engine',layer:'Packaging & Retail',desc:'Front-end search and booking interface enabling transactions across accommodation, flights, transfers, activities, and packages. Supports B2B, B2C, and B2B2C channels with white-label, API, and call center distribution.',conns:['Connectivity Hub','GDS','Air Aggregator','Bedbank','Content Mapping','OTA Platforms','Travel Agencies','Corporate TMCs','Direct (Hotel Web)','E-commerce'],juniper:{status:'Current',bu:'Juniper TT, Traveltek, Hotetec, Cangooroo, Inspiretec',note:'5 Juniper BUs operate booking engines — the broadest capability across the group, covering all product types and distribution channels.'}},
+  'dyn_pkg':{title:'Dynamic Packaging Engine',layer:'Packaging & Retail',desc:'Combines travel components (flights, hotels, transfers, ancillaries) dynamically into custom packages in real time. Unlike pre-packaged tours, dynamic packaging lets each traveler create a unique combination at the best available price.',conns:['Connectivity Hub','Air Aggregator','Booking Engine','OTA Platforms','Travel Agencies'],juniper:{status:'Core Strength',bu:'Peakwork',note:'Peakwork\'s Player-Hub® is the leading dynamic packaging technology in the leisure travel market, connecting suppliers and distributors globally.'}},
+  'ancillary':{title:'Ancillary Management',layer:'Packaging & Retail',desc:'Engine for managing and selling travel add-ons — insurance, transfers, car rental, activities, lounge access, seat selection — within the booking flow. Ancillaries drive significant incremental revenue per booking.',conns:['Booking Engine','Connectivity Hub'],juniper:{status:'Partial',bu:'Juniper Travel Technology',note:'Juniper TT provides ancillary management capabilities within its booking engine.'}},
+  'to_sys':{title:'Tour Operator System',layer:'Packaging & Retail',desc:'End-to-end operational platform for tour operators — managing product contracting, package creation, pricing, booking, operations, and financial management. The backbone of TO businesses.',conns:['Connectivity Hub','GDS','DMC Software','Travel Agencies','OTA Platforms']},
+  'agency':{title:'Agency Back-Office',layer:'Packaging & Retail',desc:'Operational software for travel agencies — managing bookings, supplier payments, customer accounts, commissions, and reporting. Integrates with GDS and booking engines.',conns:['GDS','Booking Engine','Travel Agencies']},
+  'dmc_sw':{title:'DMC Software',layer:'Packaging & Retail',desc:'All-in-one platform for Destination Management Companies — managing contracting with local suppliers, tour operations, transfers, and distribution to global travel sellers.',conns:['Activities','Tour Op. System','Booking Engine','Connectivity Hub'],juniper:{status:'Current',bu:'Dome',note:'Dome provides all-in-one DMC platform for contracting, operations, and distribution.'}},
+  'dest_os':{title:'Destination OS',layer:'Packaging & Retail',desc:'SaaS platform for destination management organizations (DMOs), tourism offices, and ski resorts to market and sell tourism products directly to consumers and resellers.',conns:['Direct (Hotel Web)','Social Commerce'],juniper:{status:'Current',bu:'Alturos',note:'Alturos Destination OS transforms how destinations market to consumers (B2C) and resellers (B2B).'}},
+  'crm':{title:'Travel CRM',layer:'Packaging & Retail',desc:'Customer relationship management built for travel — managing the full lifecycle from enquiry to post-trip engagement, driving retention, repeat bookings, and lifetime value.',conns:['Booking Engine','Travel Agencies','Direct (Hotel Web)'],juniper:{status:'Current',bu:'Inspiretec',note:'Inspiretec delivers integrated CRM + reservation + loyalty systems for TAs and TOs.'}},
+  'ota':{title:'OTA Platforms',layer:'B2C Distribution',desc:'Online Travel Agencies (Booking.com, Expedia, etc.) — consumer-facing marketplaces where travelers search, compare, and book travel. OTAs aggregate supply from multiple sources and invest heavily in marketing and UX.',conns:['Booking Engine','Channel Manager','Bedbank','Dynamic Packaging','Leisure Traveler','Business Traveler']},
+  'meta':{title:'Metasearch Engines',layer:'B2C Distribution',desc:'Price comparison platforms (Google Hotels, Trivago, Skyscanner, Kayak) that aggregate prices from OTAs and direct channels, redirecting users to book. Metasearch drives traffic but doesn\'t process bookings directly.',conns:['Channel Manager','OTA Platforms','Direct (Hotel Web)','Leisure Traveler']},
+  'ta':{title:'Travel Agencies',layer:'B2C Distribution',desc:'Traditional and online travel agencies providing personalized service, expert advice, and curated travel planning. TAs use booking engines, GDS, and back-office systems to serve leisure and group travelers.',conns:['Booking Engine','GDS','Tour Op. System','Agency Back-Office','CRM','Leisure Traveler','Group/MICE']},
+  'tmc':{title:'Corporate TMCs',layer:'B2C Distribution',desc:'Travel Management Companies handling business travel — policy compliance, expense management, duty of care, and negotiated corporate rates. TMCs use corporate booking tools and GDS.',conns:['Booking Engine','GDS','Corporate Booking Tool','Business Traveler']},
+  'social':{title:'Social Commerce',layer:'B2C Distribution',desc:'Emerging channel where travel is sold through social media platforms (TikTok, Instagram, WeChat) — combining content, influence, and direct booking. Fast-growing in APAC.',conns:['Destination OS','Leisure Traveler']},
+  'ecom':{title:'E-commerce Players',layer:'B2C Distribution',desc:'Non-travel e-commerce platforms (Amazon, Cdiscount, Veepee) adding travel as a product category to monetize their audience. A fast-growing new distribution channel.',conns:['Booking Engine','Leisure Traveler']},
+  'direct':{title:'Direct Distribution (Hotel/Supplier Web)',layer:'B2C Distribution',desc:'Hotels, airlines, and other suppliers selling directly to travelers via their own websites and apps — bypassing intermediaries to save commission and control the customer relationship.',conns:['CRS','Channel Manager','Booking Engine','Destination OS','CRM','Leisure Traveler','Business Traveler']},
+  'leisure':{title:'Leisure Traveler',layer:'End Consumer',desc:'Individual or family travelers booking vacations, holidays, and experiences. The largest segment of travel demand, served through all distribution channels from OTAs to direct booking.',conns:['OTA Platforms','Metasearch','Travel Agencies','Social Commerce','E-commerce','Direct']},
+  'business':{title:'Business Traveler',layer:'End Consumer',desc:'Corporate travelers booking flights, hotels, and ground transport for work purposes. Served primarily through TMCs, corporate booking tools, and direct channels with policy compliance requirements.',conns:['Corporate TMCs','OTA Platforms','Direct']},
+  'group':{title:'Group / MICE Traveler',layer:'End Consumer',desc:'Meetings, Incentives, Conferences, Events — group travel requiring specialized booking, rooming lists, event management, and coordination. Served through travel agencies and dedicated event platforms.',conns:['Travel Agencies','Event Platforms (RezMagic)']},
+};
+
+function openNodePanel(nodeId){
+  const info=NODE_INFO[nodeId];
+  if(!info){closePanel();return}
+  let h=`<div class="dp-layer">${info.layer}</div><div class="dp-title">${info.title}</div><div class="dp-desc">${info.desc}</div>`;
+  if(info.juniper){
+    h+=`<div class="dp-juniper"><div class="dpj-name">Juniper: ${info.juniper.status}${info.juniper.bu?' — '+info.juniper.bu:''}</div><div class="dpj-desc">${info.juniper.note}</div></div>`;
+  }
+  if(info.conns&&info.conns.length){
+    h+=`<div class="dp-section-title">Connected To</div><div class="dp-conn-list">`;
+    info.conns.forEach(c=>{const isJ=c.includes('Juniper')||c.includes('Connectivity')||c.includes('Booking Engine')||c.includes('Dynamic')||c.includes('Lleego')||c.includes('IST')||c.includes('Hotetec')||c.includes('CRM');h+=`<div class="dp-conn${isJ?' j':''}">${c}</div>`});
+    h+=`</div>`;
+  }
+  openPanel(h);
+}
+
+function showBU(buId){
+  const bu=BUS.find(b=>b.id===buId);if(!bu)return;
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  buDV.classList.add('active');
+  let h=`<div class="bu-d-back" onclick="showTab('home')">← Back to Portfolio</div>`;
+  h+=`<div class="bu-d-top"><div class="bu-d-logo"><img src="https://www.google.com/s2/favicons?domain=${bu.logo}&sz=64" onerror="this.style.display='none'"></div><div><div class="bu-d-name">${bu.name}</div><div class="bu-d-meta"><span>📍 ${bu.hq}</span><span>Founded ${bu.f}</span><span>Acquired ${bu.a}</span>${bu.gm?`<span>GM: ${bu.gm}</span>`:''}</div></div></div>`;
+  h+=`<div class="bu-d-desc">${bu.desc}</div>`;
+  h+=`<a class="bu-d-link" href="${bu.url}" target="_blank" rel="noopener">Visit Website →</a>`;
+  if(bu.facts){h+=`<div class="kf-grid">`;bu.facts.forEach(f=>{h+=`<div class="kf"><div class="kv">${f.v}</div><div class="kl">${f.l}</div></div>`});h+=`</div>`}
+  h+=`<div class="sec-title" style="font-size:1rem;margin-top:20px">Products & Solutions</div><div class="sec-bar"></div><div class="prod-grid">`;
+  bu.products.forEach(p=>{h+=`<div class="prod-card"><div class="pc-n">${p.n}</div><div class="pc-d">${p.d}</div></div>`});
+  h+=`</div>`;
+  buDV.innerHTML=h;
+}
+
+// ====== HOME ======
+(function(){
+  const w=document.getElementById('view-home');
+  let h=`<div class="home-hero"><div class="dot-grid">${'<span></span>'.repeat(12)}</div><div class="hh-tag">Constellation Software › Vela Software › Juniper Group</div><h1>Travel Software Companies</h1><div class="sec-bar"></div><div class="hh-sub">An Operating Portfolio of Vela Software, a Constellation Software ("CSI") company. Since 1995, CSI acquires, manages and builds vertical market software businesses, listed on the Toronto Stock Exchange (TSX: CSU) since 2006.</div><div class="csi-stats"><div class="csi-stat"><div class="cs-val">US$70B+</div><div class="cs-lab">Market Capitalization</div></div><div class="csi-stat"><div class="cs-val">6</div><div class="cs-lab">Operating Groups</div></div><div class="csi-stat"><div class="cs-val">1,100+</div><div class="cs-lab">Businesses · 150+ Verticals</div></div><div class="csi-stat"><div class="cs-val">125,000+</div><div class="cs-lab">Customers · 100+ Countries</div></div><div class="csi-stat"><div class="cs-val">55,000+</div><div class="cs-lab">Employees Globally</div></div></div></div>`;
+
+  h+=`<div style="text-align:center;margin:32px 0 36px"><div style="font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:16px">Corporate Structure</div><div style="display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap"><div style="background:var(--bg);border:2px solid var(--border);border-radius:12px;padding:18px 28px;text-align:center;min-width:200px"><div style="font-size:.95rem;font-weight:800;color:var(--charcoal)">Constellation Software</div><div style="font-size:.62rem;color:var(--text-light);margin-top:3px">TSX: CSU · US$70B+ Market Cap</div><div style="font-size:.56rem;color:var(--text-light);margin-top:2px">1,100+ businesses · 55,000+ employees</div></div><div style="width:48px;height:2px;background:linear-gradient(90deg,var(--border),var(--red));flex-shrink:0"></div><div style="background:var(--bg);border:2px solid var(--border);border-radius:12px;padding:18px 28px;text-align:center;min-width:200px"><div style="font-size:.95rem;font-weight:800;color:var(--charcoal)">Vela Software</div><div style="font-size:.62rem;color:var(--text-light);margin-top:3px">Operating Division</div><div style="font-size:.56rem;color:var(--text-light);margin-top:2px">10,000+ people · 180+ offices · 200+ companies</div></div><div style="width:48px;height:2px;background:linear-gradient(90deg,var(--red),var(--red));flex-shrink:0"></div><div style="background:var(--red-light);border:2px solid var(--red);border-radius:12px;padding:18px 28px;text-align:center;min-width:200px;position:relative"><div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-size:.48rem;font-weight:700;padding:2px 10px;border-radius:10px;text-transform:uppercase;letter-spacing:.05em">You are here</div><div style="font-size:.95rem;font-weight:800;color:var(--red)">Juniper Group</div><div style="font-size:.62rem;color:var(--red);opacity:.7;margin-top:3px">Travel & Hospitality Portfolio</div><div style="font-size:.56rem;color:var(--text-light);margin-top:2px">15+ BUs · $30B GMV · 48M bookings/yr</div></div></div></div>`;
+
+  h+=`<div class="stock-section"><div class="sec-title" style="font-size:1.1rem">CSI Stock Performance (TSX: CSU)</div><div class="sec-bar"></div><div class="stock-embed"><iframe src="https://www.google.com/finance/quote/CSU:TSE?hl=en" style="width:100%;height:340px;border:none" loading="lazy"></iframe></div></div>`;
+
+  h+=`<div style="text-align:center"><div class="sec-title" style="font-size:1.3rem;display:block">Our Travel Software Companies</div><div class="sec-bar" style="margin:6px auto 20px"></div></div><div class="bu-grid">`;
+  BUS.forEach(bu=>{
+    h+=`<div class="bu-card" onclick="showBU('${bu.id}')"><div class="bu-logo"><img src="https://www.google.com/s2/favicons?domain=${bu.logo}&sz=64" onerror="this.parentElement.innerHTML='<span style=font-size:1.2rem>🏢</span>'"></div><div class="bu-info"><div class="bi-top"><div class="bi-name">${bu.name}</div><div class="bi-acq">Acq. ${bu.a}</div></div><div class="bi-meta">📍 ${bu.hq} · Est. ${bu.f}</div><div class="bi-desc">${bu.desc}</div><div class="bi-tags">${bu.tags.map(t=>`<span class="bi-tag">${t}</span>`).join('')}</div></div><div class="bc-arrow">→</div></div>`;
+  });
+  h+=`</div>`;
+  w.innerHTML=h;
+})();
+
+// ====== VALUE CHAIN (connectivity map) ======
+let vcB=false;
+function buildVC(){vcB=true;const w=document.getElementById('view-vc');
+w.innerHTML=`<div class="vc-hint"><b>Click any node</b> to see details and connections. Teal-highlighted = Juniper presence.</div>`;
+const COLS=[
+{id:'supply',title:'Supply',color:'var(--red)',x:20,nodes:[{id:'hotels',l:'🏨 Hotels'},{id:'airlines',l:'✈️ Airlines'},{id:'cruise',l:'🚢 Cruise'},{id:'rail',l:'🚄 Rail'},{id:'car',l:'🚗 Car Rental'},{id:'activities',l:'🎯 Activities'},{id:'vr',l:'🏡 Vacation Rental'}]},
+{id:'core',title:'Core Systems',color:'#8B3A3A',x:175,nodes:[{id:'pms',l:'PMS'},{id:'crs',l:'CRS',j:1,s:'Hotetec'},{id:'rms',l:'RMS'},{id:'pss',l:'PSS (Airline)'},{id:'cruise_res',l:'Cruise Res.',j:1,s:'IST'},{id:'rail_res',l:'Rail Res.'},{id:'vr_pms',l:'VR PMS'}]},
+{id:'dist',title:'Distribution',color:'#6B3030',x:345,nodes:[{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT'},{id:'gds',l:'GDS'},{id:'ch_mgr',l:'Channel Mgr',s:'Hotetec'},{id:'air_agg',l:'Air Aggregator',j:1,s:'Lleego'},{id:'bedbank',l:'Bedbank',j:1,s:'DOME'},{id:'content',l:'Content Mapping',j:1,s:'Vervotech'},{id:'ndc',l:'NDC / LCC'},{id:'train_agg',l:'Train Agg.'},{id:'car_agg',l:'Car Rental Agg.'}]},
+{id:'pkg',title:'Packaging & Retail',color:'#4A2424',x:535,nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4'},{id:'dyn_pkg',l:'Dynamic Pkg',j:1,s:'Peakwork'},{id:'ancillary',l:'Ancillary Mgmt',j:1,s:'Juniper TT'},{id:'to_sys',l:'Tour Op. System'},{id:'agency',l:'Agency Back-Office'},{id:'dmc_sw',l:'DMC Software',j:1,s:'Dome'},{id:'dest_os',l:'Destination OS',j:1,s:'Alturos'},{id:'crm',l:'Travel CRM',j:1,s:'Inspiretec'}]},
+{id:'b2c',title:'B2C Distribution',color:'var(--charcoal)',x:730,nodes:[{id:'ota',l:'OTA Platforms'},{id:'meta',l:'Metasearch'},{id:'ta',l:'Travel Agencies'},{id:'tmc',l:'Corporate TMCs'},{id:'social',l:'Social Commerce'},{id:'ecom',l:'E-commerce'},{id:'direct',l:'Direct (Hotel Web)'}]},
+{id:'end',title:'Traveler',color:'var(--dark)',x:910,nodes:[{id:'leisure',l:'🧳 Leisure'},{id:'business',l:'💼 Business'},{id:'group',l:'👥 Group/MICE'}]},
 ];
+const red='#C0392B',gray='#C8C4BC';
+const EDGES=[['hotels','pms',gray],['hotels','crs',red],['hotels','rms',gray],['airlines','pss',gray],['cruise','cruise_res',red],['rail','rail_res',gray],['vr','vr_pms',gray],['car','car_agg',gray],['activities','dmc_sw',red],['pms','ch_mgr',gray],['pms','conn_hub',red],['crs','ch_mgr',red],['crs','conn_hub',red],['crs','gds',gray],['rms','conn_hub',gray],['pss','gds',gray],['pss','air_agg',red],['pss','ndc',gray],['cruise_res','conn_hub',red],['cruise_res','gds',gray],['rail_res','train_agg',gray],['rail_res','conn_hub',red],['vr_pms','ch_mgr',gray],['vr_pms','conn_hub',red],['conn_hub','booking',red],['conn_hub','dyn_pkg',red],['conn_hub','ancillary',red],['conn_hub','to_sys',gray],['conn_hub','agency',gray],['gds','booking',gray],['gds','to_sys',gray],['ch_mgr','ota',gray],['ch_mgr','meta',gray],['air_agg','booking',red],['air_agg','dyn_pkg',red],['bedbank','booking',red],['bedbank','ota',gray],['content','conn_hub',red],['content','booking',red],['ndc','booking',gray],['ndc','air_agg',gray],['train_agg','booking',gray],['car_agg','booking',gray],['booking','ota',gray],['booking','ta',gray],['booking','tmc',gray],['booking','direct',red],['booking','ecom',gray],['dyn_pkg','ota',gray],['dyn_pkg','ta',gray],['dyn_pkg','booking',red],['ancillary','booking',red],['to_sys','ta',gray],['agency','ta',gray],['dmc_sw','to_sys',red],['dmc_sw','booking',red],['dest_os','direct',red],['dest_os','social',gray],['crm','ta',red],['crm','direct',red],['crm','booking',red],['ota','leisure',gray],['ota','business',gray],['meta','leisure',gray],['ta','leisure',gray],['ta','group',gray],['tmc','business',gray],['social','leisure',gray],['ecom','leisure',gray],['direct','leisure',red],['direct','business',gray]];
 
-// ======== CANVAS DRAWING ========
-const canvas = document.getElementById('ring-canvas');
-const ctx = canvas.getContext('2d');
-let hitItems = [];
-let W, H, CX, CY, dpr;
+const map=document.createElement('div');map.className='conn-map';
+const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('conn-svg');svg.setAttribute('width','100%');svg.setAttribute('height','100%');map.appendChild(svg);
+const nEls={};
+COLS.forEach(col=>{const cEl=document.createElement('div');cEl.className='col';cEl.style.left=col.x+'px';cEl.style.top='10px';
+const t=document.createElement('div');t.className='col-title';t.style.background=col.color;t.textContent=col.title;cEl.appendChild(t);
+col.nodes.forEach(nd=>{const el=document.createElement('div');el.className=`cn${nd.j?' j':''}`;el.dataset.id=nd.id;let ih=nd.l;if(nd.s)ih+=`<span class="cn-sub">${nd.s}</span>`;el.innerHTML=ih;cEl.appendChild(el);nEls[nd.id]=el});
+map.appendChild(cEl)});w.appendChild(map);
 
-function juniperColor(j) {
-  if (!j) return null;
-  if (j === 'core' || j === 'current') return '#00A676';
-  if (j === 'partial' || j === 'emerging') return '#D4920B';
-  if (j === 'future') return '#6B4FBB';
-  return '#BBBBCC';
+requestAnimationFrame(()=>{
+const mr=map.getBoundingClientRect();const nP={};
+Object.entries(nEls).forEach(([id,el])=>{const r=el.getBoundingClientRect();nP[id]={l:r.left-mr.left,r:r.left-mr.left+r.width,cy:r.top-mr.top+r.height/2}});
+svg.setAttribute('viewBox',`0 0 ${map.offsetWidth} ${map.offsetHeight}`);
+const eEls=[];
+EDGES.forEach(([f,t,c])=>{const a=nP[f],b=nP[t];if(!a||!b)return;const x1=a.r,y1=a.cy,x2=b.l,y2=b.cy,cpx=(x1+x2)/2;
+const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',`M${x1},${y1} C${cpx},${y1} ${cpx},${y2} ${x2},${y2}`);p.setAttribute('fill','none');p.setAttribute('stroke',c);p.setAttribute('stroke-width',c===red?'1.8':'1');p.setAttribute('stroke-opacity',c===red?'.3':'.1');p.dataset.from=f;p.dataset.to=t;svg.appendChild(p);eEls.push(p)});
+
+let active=null;
+function hl(nid){
+  if(active===nid){active=null;map.classList.remove('has-focus');document.querySelectorAll('.cn').forEach(n=>n.classList.remove('lit'));eEls.forEach(e=>e.classList.remove('lit'));closePanel();return}
+  active=nid;map.classList.add('has-focus');document.querySelectorAll('.cn').forEach(n=>n.classList.remove('lit'));eEls.forEach(e=>e.classList.remove('lit'));
+  const conn=new Set([nid]);eEls.forEach(e=>{if(e.dataset.from===nid||e.dataset.to===nid){e.classList.add('lit');conn.add(e.dataset.from);conn.add(e.dataset.to)}});
+  conn.forEach(id=>{if(nEls[id])nEls[id].classList.add('lit')});
+  openNodePanel(nid);
 }
+Object.entries(nEls).forEach(([id,el])=>{el.addEventListener('click',()=>hl(id))});
+map.addEventListener('click',e=>{if(!e.target.closest('.cn')&&active){active=null;map.classList.remove('has-focus');document.querySelectorAll('.cn').forEach(n=>n.classList.remove('lit'));eEls.forEach(e=>e.classList.remove('lit'));closePanel()}});
+})}
 
-function juniperLabel(j) {
-  const m = { core:'Core',current:'Current',partial:'Partial',gap:'Gap',emerging:'Emerging',future:'Future' };
-  return m[j] || '';
-}
+// ====== FLOW ======
+const FL=[{label:"Supply",groups:[{t:"Accommodation",items:["Hotels","Clubs","Camping","VR"]},{t:"Transport",items:["Air","Rail","Car"]},{t:"Other",items:["Cruise","Activities"]}]},{label:"Core",groups:[{t:"Accomm.",items:[{t:"PMS",b:"gap"},{t:"CRS",b:"partial",c:"Hotetec"},{t:"RMS",b:"gap"}]},{t:"Transport",items:[{t:"PSS"},{t:"Airline Res."}]},{t:"Cruise",j:1,items:[{t:"Cruise Res.",b:"current",c:"IST"}]}]},{label:"Distribution",groups:[{t:"Aggregators",items:[{t:"OTAs"},{t:"Bedbanks",b:"partial",c:"DOME"}]},{t:"Tech Hub",j:1,items:[{t:"Connectivity Hub",b:"core",c:"Juniper TT"},{t:"GDS"},{t:"Content Map",b:"current",c:"Vervotech"}]},{t:"Transport Agg.",j:1,items:[{t:"Air Agg.",b:"current",c:"Lleego"},{t:"NDC"},{t:"Train Agg."}]}]},{label:"Retail",groups:[{t:"Packaging",j:1,items:[{t:"Dynamic Pkg",b:"core",c:"Peakwork"},{t:"Ancillary",b:"partial",c:"Juniper TT"}]},{t:"Booking",j:1,items:[{t:"Booking Engine",b:"current",c:"Juniper TT +4"},{t:"B2B Portal"}]},{t:"TA/TO",items:[{t:"Tour Op."},{t:"Agency"},{t:"DMC Sw.",b:"current",c:"Dome"}]}]},{label:"B2C",groups:[{t:"Online",items:[{t:"OTAs"},{t:"Metasearch"},{t:"Social"}]},{t:"Agencies",items:[{t:"TAs"},{t:"TMCs"}]}]}];
+let flB=false;
+function buildFlow(){flB=true;const w=document.getElementById('view-flow');w.innerHTML='';
+FL.forEach((layer,li)=>{if(li>0){const a=document.createElement('div');a.className='flow-arrow-row';a.innerHTML=`<span>▼</span>`;w.appendChild(a)}
+const row=document.createElement('div');row.className='fl-row';const lb=document.createElement('div');lb.className=`fl-label l${Math.min(li+1,5)}`;lb.textContent=layer.label;row.appendChild(lb);
+const bd=document.createElement('div');bd.className='fl-body';
+layer.groups.forEach(g=>{const ge=document.createElement('div');ge.className='fgroup';ge.innerHTML=`<span class="fg-label">${g.t}</span>`;if(g.j)ge.style.borderColor='var(--red)';
+g.items.forEach(it=>{const b=document.createElement('div');if(typeof it==='string'){b.className='fbox';b.innerHTML=`<div class="fx-t">${it}</div>`}else{const isJ=it.b&&it.b!=='gap';b.className=`fbox${isJ?' fj':''}`;let bh=`<div class="fx-t">${it.t}${it.b?` <span class="fx-b ${it.b}">${it.b.slice(0,4)}</span>`:''}</div>`;if(it.c)bh+=`<div class="fx-c">${it.c}</div>`;b.innerHTML=bh}
+b.style.cursor='pointer';b.onclick=()=>{const nid=Object.keys(NODE_INFO).find(k=>NODE_INFO[k].title.toLowerCase().includes((it.t||it).toLowerCase().slice(0,6)));if(nid)openNodePanel(nid)};
+ge.appendChild(b)});bd.appendChild(ge)});
+row.appendChild(bd);w.appendChild(row)});
+const af=document.createElement('div');af.className='flow-arrow-row';af.innerHTML='<span>▼</span>';w.appendChild(af);
+const tv=document.createElement('div');tv.className='traveler-box';tv.textContent='🧳 Traveler';w.appendChild(tv)}
 
-function draw() {
-  dpr = window.devicePixelRatio || 1;
-  const container = document.getElementById('ring-container');
-  const cw = container.clientWidth;
-  const size = Math.min(cw, 1100);
-  W = size; H = size;
-  canvas.width = W * dpr;
-  canvas.height = H * dpr;
-  canvas.style.width = W + 'px';
-  canvas.style.height = H + 'px';
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  CX = W / 2; CY = H / 2;
-  hitItems = [];
-
-  const maxR = W * 0.47;
-  const centerR = W * 0.085;
-  const ringGap = 3;
-  const ringCount = RINGS.length;
-  const ringW = (maxR - centerR - ringGap * ringCount) / ringCount;
-
-  // ---- DRAW RINGS (back to front) ----
-  for (let ri = ringCount - 1; ri >= 0; ri--) {
-    const ring = RINGS[ri];
-    const innerR = centerR + (ringW + ringGap) * ri;
-    const outerR = innerR + ringW;
-
-    // Ring fill
-    ctx.beginPath();
-    ctx.arc(CX, CY, outerR, 0, Math.PI * 2);
-    ctx.arc(CX, CY, innerR, 0, Math.PI * 2, true);
-    ctx.fillStyle = ring.colorLight + '80';
-    ctx.fill();
-
-    // Ring border
-    ctx.beginPath();
-    ctx.arc(CX, CY, outerR, 0, Math.PI * 2);
-    ctx.strokeStyle = ring.color + '18';
-    ctx.lineWidth = 1;
-    ctx.stroke();
-
-    // Ring label (left side)
-    ctx.save();
-    const labelR = (innerR + outerR) / 2;
-    ctx.translate(CX, CY);
-    ctx.rotate(-Math.PI / 2);
-    ctx.fillStyle = ring.color + '50';
-    ctx.font = `700 ${Math.max(7, W * 0.007)}px 'Plus Jakarta Sans'`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(ring.name.toUpperCase(), 0, -labelR);
-    ctx.restore();
-
-    // Place items around the ring
-    const items = ring.items;
-    const count = items.length;
-    items.forEach((item, ii) => {
-      const angle = (ii / count) * Math.PI * 2 - Math.PI / 2;
-      const midR = (innerR + outerR) / 2;
-      const px = CX + Math.cos(angle) * midR;
-      const py = CY + Math.sin(angle) * midR;
-
-      const jc = juniperColor(item.j);
-      const isJuniper = item.j && item.j !== 'gap';
-      const dotR = isJuniper ? W * 0.007 : W * 0.005;
-
-      // Glow for juniper items
-      if (isJuniper) {
-        const grd = ctx.createRadialGradient(px, py, 0, px, py, dotR * 4);
-        grd.addColorStop(0, jc + '30');
-        grd.addColorStop(1, jc + '00');
-        ctx.fillStyle = grd;
-        ctx.beginPath();
-        ctx.arc(px, py, dotR * 4, 0, Math.PI * 2);
-        ctx.fill();
-      }
-
-      // Dot
-      ctx.beginPath();
-      ctx.arc(px, py, dotR, 0, Math.PI * 2);
-      ctx.fillStyle = jc || ring.color + '60';
-      ctx.fill();
-
-      if (isJuniper) {
-        ctx.strokeStyle = jc;
-        ctx.lineWidth = 1.5;
-        ctx.stroke();
-      }
-
-      // Label
-      const lblR = midR + (outerR - innerR) * 0.32;
-      const lx = CX + Math.cos(angle) * lblR;
-      const ly = CY + Math.sin(angle) * lblR;
-
-      ctx.save();
-      ctx.translate(lx, ly);
-      let rot = angle;
-      const flipped = angle > Math.PI * 0.5 || angle < -Math.PI * 0.5;
-      if (flipped) { rot += Math.PI; ctx.rotate(rot); ctx.textAlign = 'right'; }
-      else { ctx.rotate(rot); ctx.textAlign = 'left'; }
-
-      const fontSize = Math.max(6.5, W * 0.0068);
-      ctx.font = `${isJuniper ? '700' : '500'} ${fontSize}px 'Plus Jakarta Sans'`;
-      ctx.fillStyle = isJuniper ? jc : ring.color + 'AA';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(item.n, 0, 0);
-
-      // Company name for juniper items
-      if (item.c && isJuniper) {
-        const cName = item.c.split(',')[0].trim();
-        ctx.font = `600 ${fontSize * 0.78}px 'Plus Jakarta Sans'`;
-        ctx.fillStyle = jc + '90';
-        ctx.fillText(cName, 0, fontSize * 1.1);
-      }
-
-      ctx.restore();
-
-      // Hit area
-      hitItems.push({
-        x: px, y: py, r: Math.max(dotR * 2, W * 0.018),
-        item, ring: ring.name
-      });
-    });
-  }
-
-  // ---- CENTER: Travel Products ----
-  // White center circle
-  ctx.beginPath();
-  ctx.arc(CX, CY, centerR, 0, Math.PI * 2);
-  ctx.fillStyle = '#FFFFFF';
-  ctx.fill();
-  ctx.strokeStyle = var_teal + '40';
-  ctx.lineWidth = 2;
-  ctx.stroke();
-
-  // "Travel Product" label
-  ctx.fillStyle = var_teal;
-  ctx.font = `800 ${W * 0.0095}px 'Plus Jakarta Sans'`;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText('TRAVEL', CX, CY - W * 0.016);
-  ctx.fillText('PRODUCT', CX, CY + W * 0.002);
-
-  // Products around center
-  CENTER_ITEMS.forEach((p, i) => {
-    const angle = (i / CENTER_ITEMS.length) * Math.PI * 2 - Math.PI / 2;
-    const r = centerR * 0.62;
-    const px = CX + Math.cos(angle) * r;
-    const py = CY + Math.sin(angle) * r;
-
-    ctx.font = `${W * 0.014}px sans-serif`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(p.icon, px, py - W * 0.006);
-
-    ctx.font = `600 ${Math.max(5.5, W * 0.006)}px 'Plus Jakarta Sans'`;
-    ctx.fillStyle = '#1A1A2E';
-    ctx.fillText(p.label.replace('\n', ' '), px, py + W * 0.012);
-    ctx.fillStyle = var_teal;
-  });
-
-  // ---- OUTER SECTOR LABELS (like Shiji's "01 Online", "02 Travel Agencies") ----
-  const outerLabelR = maxR + W * 0.022;
-  const sectorLabels = [
-    { label: "01 Online & Digital", angle: 0 },
-    { label: "02 Travel Agencies & TOs", angle: Math.PI * 0.4 },
-    { label: "03 Payments & Risk", angle: Math.PI * 0.75 },
-    { label: "04 Customer & CRM", angle: Math.PI * 1.1 },
-    { label: "05 Data & Intelligence", angle: Math.PI * 1.45 },
-    { label: "06 Operations & Fulfillment", angle: Math.PI * 1.75 },
-  ];
-
-  sectorLabels.forEach(sl => {
-    const a = sl.angle - Math.PI / 2;
-    const lx = CX + Math.cos(a) * outerLabelR;
-    const ly = CY + Math.sin(a) * outerLabelR;
-
-    ctx.save();
-    ctx.translate(lx, ly);
-    let rot = a;
-    const flipped = a > Math.PI * 0.5 || a < -Math.PI * 0.5;
-    if (flipped) { rot += Math.PI; ctx.rotate(rot); ctx.textAlign = 'right'; }
-    else { ctx.rotate(rot); ctx.textAlign = 'left'; }
-
-    // Number badge
-    const num = sl.label.substring(0, 2);
-    const rest = sl.label.substring(3);
-
-    ctx.font = `800 ${W * 0.009}px 'Plus Jakarta Sans'`;
-    ctx.fillStyle = '#1A1A2E';
-    ctx.textBaseline = 'middle';
-
-    const numW = ctx.measureText(num).width;
-
-    // Draw number in a box
-    const bx = flipped ? -numW - 4 : 0;
-    ctx.fillStyle = '#1A1A2E';
-    ctx.beginPath();
-    ctx.roundRect(bx - 2, -7, numW + 6, 14, 3);
-    ctx.fill();
-    ctx.fillStyle = 'white';
-    ctx.fillText(num, bx + 1, 0);
-
-    // Rest of label
-    ctx.fillStyle = '#1A1A2E';
-    ctx.font = `700 ${W * 0.008}px 'Plus Jakarta Sans'`;
-    const offset = flipped ? -numW - 12 : numW + 8;
-    ctx.fillText(rest, offset, 0);
-
-    ctx.restore();
-  });
-
-  // Sector divider lines
-  sectorLabels.forEach(sl => {
-    const a = sl.angle - Math.PI / 2 - 0.15;
-    ctx.beginPath();
-    ctx.moveTo(CX + Math.cos(a) * centerR, CY + Math.sin(a) * centerR);
-    ctx.lineTo(CX + Math.cos(a) * maxR, CY + Math.sin(a) * maxR);
-    ctx.strokeStyle = '#E2E4EA';
-    ctx.lineWidth = 0.5;
-    ctx.setLineDash([4, 4]);
-    ctx.stroke();
-    ctx.setLineDash([]);
-  });
-}
-
-const var_teal = '#009B9B';
-
-// ======== TOOLTIP ========
-const tip = document.getElementById('tip');
-
-function showTip(e, h) {
-  tip.innerHTML = h; tip.classList.add('show');
-  const r = tip.getBoundingClientRect();
-  let x = e.clientX + 12, y = e.clientY + 12;
-  if (x + r.width > window.innerWidth - 12) x = e.clientX - r.width - 12;
-  if (y + r.height > window.innerHeight - 12) y = e.clientY - r.height - 12;
-  tip.style.left = x + 'px'; tip.style.top = y + 'px';
-}
-
-function hideTip() { tip.classList.remove('show'); }
-
-function tipBadge(j) {
-  const m = { core:['🟢 Core','core'], current:['🟢 Current','core'], partial:['🟡 Partial','partial'], gap:['⚪ Gap','gap'], emerging:['🟡 Emerging','partial'], future:['🟣 Future','future'] };
-  const v = m[j]; return v ? `<span class="tb ${v[1]}">${v[0]}</span>` : '';
-}
-
-canvas.addEventListener('mousemove', (e) => {
-  const rect = canvas.getBoundingClientRect();
-  const mx = (e.clientX - rect.left);
-  const my = (e.clientY - rect.top);
-
-  let hit = null;
-  for (const h of hitItems) {
-    const dx = mx - h.x, dy = my - h.y;
-    if (dx * dx + dy * dy < h.r * h.r) { hit = h; break; }
-  }
-
-  if (hit) {
-    canvas.style.cursor = 'pointer';
-    const it = hit.item;
-    let t = `<b>${it.f || it.n}</b>`;
-    t += `<div class="tc">${hit.ring} › ${it.sec}</div>`;
-    if (it.j) t += tipBadge(it.j);
-    if (it.c) t += `<div class="tco">${it.c}</div>`;
-    showTip(e, t);
-  } else {
-    canvas.style.cursor = 'default';
-    hideTip();
-  }
-});
-
-canvas.addEventListener('mouseleave', hideTip);
-
-// ======== DETAIL VIEW (value chain swim lanes) ========
-const DETAIL = [
-  {id:1,name:"Core Reservation & Inventory",short:"Supply",lc:"ll1",color:"#009B9B",groups:[{label:"Accommodation",items:[{n:"PMS",f:"Property Management System",j:"gap"},{n:"CRS",f:"Central Reservation System",j:"partial",c:"Hotetec"},{n:"RMS",f:"Revenue Management System",j:"gap"},{n:"Guest Experience"},{n:"Hotel Operations"},{n:"Hotel Loyalty"}]},{label:"Airlines",items:[{n:"PSS",f:"Passenger Service System",j:"gap"},{n:"Airline Reservations"},{n:"DCS"},{n:"Crew Mgmt"},{n:"Revenue Mgmt"}]},{label:"Rail / Ground",items:[{n:"Rail Reservation"},{n:"Ticketing & Fares"}]},{label:"Cruise",items:[{n:"Cruise Reservation",j:"current",c:"IST"},{n:"Fleet Ops"}]},{label:"Vacation Rental",items:[{n:"VR PMS"},{n:"Smart Lock"},{n:"Guest Messaging"}]}]},
-  {id:2,name:"Distribution & Connectivity",short:"Distribution",lc:"ll2",color:"#0086A8",groups:[{label:"Core Distribution",items:[{n:"GDS"},{n:"Connectivity Hub",j:"core",c:"Juniper TT, DS"},{n:"XML / API Aggregation"},{n:"Content Mapping"},{n:"Channel Manager",j:"gap",c:"Hotetec"},{n:"Supplier Extranet"}]},{label:"Aggregation",items:[{n:"Air Aggregator",j:"current",c:"Lleego"},{n:"Bedbank Platform",j:"partial",c:"DOME"},{n:"NDC / LCC Aggregator"},{n:"Train Aggregator"},{n:"Car Rental Aggregator"},{n:"STR Channel Mgr"}]}]},
-  {id:3,name:"Retail, Packaging & Commerce",short:"Packaging & Retail",lc:"ll3",color:"#006B8A",groups:[{label:"Sales Platforms",items:[{n:"Booking Engine",j:"current",c:"Juniper TT, Traveltek, Hotetec, Cangoroo, Inspiretec"},{n:"OTA Platform",j:"gap"},{n:"Metasearch"},{n:"B2B Portal"},{n:"Corporate Booking Tool"}]},{label:"Packaging",items:[{n:"Dynamic Packaging",j:"core",c:"Peakwork"},{n:"Ancillary Mgmt",j:"partial",c:"Juniper TT"},{n:"Offer Management"},{n:"NDC Offer & Order Mgmt"}]},{label:"TA / TO Software",items:[{n:"Tour Operator System"},{n:"Agency Back-Office"},{n:"Itinerary Builder"},{n:"DMC Software"},{n:"Contracting & Supplier Mgmt"}]}]},
-  {id:4,name:"Payments, Fintech & Risk",short:"Payments",lc:"ll4",color:"#00526D",groups:[{label:"Payments Stack",items:[{n:"Payment Gateway",j:"gap"},{n:"PSP",j:"gap"},{n:"VCC",j:"partial"},{n:"Fraud Detection",j:"gap"},{n:"Settlement & Reconciliation"},{n:"Travel Insurance"},{n:"BNPL / Financing"}]}]},
-  {id:5,name:"Customer Lifecycle & Engagement",short:"Customer",lc:"ll5",color:"#3A4A5C",groups:[{label:"CRM & Engagement",items:[{n:"Travel CRM",j:"current",c:"Inspiretec"},{n:"Customer Support",j:"partial",c:"Inspiretec"},{n:"Marketing Automation"},{n:"Loyalty & Rewards",j:"gap",c:"Inspiretec"},{n:"CDP",j:"emerging"},{n:"Personalization",j:"future"},{n:"Chatbot / AI"}]}]},
-  {id:6,name:"Data, Intelligence & Platform",short:"Data & AI",lc:"ll6",color:"#2D3044",groups:[{label:"Data & AI",items:[{n:"Data Warehouse",j:"core",c:"Juniper TT"},{n:"Business Intelligence",j:"current",c:"Juniper TT"},{n:"Pricing Intelligence"},{n:"Demand Forecasting"},{n:"AI Optimization",j:"future"},{n:"Reporting & KPI"}]}]},
-  {id:7,name:"Operations, Digital & Compliance",short:"Ops & Compliance",lc:"ll7",color:"#1A1A2E",groups:[{label:"Operations",items:[{n:"Check-in / Kiosk"},{n:"Trip Management"},{n:"Disruption Mgmt"},{n:"Airport Operations"}]},{label:"Digital Infra",items:[{n:"CMS / DXP"},{n:"API Management"},{n:"Mobile App Platform"},{n:"Identity & Access Mgmt"}]},{label:"Compliance",items:[{n:"KYC / Identity"},{n:"Border & Immigration"},{n:"Duty of Care"},{n:"Regulatory Reporting"}]}]},
-];
+// ====== GRID ======
+const GD=[{id:1,n:"Core Reservation & Inventory",c:"#C0392B",groups:[{l:"Accommodation",items:[{n:"PMS",j:"gap"},{n:"CRS",j:"partial",c:"Hotetec"},{n:"RMS",j:"gap"},{n:"Guest Experience"},{n:"Hotel Ops"}]},{l:"Airlines",items:[{n:"PSS",j:"gap"},{n:"Airline Res."},{n:"DCS"}]},{l:"Cruise",items:[{n:"Cruise Res.",j:"current",c:"IST"}]},{l:"VR",items:[{n:"VR PMS"},{n:"Smart Lock"}]}]},{id:2,n:"Distribution & Connectivity",c:"#8B3A3A",groups:[{l:"Core",items:[{n:"GDS"},{n:"Connectivity Hub",j:"core",c:"Juniper TT"},{n:"XML/API"},{n:"Content Map",j:"current",c:"Vervotech"},{n:"Channel Mgr",j:"gap",c:"Hotetec"}]},{l:"Aggregation",items:[{n:"Air Agg.",j:"current",c:"Lleego"},{n:"Bedbank",j:"partial",c:"DOME"},{n:"NDC/LCC"},{n:"Train Agg."}]}]},{id:3,n:"Retail & Commerce",c:"#6B3030",groups:[{l:"Sales",items:[{n:"Booking Engine",j:"current",c:"Juniper TT +4"},{n:"OTA Platform",j:"gap"},{n:"B2B Portal"}]},{l:"Packaging",items:[{n:"Dynamic Pkg",j:"core",c:"Peakwork"},{n:"Ancillary",j:"partial",c:"Juniper TT"},{n:"Offer Mgmt"}]},{l:"TA/TO",items:[{n:"Tour Op."},{n:"Agency"},{n:"DMC Sw.",j:"current",c:"Dome"}]}]},{id:4,n:"Payments & Fintech",c:"#4A2424",groups:[{l:"Payments",items:[{n:"Gateway",j:"gap"},{n:"PSP",j:"gap"},{n:"VCC",j:"partial"},{n:"Fraud",j:"gap"},{n:"Insurance"}]}]},{id:5,n:"Customer Lifecycle",c:"#3A3A3A",groups:[{l:"CRM",items:[{n:"Travel CRM",j:"current",c:"Inspiretec"},{n:"Support",j:"partial",c:"Inspiretec"},{n:"Loyalty",j:"gap"},{n:"CDP",j:"emerging"},{n:"Personalization",j:"future"}]}]},{id:6,n:"Data & Intelligence",c:"#2C2C2C",groups:[{l:"Data",items:[{n:"Data Warehouse",j:"core",c:"Juniper TT"},{n:"BI",j:"current",c:"Juniper TT"},{n:"AI Opt.",j:"future"},{n:"Reporting"}]}]},{id:7,n:"Ops & Compliance",c:"#1A1A1A",groups:[{l:"Ops",items:[{n:"Check-in"},{n:"Trip Mgmt"},{n:"Disruption"}]},{l:"Digital",items:[{n:"CMS"},{n:"API Mgmt"},{n:"Mobile"}]},{l:"Compliance",items:[{n:"KYC"},{n:"Regulatory"}]}]}];
 
 function badge(j){const m={core:['Core','core'],current:['Current','core'],partial:['Partial','partial'],gap:['Gap','gap'],emerging:['Emerging','future'],future:['Future','future']};const v=m[j];return v?`<span class="sb ${v[1]}">${v[0]}</span>`:''}
-
-let detailBuilt = false;
-function buildDetail() {
-  if (detailBuilt) return; detailBuilt = true;
-  const w = document.getElementById('detail-view');
-  let prevLC = '';
-  DETAIL.forEach((l, i) => {
-    if (i > 0 && l.lc !== prevLC) { const a = document.createElement('div'); a.className='fa'; a.innerHTML='<span class="fl">▼</span>'; w.appendChild(a); }
-    prevLC = l.lc;
-    const lane = document.createElement('div'); lane.className = 'swim-lane';
-    const lb = document.createElement('div'); lb.className = `lane-label ${l.lc}`; lb.textContent = `${l.id}. ${l.short}`; lane.appendChild(lb);
-    const bd = document.createElement('div'); bd.className = 'lane-body';
-    l.groups.forEach(g => {
-      const ge = document.createElement('div'); ge.className = 'grp'; ge.innerHTML = `<span class="gl">${g.label}</span>`;
-      g.items.forEach(it => {
-        const isH = it.j && (it.j === 'core' || it.j === 'current');
-        const s = document.createElement('div'); s.className = `sg${isH ? ' jh' : ''}`;
-        let h = `<div class="sh"><span class="sn">${it.n}</span>${it.j ? badge(it.j) : ''}</div>`;
-        if (it.c) { h += '<div class="si">'; it.c.split(',').forEach(c => { h += `<span class="co">${c.trim()}</span>`; }); h += '</div>'; }
-        s.innerHTML = h;
-        s.addEventListener('mouseenter', e => { let t = `<b>${it.f||it.n}</b><div class="tc">${l.name} › ${g.label}</div>`; if(it.j)t+=tipBadge(it.j); if(it.c)t+=`<div class="tco">${it.c}</div>`; showTip(e,t); });
-        s.addEventListener('mousemove', e => { const r=tip.getBoundingClientRect(); let x=e.clientX+12,y=e.clientY+12; if(x+r.width>window.innerWidth-12)x=e.clientX-r.width-12; if(y+r.height>window.innerHeight-12)y=e.clientY-r.height-12; tip.style.left=x+'px';tip.style.top=y+'px'; });
-        s.addEventListener('mouseleave', hideTip);
-        ge.appendChild(s);
-      });
-      bd.appendChild(ge);
-    });
-    lane.appendChild(bd); w.appendChild(lane);
-  });
-  const tv = document.createElement('div'); tv.className='fa'; tv.innerHTML='<span class="fl" style="font-size:0.68rem">▼ Traveler</span>'; w.appendChild(tv);
-}
-
-// ======== GRID VIEW (detail cards) ========
-let gridBuilt = false;
-function buildGrid() {
-  if (gridBuilt) return; gridBuilt = true;
-  const w = document.getElementById('grid-view');
-  DETAIL.forEach((l, li) => {
-    const sec = document.createElement('div');
-    sec.className = 'gv-section';
-    sec.style.animationDelay = (li * 0.04) + 's';
-    const hdr = document.createElement('div');
-    hdr.className = 'gv-hdr';
-    hdr.innerHTML = `<div class="gv-num" style="background:${l.color}">${l.id}</div><div class="gv-title">${l.name}</div>`;
-    sec.appendChild(hdr);
-    const grid = document.createElement('div');
-    grid.className = 'gv-grid';
-    l.groups.forEach(g => {
-      const card = document.createElement('div');
-      const hasJ = g.items.some(i => i.j && i.j !== 'gap');
-      card.className = `gv-card${hasJ ? ' hj' : ''}`;
-      let h = `<div class="gct">${g.label}</div>`;
-      g.items.forEach(it => {
-        h += `<div class="gcs"><span class="gcn">${it.f || it.n}</span><div class="gcm">`;
-        if (it.c) h += `<span class="gcc">${it.c.split(',')[0].trim()}</span>`;
-        if (it.j) h += badge(it.j);
-        h += '</div></div>';
-      });
-      card.innerHTML = h;
-      grid.appendChild(card);
-    });
-    sec.appendChild(grid);
-    w.appendChild(sec);
-  });
-}
-
-// ======== VIEW SWITCHING ========
-const ringC = document.getElementById('ring-container');
-const detV = document.getElementById('detail-view');
-const grdV = document.getElementById('grid-view');
-
-document.querySelectorAll('.cb').forEach(b => {
-  b.addEventListener('click', () => {
-    document.querySelectorAll('.cb').forEach(x => x.classList.remove('on'));
-    b.classList.add('on');
-    const v = b.dataset.v;
-    ringC.style.display = v === 'ring' ? 'block' : 'none';
-    detV.style.display = v === 'detail' ? 'block' : 'none';
-    grdV.style.display = v === 'grid' ? 'block' : 'none';
-    if (v === 'ring') draw();
-    if (v === 'detail') buildDetail();
-    if (v === 'grid') buildGrid();
-  });
-});
-
-// ======== INIT ========
-draw();
-window.addEventListener('resize', () => { if (ringC.style.display !== 'none') draw(); });
+let grB=false;
+function buildGrid(){grB=true;const w=document.getElementById('view-grid');
+GD.forEach((l,li)=>{const s=document.createElement('div');s.className='gv-sec';s.style.animationDelay=(li*.04)+'s';
+s.innerHTML=`<div class="gv-hdr"><div class="gv-num" style="background:${l.c}">${l.id}</div><div class="gv-ttl">${l.n}</div></div>`;
+const g=document.createElement('div');g.className='gv-grid';
+l.groups.forEach(gr=>{const cd=document.createElement('div');const hj=gr.items.some(i=>i.j&&i.j!=='gap');cd.className=`gv-card${hj?' hj':''}`;
+let h=`<div class="gc-t">${gr.l}</div>`;
+gr.items.forEach(it=>{h+=`<div class="gc-r"><span class="gc-n">${it.n}</span><div style="display:flex;gap:3px;align-items:center">${it.c?`<span class="gc-c">${it.c.split(',')[0]}</span>`:''}${it.j?badge(it.j):''}</div></div>`});
+cd.innerHTML=h;
+cd.style.cursor='pointer';
+cd.onclick=()=>{const firstJ=gr.items.find(i=>i.j&&i.j!=='gap');if(firstJ){const nid=Object.keys(NODE_INFO).find(k=>NODE_INFO[k].title.toLowerCase().includes(firstJ.n.toLowerCase().slice(0,5)));if(nid)openNodePanel(nid)}};
+g.appendChild(cd)});
+s.appendChild(g);w.appendChild(s)})}
 </script>
 </body>
 </html>
