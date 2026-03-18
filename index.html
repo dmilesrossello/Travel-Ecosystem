@@ -95,18 +95,18 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 
 /* ===== VALUE CHAIN (connectivity map) ===== */
 .vc-hint{font-size:.7rem;color:var(--text-light);text-align:center;margin-bottom:8px}.vc-hint b{color:var(--red)}
-.conn-map{position:relative;min-width:1150px;height:650px;background:var(--bg-warm);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.conn-map{position:relative;min-width:1350px;height:820px;background:var(--bg-warm);border:1px solid var(--border);border-radius:10px;overflow:hidden}
 .conn-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1}
 .conn-svg path{transition:stroke-opacity .2s,stroke-width .2s}
 .conn-map.has-focus .conn-svg path{stroke-opacity:.03!important}
 .conn-map.has-focus .conn-svg path.lit{stroke-opacity:.6!important;stroke-width:2.5!important}
-.col{position:absolute;display:flex;flex-direction:column;gap:5px;z-index:2}
-.col-title{font-size:.54rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;padding:4px 10px;border-radius:4px;text-align:center;margin-bottom:2px}
-.cn{background:#fff;border:1.5px solid var(--border);border-radius:6px;padding:5px 10px;font-size:.64rem;font-weight:500;color:var(--text);cursor:pointer;transition:all .15s;position:relative;white-space:nowrap}
+.col{position:absolute;display:flex;flex-direction:column;gap:7px;z-index:2}
+.col-title{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;padding:6px 14px;border-radius:5px;text-align:center;margin-bottom:4px}
+.cn{background:#fff;border:1.5px solid var(--border);border-radius:7px;padding:8px 14px;font-size:.74rem;font-weight:500;color:var(--text);cursor:pointer;transition:all .15s;position:relative;white-space:nowrap}
 .cn:hover{border-color:var(--red);box-shadow:0 2px 8px rgba(192,57,43,.12);z-index:10}
 .cn.j{background:var(--red-light);border-color:var(--red);font-weight:700;color:var(--red)}
 .cn.j::before{content:'';position:absolute;left:-1.5px;top:-1.5px;bottom:-1.5px;width:3px;background:var(--red);border-radius:6px 0 0 6px}
-.cn .cn-sub{display:block;font-size:.48rem;font-weight:600;color:var(--red);margin-top:1px}
+.cn .cn-sub{display:block;font-size:.56rem;font-weight:600;color:var(--red);margin-top:2px}
 .conn-map.has-focus .cn{opacity:.25}
 .conn-map.has-focus .cn.lit{opacity:1!important;border-color:var(--red);box-shadow:0 2px 8px rgba(192,57,43,.12)}
 
@@ -241,13 +241,13 @@ facts:[{v:"25+",l:"Years"},{v:"CRM+Booking",l:"Integrated"}],tags:["CRM","Reserv
 ];
 
 // ====== NAV ======
-const TABS=[{id:'home',label:'Home'},{id:'vc',label:'Value Chain'},{id:'flow',label:'Flow Diagram'},{id:'grid',label:'Detail Grid'}];
+const TABS=[{id:'home',label:'Home'},{id:'vc',label:'Connectivity'},{id:'grid',label:'Detail Grid'}];
 const nav=document.getElementById('nav');const vc_c=document.getElementById('views-container');
 TABS.forEach((t,i)=>{const b=document.createElement('button');b.className=`nav-btn${i===0?' on':''}`;b.dataset.tab=t.id;b.textContent=t.label;nav.appendChild(b)});
 TABS.forEach(t=>{const v=document.createElement('div');v.className=`view${t.id==='home'?' active':''}`;v.id=`view-${t.id}`;vc_c.appendChild(v)});
 const buDV=document.createElement('div');buDV.className='view';buDV.id='view-bu';vc_c.appendChild(buDV);
 
-function showTab(id){document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('on',b.dataset.tab===id));document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(`view-${id}`).classList.add('active');closePanel();if(id==='vc'&&!vcB)buildVC();if(id==='flow'&&!flB)buildFlow();if(id==='grid'&&!grB)buildGrid()}
+function showTab(id){document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('on',b.dataset.tab===id));document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(`view-${id}`).classList.add('active');closePanel();if(id==='vc'&&!vcB)buildVC();if(id==='grid'&&!grB)buildGrid()}
 nav.addEventListener('click',e=>{if(e.target.classList.contains('nav-btn'))showTab(e.target.dataset.tab)});
 
 // ====== DETAIL PANEL ======
@@ -355,11 +355,11 @@ function buildVC(){vcB=true;const w=document.getElementById('view-vc');
 w.innerHTML=`<div class="vc-hint"><b>Click any node</b> to see details and connections. Teal-highlighted = Juniper presence.</div>`;
 const COLS=[
 {id:'supply',title:'Supply',color:'var(--red)',x:20,nodes:[{id:'hotels',l:'🏨 Hotels'},{id:'airlines',l:'✈️ Airlines'},{id:'cruise',l:'🚢 Cruise'},{id:'rail',l:'🚄 Rail'},{id:'car',l:'🚗 Car Rental'},{id:'activities',l:'🎯 Activities'},{id:'vr',l:'🏡 Vacation Rental'}]},
-{id:'core',title:'Core Systems',color:'#8B3A3A',x:175,nodes:[{id:'pms',l:'PMS'},{id:'crs',l:'CRS',j:1,s:'Hotetec'},{id:'rms',l:'RMS'},{id:'pss',l:'PSS (Airline)'},{id:'cruise_res',l:'Cruise Res.',j:1,s:'IST'},{id:'rail_res',l:'Rail Res.'},{id:'vr_pms',l:'VR PMS'}]},
-{id:'dist',title:'Distribution',color:'#6B3030',x:345,nodes:[{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT'},{id:'gds',l:'GDS'},{id:'ch_mgr',l:'Channel Mgr',s:'Hotetec'},{id:'air_agg',l:'Air Aggregator',j:1,s:'Lleego'},{id:'bedbank',l:'Bedbank',j:1,s:'DOME'},{id:'content',l:'Content Mapping',j:1,s:'Vervotech'},{id:'ndc',l:'NDC / LCC'},{id:'train_agg',l:'Train Agg.'},{id:'car_agg',l:'Car Rental Agg.'}]},
-{id:'pkg',title:'Packaging & Retail',color:'#4A2424',x:535,nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4'},{id:'dyn_pkg',l:'Dynamic Pkg',j:1,s:'Peakwork'},{id:'ancillary',l:'Ancillary Mgmt',j:1,s:'Juniper TT'},{id:'to_sys',l:'Tour Op. System'},{id:'agency',l:'Agency Back-Office'},{id:'dmc_sw',l:'DMC Software',j:1,s:'Dome'},{id:'dest_os',l:'Destination OS',j:1,s:'Alturos'},{id:'crm',l:'Travel CRM',j:1,s:'Inspiretec'}]},
-{id:'b2c',title:'B2C Distribution',color:'var(--charcoal)',x:730,nodes:[{id:'ota',l:'OTA Platforms'},{id:'meta',l:'Metasearch'},{id:'ta',l:'Travel Agencies'},{id:'tmc',l:'Corporate TMCs'},{id:'social',l:'Social Commerce'},{id:'ecom',l:'E-commerce'},{id:'direct',l:'Direct (Hotel Web)'}]},
-{id:'end',title:'Traveler',color:'var(--dark)',x:910,nodes:[{id:'leisure',l:'🧳 Leisure'},{id:'business',l:'💼 Business'},{id:'group',l:'👥 Group/MICE'}]},
+{id:'core',title:'Core Systems',color:'#8B3A3A',x:210,nodes:[{id:'pms',l:'PMS'},{id:'crs',l:'CRS',j:1,s:'Hotetec'},{id:'rms',l:'RMS'},{id:'pss',l:'PSS (Airline)'},{id:'cruise_res',l:'Cruise Res.',j:1,s:'IST'},{id:'rail_res',l:'Rail Res.'},{id:'vr_pms',l:'VR PMS'}]},
+{id:'dist',title:'Distribution',color:'#6B3030',x:420,nodes:[{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT'},{id:'gds',l:'GDS'},{id:'ch_mgr',l:'Channel Mgr',s:'Hotetec'},{id:'air_agg',l:'Air Aggregator',j:1,s:'Lleego'},{id:'bedbank',l:'Bedbank',j:1,s:'DOME'},{id:'content',l:'Content Mapping',j:1,s:'Vervotech'},{id:'ndc',l:'NDC / LCC'},{id:'train_agg',l:'Train Agg.'},{id:'car_agg',l:'Car Rental Agg.'}]},
+{id:'pkg',title:'Packaging & Retail',color:'#4A2424',x:650,nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4'},{id:'dyn_pkg',l:'Dynamic Pkg',j:1,s:'Peakwork'},{id:'ancillary',l:'Ancillary Mgmt',j:1,s:'Juniper TT'},{id:'to_sys',l:'Tour Op. System'},{id:'agency',l:'Agency Back-Office'},{id:'dmc_sw',l:'DMC Software',j:1,s:'Dome'},{id:'dest_os',l:'Destination OS',j:1,s:'Alturos'},{id:'crm',l:'Travel CRM',j:1,s:'Inspiretec'}]},
+{id:'b2c',title:'B2C Distribution',color:'var(--charcoal)',x:880,nodes:[{id:'ota',l:'OTA Platforms'},{id:'meta',l:'Metasearch'},{id:'ta',l:'Travel Agencies'},{id:'tmc',l:'Corporate TMCs'},{id:'social',l:'Social Commerce'},{id:'ecom',l:'E-commerce'},{id:'direct',l:'Direct (Hotel Web)'}]},
+{id:'end',title:'Traveler',color:'var(--dark)',x:1100,nodes:[{id:'leisure',l:'🧳 Leisure'},{id:'business',l:'💼 Business'},{id:'group',l:'👥 Group/MICE'}]},
 ];
 const red='#C0392B',gray='#C8C4BC';
 const EDGES=[['hotels','pms',gray],['hotels','crs',red],['hotels','rms',gray],['airlines','pss',gray],['cruise','cruise_res',red],['rail','rail_res',gray],['vr','vr_pms',gray],['car','car_agg',gray],['activities','dmc_sw',red],['pms','ch_mgr',gray],['pms','conn_hub',red],['crs','ch_mgr',red],['crs','conn_hub',red],['crs','gds',gray],['rms','conn_hub',gray],['pss','gds',gray],['pss','air_agg',red],['pss','ndc',gray],['cruise_res','conn_hub',red],['cruise_res','gds',gray],['rail_res','train_agg',gray],['rail_res','conn_hub',red],['vr_pms','ch_mgr',gray],['vr_pms','conn_hub',red],['conn_hub','booking',red],['conn_hub','dyn_pkg',red],['conn_hub','ancillary',red],['conn_hub','to_sys',gray],['conn_hub','agency',gray],['gds','booking',gray],['gds','to_sys',gray],['ch_mgr','ota',gray],['ch_mgr','meta',gray],['air_agg','booking',red],['air_agg','dyn_pkg',red],['bedbank','booking',red],['bedbank','ota',gray],['content','conn_hub',red],['content','booking',red],['ndc','booking',gray],['ndc','air_agg',gray],['train_agg','booking',gray],['car_agg','booking',gray],['booking','ota',gray],['booking','ta',gray],['booking','tmc',gray],['booking','direct',red],['booking','ecom',gray],['dyn_pkg','ota',gray],['dyn_pkg','ta',gray],['dyn_pkg','booking',red],['ancillary','booking',red],['to_sys','ta',gray],['agency','ta',gray],['dmc_sw','to_sys',red],['dmc_sw','booking',red],['dest_os','direct',red],['dest_os','social',gray],['crm','ta',red],['crm','direct',red],['crm','booking',red],['ota','leisure',gray],['ota','business',gray],['meta','leisure',gray],['ta','leisure',gray],['ta','group',gray],['tmc','business',gray],['social','leisure',gray],['ecom','leisure',gray],['direct','leisure',red],['direct','business',gray]];
