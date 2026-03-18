@@ -93,22 +93,30 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 .prod-card .pc-n{font-size:.78rem;font-weight:700;color:var(--charcoal);margin-bottom:4px}
 .prod-card .pc-d{font-size:.68rem;color:var(--text-mid);line-height:1.5}
 
-/* ===== VALUE CHAIN (connectivity map) ===== */
-.vc-hint{font-size:.7rem;color:var(--text-light);text-align:center;margin-bottom:8px}.vc-hint b{color:var(--red)}
-.conn-map{position:relative;min-width:1350px;height:820px;background:var(--bg-warm);border:1px solid var(--border);border-radius:10px;overflow:hidden}
-.conn-svg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1}
-.conn-svg path{transition:stroke-opacity .2s,stroke-width .2s}
-.conn-map.has-focus .conn-svg path{stroke-opacity:.03!important}
-.conn-map.has-focus .conn-svg path.lit{stroke-opacity:.6!important;stroke-width:2.5!important}
-.col{position:absolute;display:flex;flex-direction:column;gap:7px;z-index:2}
-.col-title{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;padding:6px 14px;border-radius:5px;text-align:center;margin-bottom:4px}
-.cn{background:#fff;border:1.5px solid var(--border);border-radius:7px;padding:8px 14px;font-size:.74rem;font-weight:500;color:var(--text);cursor:pointer;transition:all .15s;position:relative;white-space:nowrap}
-.cn:hover{border-color:var(--red);box-shadow:0 2px 8px rgba(192,57,43,.12);z-index:10}
+/* ===== CONNECTIVITY — progressive reveal ===== */
+#vc-view{padding:12px 32px 40px;max-width:1600px;margin:0 auto}
+.vc-hint{font-size:.75rem;color:var(--text-light);text-align:center;margin-bottom:16px}.vc-hint b{color:var(--red)}
+
+.conn-flow{display:flex;gap:0;align-items:flex-start;min-height:500px;overflow-x:auto;padding-bottom:16px}
+
+.cf-col{display:flex;flex-direction:column;align-items:center;gap:0;min-width:180px;flex-shrink:0;animation:cfIn .35s ease both}
+@keyframes cfIn{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+
+.cf-header{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#fff;padding:6px 18px;border-radius:6px;margin-bottom:10px;text-align:center}
+
+.cf-nodes{display:flex;flex-direction:column;gap:6px;width:100%;padding:0 8px}
+
+.cf-arrow{display:flex;align-items:center;justify-content:center;width:44px;flex-shrink:0;align-self:center;margin-top:40px}
+.cf-arrow svg{width:32px;height:24px}
+
+.cn{background:#fff;border:2px solid var(--border);border-radius:8px;padding:10px 14px;font-size:.76rem;font-weight:500;color:var(--text);cursor:pointer;transition:all .2s;position:relative;text-align:left}
+.cn:hover{border-color:var(--red);box-shadow:0 3px 12px rgba(192,57,43,.12);transform:translateY(-2px);z-index:10}
+.cn.selected{border-color:var(--red);background:var(--red-light);box-shadow:0 3px 12px rgba(192,57,43,.15)}
 .cn.j{background:var(--red-light);border-color:var(--red);font-weight:700;color:var(--red)}
-.cn.j::before{content:'';position:absolute;left:-1.5px;top:-1.5px;bottom:-1.5px;width:3px;background:var(--red);border-radius:6px 0 0 6px}
-.cn .cn-sub{display:block;font-size:.56rem;font-weight:600;color:var(--red);margin-top:2px}
-.conn-map.has-focus .cn{opacity:.25}
-.conn-map.has-focus .cn.lit{opacity:1!important;border-color:var(--red);box-shadow:0 2px 8px rgba(192,57,43,.12)}
+.cn.j::before{content:'';position:absolute;left:-2px;top:-2px;bottom:-2px;width:4px;background:var(--red);border-radius:8px 0 0 8px}
+.cn .cn-sub{display:block;font-size:.58rem;font-weight:600;color:var(--red);margin-top:2px}
+.cn .cn-desc{display:block;font-size:.56rem;font-weight:400;color:var(--text-light);margin-top:3px;line-height:1.35;white-space:normal}
+.cn.dimmed{opacity:.25;pointer-events:none}
 
 /* Detail panel overlay */
 .detail-panel{display:none;position:fixed;top:0;right:0;width:420px;height:100vh;background:var(--bg);border-left:2px solid var(--border);box-shadow:-4px 0 20px rgba(0,0,0,.1);z-index:9999;overflow-y:auto;padding:24px;animation:slideIn .25s ease}
@@ -337,7 +345,7 @@ function showBU(buId){
   const w=document.getElementById('view-home');
   let h=`<div class="home-hero"><div class="dot-grid">${'<span></span>'.repeat(12)}</div><div class="hh-tag">Constellation Software › Vela Software › Juniper Group</div><h1>Travel Software Companies</h1><div class="sec-bar"></div><div class="hh-sub">An Operating Portfolio of Vela Software, a Constellation Software ("CSI") company. Since 1995, CSI acquires, manages and builds vertical market software businesses, listed on the Toronto Stock Exchange (TSX: CSU) since 2006.</div><div class="csi-stats"><div class="csi-stat"><div class="cs-val">US$70B+</div><div class="cs-lab">Market Capitalization</div></div><div class="csi-stat"><div class="cs-val">6</div><div class="cs-lab">Operating Groups</div></div><div class="csi-stat"><div class="cs-val">1,100+</div><div class="cs-lab">Businesses · 150+ Verticals</div></div><div class="csi-stat"><div class="cs-val">125,000+</div><div class="cs-lab">Customers · 100+ Countries</div></div><div class="csi-stat"><div class="cs-val">55,000+</div><div class="cs-lab">Employees Globally</div></div></div></div>`;
 
-  h+=`<div style="text-align:center;margin:32px 0 36px"><div style="font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:16px">Corporate Structure</div><div style="display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap"><div style="background:var(--bg);border:2px solid var(--border);border-radius:12px;padding:18px 28px;text-align:center;min-width:200px"><div style="font-size:.95rem;font-weight:800;color:var(--charcoal)">Constellation Software</div><div style="font-size:.62rem;color:var(--text-light);margin-top:3px">TSX: CSU · US$70B+ Market Cap</div><div style="font-size:.56rem;color:var(--text-light);margin-top:2px">1,100+ businesses · 55,000+ employees</div></div><div style="width:48px;height:2px;background:linear-gradient(90deg,var(--border),var(--red));flex-shrink:0"></div><div style="background:var(--bg);border:2px solid var(--border);border-radius:12px;padding:18px 28px;text-align:center;min-width:200px"><div style="font-size:.95rem;font-weight:800;color:var(--charcoal)">Vela Software</div><div style="font-size:.62rem;color:var(--text-light);margin-top:3px">Operating Division</div><div style="font-size:.56rem;color:var(--text-light);margin-top:2px">10,000+ people · 180+ offices · 200+ companies</div></div><div style="width:48px;height:2px;background:linear-gradient(90deg,var(--red),var(--red));flex-shrink:0"></div><div style="background:var(--red-light);border:2px solid var(--red);border-radius:12px;padding:18px 28px;text-align:center;min-width:200px;position:relative"><div style="position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;font-size:.48rem;font-weight:700;padding:2px 10px;border-radius:10px;text-transform:uppercase;letter-spacing:.05em">You are here</div><div style="font-size:.95rem;font-weight:800;color:var(--red)">Juniper Group</div><div style="font-size:.62rem;color:var(--red);opacity:.7;margin-top:3px">Travel & Hospitality Portfolio</div><div style="font-size:.56rem;color:var(--text-light);margin-top:2px">15+ BUs · $30B GMV · 48M bookings/yr</div></div></div></div>`;
+  h+=`<div style="text-align:center;margin:32px auto 36px;max-width:360px"><div style="font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:20px">Corporate Structure</div><div style="display:flex;flex-direction:column;align-items:center;gap:0"><div style="background:var(--bg);border:2px solid var(--border);border-radius:12px;padding:20px 32px;text-align:center;width:100%"><img src="https://www.google.com/s2/favicons?domain=csisoftware.com&sz=32" style="height:24px;margin-bottom:6px;display:block;margin-left:auto;margin-right:auto"><div style="font-size:.95rem;font-weight:800;color:var(--charcoal)">Constellation Software</div><div style="font-size:.6rem;color:var(--text-light);margin-top:3px">TSX: CSU · US$70B+ Market Cap</div><div style="font-size:.54rem;color:var(--text-light);margin-top:2px">1,100+ businesses · 55,000+ employees</div></div><div style="width:2px;height:24px;background:linear-gradient(180deg,var(--border),var(--red));flex-shrink:0"></div><div style="background:var(--bg);border:2px solid var(--border);border-radius:12px;padding:20px 32px;text-align:center;width:100%"><img src="https://www.google.com/s2/favicons?domain=velasoftwaregroup.com&sz=32" style="height:24px;margin-bottom:6px;display:block;margin-left:auto;margin-right:auto"><div style="font-size:.95rem;font-weight:800;color:var(--charcoal)">Vela Software</div><div style="font-size:.6rem;color:var(--text-light);margin-top:3px">Operating Division</div><div style="font-size:.54rem;color:var(--text-light);margin-top:2px">10,000+ people · 180+ offices · 200+ companies</div></div><div style="width:2px;height:24px;background:var(--red);flex-shrink:0"></div><div style="background:var(--red-light);border:2px solid var(--red);border-radius:12px;padding:20px 32px;text-align:center;width:100%"><img src="https://www.google.com/s2/favicons?domain=juniper-group.com&sz=32" style="height:24px;margin-bottom:6px;display:block;margin-left:auto;margin-right:auto"><div style="font-size:.95rem;font-weight:800;color:var(--red)">Juniper Group</div><div style="font-size:.6rem;color:var(--red);opacity:.7;margin-top:3px">Travel & Hospitality Portfolio</div><div style="font-size:.54rem;color:var(--text-light);margin-top:2px">15+ BUs · $30B GMV · 48M bookings/yr</div></div></div></div>`;
 
 
 
@@ -346,51 +354,141 @@ function showBU(buId){
     h+=`<div class="bu-card" onclick="showBU('${bu.id}')"><div class="bu-logo"><img src="https://www.google.com/s2/favicons?domain=${bu.logo}&sz=64" onerror="this.parentElement.innerHTML='<span style=font-size:1.2rem>🏢</span>'"></div><div class="bu-info"><div class="bi-top"><div class="bi-name">${bu.name}</div><div class="bi-acq">Acq. ${bu.a}</div></div><div class="bi-meta">📍 ${bu.hq} · Est. ${bu.f}</div><div class="bi-desc">${bu.desc}</div><div class="bi-tags">${bu.tags.map(t=>`<span class="bi-tag">${t}</span>`).join('')}</div></div><div class="bc-arrow">→</div></div>`;
   });
   h+=`</div>`;
+
+  // Other CSI Travel BUs — Jonas Hospitality
+  h+=`<div style="margin-top:40px"><div style="text-align:center;cursor:pointer" onclick="document.getElementById('jonas-section').style.display=document.getElementById('jonas-section').style.display==='none'?'block':'none';this.querySelector('.jonas-toggle').textContent=document.getElementById('jonas-section').style.display==='none'?'▼ Show':'▲ Hide'"><div class="sec-title" style="font-size:1.15rem;display:block">Other CSI Travel Business Units</div><div class="sec-bar" style="margin:6px auto 8px"></div><div style="font-size:.7rem;color:var(--text-light);margin-bottom:12px">Jonas Hospitality — a portfolio of Vertus Group (Jonas Software / CSI) serving 60,000+ hotels globally <span class="jonas-toggle" style="color:var(--red);font-weight:700">▼ Show</span></div></div><div id="jonas-section" style="display:none"><div class="bu-grid">`;
+
+  const JONAS=[
+    {name:"Aptech",domain:"aptechsolutions.com",desc:"Pioneer in hospitality-specific financial software — enterprise accounting, BI, budgeting and forecasting for hotels and resorts.",tags:["Accounting","BI","Budgeting"]},
+    {name:"Ariane Systems",domain:"ariane.com",desc:"Market leader in cloud-based self-service kiosk solutions for hotel check-in/out, with welcome dashboards and PMS integration.",tags:["Self Check-in","Kiosks","Cloud"]},
+    {name:"b4checkin",domain:"b4checkin.com",desc:"Cloud-based tools for hospitality — secure online payment portals, booking engines, and real-time rate and availability management.",tags:["Payments","Booking Engine","Rate Mgmt"]},
+    {name:"Bookassist",domain:"bookassist.com",desc:"Partners with hotels to drive direct bookings through booking engines, web design, digital marketing, and metasearch management.",tags:["Booking Engine","Web Design","Marketing"]},
+    {name:"Jonas Chorum",domain:"jonaschorum.com",desc:"Cloud-based PMS with central reservation system, restaurant and retail POS, and multi-property management. 5,800+ hotel installations.",tags:["PMS","CRS","POS","Cloud"]},
+    {name:"Leonardo",domain:"leonardoworldwide.com",desc:"Enterprise media management for hotel listings and galleries, content feeds for travel channels, and hotel website management.",tags:["Content Mgmt","Media","Distribution"]},
+    {name:"Springer-Miller Systems",domain:"springermiller.com",desc:"Globally recognized leader in fully integrated hotel and resort management software (SMS|Host PMS) with owner fulfillment and mobile solutions.",tags:["PMS","Resort Mgmt","Owner Portal"]},
+    {name:"SpaSoft",domain:"spaabordsoftware.com",desc:"Industry-leading all-in-one spa and activity management solution with online booking, advanced reporting, and cloud/on-premise deployment.",tags:["Spa Mgmt","Activity Booking","Reporting"]},
+    {name:"Jonas Unify",domain:"jonashospitality.com",desc:"Unified customer data platform connecting disparate hotel systems, enabling cross-system itineraries and targeted marketing through guest data.",tags:["CDP","Integration","Guest Data"]},
+    {name:"Vizergy",domain:"vizergy.com",desc:"Hotel digital marketing platform — booking engines, web design, paid advertising, and performance analytics for direct revenue growth.",tags:["Digital Marketing","Booking Engine","Analytics"]},
+  ];
+
+  JONAS.forEach(j=>{
+    h+=`<div class="bu-card" onclick="window.open('https://www.jonashospitality.com/','_blank')" style="cursor:pointer"><div class="bu-logo"><img src="https://www.google.com/s2/favicons?domain=${j.domain}&sz=64" onerror="this.parentElement.innerHTML='<span style=font-size:1.2rem>🏨</span>'"></div><div class="bu-info"><div class="bi-top"><div class="bi-name">${j.name}</div><div class="bi-acq" style="background:#f0f0ee;color:var(--text-light)">Jonas / CSI</div></div><div class="bi-meta">Part of Jonas Hospitality (Vertus Group)</div><div class="bi-desc">${j.desc}</div><div class="bi-tags">${j.tags.map(t=>`<span class="bi-tag">${t}</span>`).join('')}</div></div></div>`;
+  });
+
+  h+=`</div></div></div>`;
+
   w.innerHTML=h;
 })();
 
-// ====== VALUE CHAIN (connectivity map) ======
+// ====== CONNECTIVITY — Progressive Reveal ======
 let vcB=false;
 function buildVC(){vcB=true;const w=document.getElementById('view-vc');
-w.innerHTML=`<div class="vc-hint"><b>Click any node</b> to see details and connections. Teal-highlighted = Juniper presence.</div>`;
-const COLS=[
-{id:'supply',title:'Supply',color:'var(--red)',x:20,nodes:[{id:'hotels',l:'🏨 Hotels'},{id:'airlines',l:'✈️ Airlines'},{id:'cruise',l:'🚢 Cruise'},{id:'rail',l:'🚄 Rail'},{id:'car',l:'🚗 Car Rental'},{id:'activities',l:'🎯 Activities'},{id:'vr',l:'🏡 Vacation Rental'}]},
-{id:'core',title:'Core Systems',color:'#8B3A3A',x:210,nodes:[{id:'pms',l:'PMS'},{id:'crs',l:'CRS',j:1,s:'Hotetec'},{id:'rms',l:'RMS'},{id:'pss',l:'PSS (Airline)'},{id:'cruise_res',l:'Cruise Res.',j:1,s:'IST'},{id:'rail_res',l:'Rail Res.'},{id:'vr_pms',l:'VR PMS'}]},
-{id:'dist',title:'Distribution',color:'#6B3030',x:420,nodes:[{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT'},{id:'gds',l:'GDS'},{id:'ch_mgr',l:'Channel Mgr',s:'Hotetec'},{id:'air_agg',l:'Air Aggregator',j:1,s:'Lleego'},{id:'bedbank',l:'Bedbank',j:1,s:'DOME'},{id:'content',l:'Content Mapping',j:1,s:'Vervotech'},{id:'ndc',l:'NDC / LCC'},{id:'train_agg',l:'Train Agg.'},{id:'car_agg',l:'Car Rental Agg.'}]},
-{id:'pkg',title:'Packaging & Retail',color:'#4A2424',x:650,nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4'},{id:'dyn_pkg',l:'Dynamic Pkg',j:1,s:'Peakwork'},{id:'ancillary',l:'Ancillary Mgmt',j:1,s:'Juniper TT'},{id:'to_sys',l:'Tour Op. System'},{id:'agency',l:'Agency Back-Office'},{id:'dmc_sw',l:'DMC Software',j:1,s:'Dome'},{id:'dest_os',l:'Destination OS',j:1,s:'Alturos'},{id:'crm',l:'Travel CRM',j:1,s:'Inspiretec'}]},
-{id:'b2c',title:'B2C Distribution',color:'var(--charcoal)',x:880,nodes:[{id:'ota',l:'OTA Platforms'},{id:'meta',l:'Metasearch'},{id:'ta',l:'Travel Agencies'},{id:'tmc',l:'Corporate TMCs'},{id:'social',l:'Social Commerce'},{id:'ecom',l:'E-commerce'},{id:'direct',l:'Direct (Hotel Web)'}]},
-{id:'end',title:'Traveler',color:'var(--dark)',x:1100,nodes:[{id:'leisure',l:'🧳 Leisure'},{id:'business',l:'💼 Business'},{id:'group',l:'👥 Group/MICE'}]},
-];
-const red='#C0392B',gray='#C8C4BC';
-const EDGES=[['hotels','pms',gray],['hotels','crs',red],['hotels','rms',gray],['airlines','pss',gray],['cruise','cruise_res',red],['rail','rail_res',gray],['vr','vr_pms',gray],['car','car_agg',gray],['activities','dmc_sw',red],['pms','ch_mgr',gray],['pms','conn_hub',red],['crs','ch_mgr',red],['crs','conn_hub',red],['crs','gds',gray],['rms','conn_hub',gray],['pss','gds',gray],['pss','air_agg',red],['pss','ndc',gray],['cruise_res','conn_hub',red],['cruise_res','gds',gray],['rail_res','train_agg',gray],['rail_res','conn_hub',red],['vr_pms','ch_mgr',gray],['vr_pms','conn_hub',red],['conn_hub','booking',red],['conn_hub','dyn_pkg',red],['conn_hub','ancillary',red],['conn_hub','to_sys',gray],['conn_hub','agency',gray],['gds','booking',gray],['gds','to_sys',gray],['ch_mgr','ota',gray],['ch_mgr','meta',gray],['air_agg','booking',red],['air_agg','dyn_pkg',red],['bedbank','booking',red],['bedbank','ota',gray],['content','conn_hub',red],['content','booking',red],['ndc','booking',gray],['ndc','air_agg',gray],['train_agg','booking',gray],['car_agg','booking',gray],['booking','ota',gray],['booking','ta',gray],['booking','tmc',gray],['booking','direct',red],['booking','ecom',gray],['dyn_pkg','ota',gray],['dyn_pkg','ta',gray],['dyn_pkg','booking',red],['ancillary','booking',red],['to_sys','ta',gray],['agency','ta',gray],['dmc_sw','to_sys',red],['dmc_sw','booking',red],['dest_os','direct',red],['dest_os','social',gray],['crm','ta',red],['crm','direct',red],['crm','booking',red],['ota','leisure',gray],['ota','business',gray],['meta','leisure',gray],['ta','leisure',gray],['ta','group',gray],['tmc','business',gray],['social','leisure',gray],['ecom','leisure',gray],['direct','leisure',red],['direct','business',gray]];
 
-const map=document.createElement('div');map.className='conn-map';
-const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.classList.add('conn-svg');svg.setAttribute('width','100%');svg.setAttribute('height','100%');map.appendChild(svg);
-const nEls={};
-COLS.forEach(col=>{const cEl=document.createElement('div');cEl.className='col';cEl.style.left=col.x+'px';cEl.style.top='10px';
-const t=document.createElement('div');t.className='col-title';t.style.background=col.color;t.textContent=col.title;cEl.appendChild(t);
-col.nodes.forEach(nd=>{const el=document.createElement('div');el.className=`cn${nd.j?' j':''}`;el.dataset.id=nd.id;let ih=nd.l;if(nd.s)ih+=`<span class="cn-sub">${nd.s}</span>`;el.innerHTML=ih;cEl.appendChild(el);nEls[nd.id]=el});
-map.appendChild(cEl)});w.appendChild(map);
+// Define the chain: each supply type has its own path through the layers
+const CHAINS={
+  hotels:{icon:'🏨',label:'Hotels',layers:[
+    {title:'Core Systems',color:'#8B3A3A',nodes:[{id:'pms',l:'PMS',d:'Manages rooms, reservations, check-in/out'},{id:'crs',l:'CRS',j:1,s:'Hotetec',d:'Central rates & inventory across channels'},{id:'rms',l:'RMS',d:'Dynamic pricing optimization'}]},
+    {title:'Distribution',color:'#6B3030',nodes:[{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Routes bookings between 500+ suppliers & 550+ clients'},{id:'ch_mgr',l:'Channel Manager',s:'Hotetec',d:'Syncs rates across OTAs, GDS, metasearch'},{id:'gds',l:'GDS',d:'Amadeus, Sabre, Travelport'},{id:'bedbank',l:'Bedbank',j:1,s:'DOME',d:'Wholesale hotel marketplace'},{id:'content',l:'Content Mapping',j:1,s:'Vervotech',d:'AI-powered hotel & room normalization'}]},
+    {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4',d:'Multi-channel B2B/B2C booking platform'},{id:'dyn_pkg',l:'Dynamic Packaging',j:1,s:'Peakwork',d:'Real-time flight+hotel+transfer packages'},{id:'dest_os',l:'Destination OS',j:1,s:'Alturos',d:'SaaS for destination marketing & sales'},{id:'crm',l:'Travel CRM',j:1,s:'Inspiretec',d:'Guest lifecycle & retention management'}]},
+    {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'Booking.com, Expedia, etc.'},{id:'meta',l:'Metasearch',d:'Google Hotels, Trivago, Kayak'},{id:'ta',l:'Travel Agencies',d:'Traditional & online TAs'},{id:'direct',l:'Direct Booking',d:'Hotel own website & app'}]},
+    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure Traveler'},{id:'business',l:'💼 Business Traveler'}]},
+  ]},
+  airlines:{icon:'✈️',label:'Airlines',layers:[
+    {title:'Core Systems',color:'#8B3A3A',nodes:[{id:'pss',l:'PSS',d:'Airline reservations, inventory & ticketing core'},{id:'rms_air',l:'Revenue Mgmt',d:'Yield optimization & fare management'}]},
+    {title:'Distribution',color:'#6B3030',nodes:[{id:'gds',l:'GDS',d:'Amadeus, Sabre, Travelport'},{id:'air_agg',l:'Air Aggregator',j:1,s:'Lleego + InteRES',d:'Unified GDS + NDC + direct API'},{id:'ndc',l:'NDC / LCC',d:'New Distribution Capability — richer content'},{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Routes bookings to downstream sellers'}]},
+    {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4',d:'Multi-product search & book'},{id:'dyn_pkg',l:'Dynamic Packaging',j:1,s:'Peakwork',d:'Flight + hotel + transfer bundles'},{id:'to_sys',l:'Tour Op. System',d:'Package creation & operations'},{id:'ancillary',l:'Ancillary Mgmt',j:1,s:'Juniper TT',d:'Seat selection, bags, insurance upsells'}]},
+    {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'Expedia, lastminute, etc.'},{id:'ta',l:'Travel Agencies',d:'IATA agents & online TAs'},{id:'tmc',l:'Corporate TMCs',d:'Business travel management'}]},
+    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure Traveler'},{id:'business',l:'💼 Business Traveler'}]},
+  ]},
+  cruise:{icon:'🚢',label:'Cruise',layers:[
+    {title:'Core Systems',color:'#8B3A3A',nodes:[{id:'cruise_res',l:'Cruise Reservation',j:1,s:'IST',d:'Cabin inventory, itineraries, 30+ cruise line APIs'},{id:'event_mgmt',l:'Event Management',j:1,s:'RezMagic',d:'Cruise events, group booking, deck maps'}]},
+    {title:'Distribution',color:'#6B3030',nodes:[{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Routes cruise bookings to sellers'},{id:'gds',l:'GDS',d:'Amadeus, Sabre cruise modules'}]},
+    {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Traveltek + Juniper TT',d:'Cruise search with cabin selection'},{id:'dyn_pkg',l:'Dynamic Packaging',j:1,s:'Peakwork',d:'Cruise + flight + hotel packages'},{id:'to_sys',l:'Tour Op. System',d:'Cruise-specialist tour operators'}]},
+    {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'Cruise-focused OTAs'},{id:'ta',l:'Travel Agencies',d:'Cruise specialist agents'},{id:'direct',l:'Direct Booking',d:'Cruise line websites'}]},
+    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure Traveler'},{id:'group',l:'👥 Group / MICE'}]},
+  ]},
+  rail:{icon:'🚄',label:'Rail',layers:[
+    {title:'Core Systems',color:'#8B3A3A',nodes:[{id:'rail_res',l:'Rail Reservation',d:'Schedules, seats, fares by operator'},{id:'ticketing',l:'Ticketing & Fares',d:'Cross-border fare calculation'}]},
+    {title:'Distribution',color:'#6B3030',nodes:[{id:'train_agg',l:'Train Aggregator',d:'Multi-operator search & booking'},{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Integrates rail into travel packages'}]},
+    {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4',d:'Rail + hotel + transfer booking'},{id:'dyn_pkg',l:'Dynamic Packaging',j:1,s:'Peakwork',d:'Rail-based package creation'}]},
+    {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'Trainline, Omio, etc.'},{id:'ta',l:'Travel Agencies'}]},
+    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure'},{id:'business',l:'💼 Business'}]},
+  ]},
+  car:{icon:'🚗',label:'Car Rental',layers:[
+    {title:'Distribution',color:'#6B3030',nodes:[{id:'car_agg',l:'Car Rental Aggregator',d:'Aggregates Hertz, Avis, Sixt, etc.'},{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Integrates car into multi-product booking'}]},
+    {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4',d:'Car as standalone or package add-on'},{id:'dyn_pkg',l:'Dynamic Packaging',j:1,s:'Peakwork',d:'Flight + hotel + car bundles'}]},
+    {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms'},{id:'ta',l:'Travel Agencies'},{id:'direct',l:'Direct Booking'}]},
+    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure'},{id:'business',l:'💼 Business'}]},
+  ]},
+  activities:{icon:'🎯',label:'Tours & Activities',layers:[
+    {title:'Core Systems',color:'#8B3A3A',nodes:[{id:'dmc_sw',l:'DMC Software',j:1,s:'Dome',d:'All-in-one contracting, ops & distribution'}]},
+    {title:'Distribution',color:'#6B3030',nodes:[{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Connects activity inventory to sellers'},{id:'dest_os',l:'Destination OS',j:1,s:'Alturos',d:'Destination marketing to consumers & resellers'}]},
+    {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4',d:'Activity booking & add-ons'},{id:'to_sys',l:'Tour Op. System',d:'Package with flights & hotels'}]},
+    {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'GetYourGuide, Viator, etc.'},{id:'ta',l:'Travel Agencies'},{id:'social',l:'Social Commerce',d:'Instagram, TikTok bookings'}]},
+    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure Traveler'}]},
+  ]},
+  vr:{icon:'🏡',label:'Vacation Rental',layers:[
+    {title:'Core Systems',color:'#8B3A3A',nodes:[{id:'vr_pms',l:'VR PMS',d:'Calendars, pricing, owner reporting'},{id:'smart_lock',l:'Smart Lock / Check-in',d:'Digital access & self check-in'}]},
+    {title:'Distribution',color:'#6B3030',nodes:[{id:'ch_mgr',l:'Channel Manager',s:'Hotetec',d:'Syncs across Airbnb, VRBO, Booking'},{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Connects VR inventory to B2B sellers'}]},
+    {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4',d:'Direct VR booking website'}]},
+    {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'Airbnb, VRBO, Booking.com'},{id:'direct',l:'Direct Booking',d:'Owner/manager website'}]},
+    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure Traveler'}]},
+  ]},
+};
 
-requestAnimationFrame(()=>{
-const mr=map.getBoundingClientRect();const nP={};
-Object.entries(nEls).forEach(([id,el])=>{const r=el.getBoundingClientRect();nP[id]={l:r.left-mr.left,r:r.left-mr.left+r.width,cy:r.top-mr.top+r.height/2}});
-svg.setAttribute('viewBox',`0 0 ${map.offsetWidth} ${map.offsetHeight}`);
-const eEls=[];
-EDGES.forEach(([f,t,c])=>{const a=nP[f],b=nP[t];if(!a||!b)return;const x1=a.r,y1=a.cy,x2=b.l,y2=b.cy,cpx=(x1+x2)/2;
-const p=document.createElementNS('http://www.w3.org/2000/svg','path');p.setAttribute('d',`M${x1},${y1} C${cpx},${y1} ${cpx},${y2} ${x2},${y2}`);p.setAttribute('fill','none');p.setAttribute('stroke',c);p.setAttribute('stroke-width',c===red?'1.8':'1');p.setAttribute('stroke-opacity',c===red?'.3':'.1');p.dataset.from=f;p.dataset.to=t;svg.appendChild(p);eEls.push(p)});
+let selectedSupply=null;
 
-let active=null;
-function hl(nid){
-  if(active===nid){active=null;map.classList.remove('has-focus');document.querySelectorAll('.cn').forEach(n=>n.classList.remove('lit'));eEls.forEach(e=>e.classList.remove('lit'));closePanel();return}
-  active=nid;map.classList.add('has-focus');document.querySelectorAll('.cn').forEach(n=>n.classList.remove('lit'));eEls.forEach(e=>e.classList.remove('lit'));
-  const conn=new Set([nid]);eEls.forEach(e=>{if(e.dataset.from===nid||e.dataset.to===nid){e.classList.add('lit');conn.add(e.dataset.from);conn.add(e.dataset.to)}});
-  conn.forEach(id=>{if(nEls[id])nEls[id].classList.add('lit')});
-  openNodePanel(nid);
+function renderVC(){
+  w.innerHTML=`<div class="vc-hint"><b>Select a travel product</b> to see its full technology chain — from supply to traveler</div>`;
+  const flow=document.createElement('div');flow.className='conn-flow';
+
+  // Supply column — always visible
+  const supCol=document.createElement('div');supCol.className='cf-col';
+  supCol.innerHTML=`<div class="cf-header" style="background:var(--red)">Supply</div>`;
+  const supNodes=document.createElement('div');supNodes.className='cf-nodes';
+  Object.entries(CHAINS).forEach(([key,chain])=>{
+    const n=document.createElement('div');
+    n.className=`cn${selectedSupply===key?' selected':''}`;
+    n.innerHTML=`<span style="font-size:1rem;margin-right:4px">${chain.icon}</span> ${chain.label}`;
+    n.onclick=()=>{selectedSupply=selectedSupply===key?null:key;renderVC()};
+    supNodes.appendChild(n);
+  });
+  supCol.appendChild(supNodes);
+  flow.appendChild(supCol);
+
+  // If a supply is selected, render its chain
+  if(selectedSupply){
+    const chain=CHAINS[selectedSupply];
+    chain.layers.forEach((layer,li)=>{
+      // Arrow
+      const arrow=document.createElement('div');arrow.className='cf-arrow';
+      arrow.innerHTML=`<svg viewBox="0 0 32 24"><path d="M4 12h20M18 6l8 6-8 6" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      flow.appendChild(arrow);
+
+      // Column
+      const col=document.createElement('div');col.className='cf-col';col.style.animationDelay=(li*0.08)+'s';
+      col.innerHTML=`<div class="cf-header" style="background:${layer.color}">${layer.title}</div>`;
+      const nodes=document.createElement('div');nodes.className='cf-nodes';
+      layer.nodes.forEach(nd=>{
+        const n=document.createElement('div');
+        n.className=`cn${nd.j?' j':''}`;
+        let ih=nd.l;
+        if(nd.s)ih+=`<span class="cn-sub">${nd.s}</span>`;
+        if(nd.d)ih+=`<span class="cn-desc">${nd.d}</span>`;
+        n.innerHTML=ih;
+        n.onclick=()=>openNodePanel(nd.id);
+        nodes.appendChild(n);
+      });
+      col.appendChild(nodes);
+      flow.appendChild(col);
+    });
+  }
+
+  w.appendChild(flow);
 }
-Object.entries(nEls).forEach(([id,el])=>{el.addEventListener('click',()=>hl(id))});
-map.addEventListener('click',e=>{if(!e.target.closest('.cn')&&active){active=null;map.classList.remove('has-focus');document.querySelectorAll('.cn').forEach(n=>n.classList.remove('lit'));eEls.forEach(e=>e.classList.remove('lit'));closePanel()}});
-})}
+
+renderVC();
+}
 
 // ====== FLOW ======
 const FL=[{label:"Supply",groups:[{t:"Accommodation",items:["Hotels","Clubs","Camping","VR"]},{t:"Transport",items:["Air","Rail","Car"]},{t:"Other",items:["Cruise","Activities"]}]},{label:"Core",groups:[{t:"Accomm.",items:[{t:"PMS",b:"gap"},{t:"CRS",b:"partial",c:"Hotetec"},{t:"RMS",b:"gap"}]},{t:"Transport",items:[{t:"PSS"},{t:"Airline Res."}]},{t:"Cruise",j:1,items:[{t:"Cruise Res.",b:"current",c:"IST"}]}]},{label:"Distribution",groups:[{t:"Aggregators",items:[{t:"OTAs"},{t:"Bedbanks",b:"partial",c:"DOME"}]},{t:"Tech Hub",j:1,items:[{t:"Connectivity Hub",b:"core",c:"Juniper TT"},{t:"GDS"},{t:"Content Map",b:"current",c:"Vervotech"}]},{t:"Transport Agg.",j:1,items:[{t:"Air Agg.",b:"current",c:"Lleego"},{t:"NDC"},{t:"Train Agg."}]}]},{label:"Retail",groups:[{t:"Packaging",j:1,items:[{t:"Dynamic Pkg",b:"core",c:"Peakwork"},{t:"Ancillary",b:"partial",c:"Juniper TT"}]},{t:"Booking",j:1,items:[{t:"Booking Engine",b:"current",c:"Juniper TT +4"},{t:"B2B Portal"}]},{t:"TA/TO",items:[{t:"Tour Op."},{t:"Agency"},{t:"DMC Sw.",b:"current",c:"Dome"}]}]},{label:"B2C",groups:[{t:"Online",items:[{t:"OTAs"},{t:"Metasearch"},{t:"Social"}]},{t:"Agencies",items:[{t:"TAs"},{t:"TMCs"}]}]}];
