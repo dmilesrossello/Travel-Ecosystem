@@ -226,6 +226,8 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 .cf-node.j{background:#fff;border-color:var(--red);cursor:pointer;padding-left:15px}
 .cf-node.j:hover{box-shadow:0 4px 14px rgba(192,57,43,.18);transform:translateY(-1px)}
 .cf-node.j::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--red);border-radius:8px 0 0 8px}
+.cf-node.gap{background:#FAF8F7;border-style:dashed;border-color:#D8CCCC;opacity:.88}
+.cf-node.gap .cf-node-ttl{color:#777}
 .cf-node-ttl{font-size:.76rem;font-weight:700;color:var(--charcoal);display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .cf-jpill{font-size:.46rem;font-weight:800;background:var(--red);color:#fff;padding:2px 5px;border-radius:3px;letter-spacing:.06em;text-transform:uppercase}
 .cf-node-sub{font-size:.62rem;font-weight:600;color:var(--red);margin-top:3px}
@@ -414,13 +416,13 @@ facts:[{v:"25+",l:"Years"},{v:"CRM+Booking",l:"Integrated"}],tags:["CRM","Reserv
 ];
 
 // ====== NAV ======
-const TABS=[{id:'home',label:'Home'},{id:'vc',label:'Connectivity'},{id:'fy',label:'Capabilities'},{id:'grid',label:'Detail Grid'},{id:'insights',label:'Industry Insights'}];
+const TABS=[{id:'home',label:'Home'},{id:'vc',label:'Connectivity'},{id:'fy',label:'Capabilities'},{id:'insights',label:'Industry Insights'}];
 const nav=document.getElementById('nav');const vc_c=document.getElementById('views-container');
 TABS.forEach((t,i)=>{const b=document.createElement('button');b.className=`nav-btn${i===0?' on':''}`;b.dataset.tab=t.id;b.textContent=t.label;nav.appendChild(b)});
 TABS.forEach(t=>{const v=document.createElement('div');v.className=`view${t.id==='home'?' active':''}`;v.id=`view-${t.id}`;vc_c.appendChild(v)});
 const buDV=document.createElement('div');buDV.className='view';buDV.id='view-bu';vc_c.appendChild(buDV);
 
-function showTab(id){document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('on',b.dataset.tab===id));document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(`view-${id}`).classList.add('active');closePanel();if(id==='vc'&&!vcB)buildVC();if(id==='grid'&&!grB)buildGrid();if(id==='fy'&&!fyB)buildFY()}
+function showTab(id){document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('on',b.dataset.tab===id));document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(`view-${id}`).classList.add('active');closePanel();if(id==='vc'&&!vcB)buildVC();if(id==='fy'&&!fyB)buildFY()}
 nav.addEventListener('click',e=>{if(e.target.classList.contains('nav-btn'))showTab(e.target.dataset.tab)});
 
 // ====== DETAIL PANEL ======
@@ -531,7 +533,7 @@ function showBU(buId){
         <a href="https://juniper-group.com/our-companies" target="_blank" rel="noopener" class="hh-cta ghost">Our Companies</a>
       </div>
       <div class="csi-stats">
-        <div class="csi-stat"><div class="cs-val">US$11B+</div><div class="cs-lab">CSI Revenues</div></div>
+        <div class="csi-stat"><div class="cs-val">US$11B+</div><div class="cs-lab">Revenues</div></div>
         <div class="csi-stat"><div class="cs-val">6</div><div class="cs-lab">Operating Groups</div></div>
         <div class="csi-stat"><div class="cs-val">1,100+</div><div class="cs-lab">Businesses · 150+ Verticals</div></div>
         <div class="csi-stat"><div class="cs-val">125,000+</div><div class="cs-lab">Customers · 100+ Countries</div></div>
@@ -700,20 +702,20 @@ const CHAINS={
     {title:'Core Systems',color:'#8B3A3A',nodes:[{id:'rail_res',l:'Rail Reservation',d:'Schedules, seats, fares by operator'},{id:'ticketing',l:'Ticketing & Fares',d:'Cross-border fare calculation'}]},
     {title:'Distribution',color:'#6B3030',nodes:[{id:'train_agg',l:'Train Aggregator',d:'Multi-operator search & booking'},{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Integrates rail into travel packages'}]},
     {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4',d:'Rail + hotel + transfer booking'},{id:'dyn_pkg',l:'Dynamic Packaging',j:1,s:'Peakwork',d:'Rail-based package creation'}]},
-    {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'Trainline, Omio, etc.'},{id:'ta',l:'Travel Agencies'}]},
+    {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'Trainline, Omio, etc.'},{id:'ta',l:'Travel Agencies',d:'Include rail in mixed itineraries'}]},
     {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure'},{id:'business',l:'💼 Business'}]},
   ]},
   car:{icon:'🚗',label:'Car Rental',layers:[
     {title:'Distribution',color:'#6B3030',nodes:[{id:'car_agg',l:'Car Rental Aggregator',d:'Aggregates Hertz, Avis, Sixt, etc.'},{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Integrates car into multi-product booking'}]},
     {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4',d:'Car as standalone or package add-on'},{id:'dyn_pkg',l:'Dynamic Packaging',j:1,s:'Peakwork',d:'Flight + hotel + car bundles'}]},
-    {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms'},{id:'ta',l:'Travel Agencies'},{id:'direct',l:'Direct Booking'}]},
+    {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'Expedia, Booking.com, Kayak'},{id:'ta',l:'Travel Agencies',d:'Add car to full-trip booking'},{id:'direct',l:'Direct Booking',d:'Hertz, Avis, Sixt own sites'}]},
     {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure'},{id:'business',l:'💼 Business'}]},
   ]},
   activities:{icon:'🎯',label:'Tours & Activities',layers:[
     {title:'Core Systems',color:'#8B3A3A',nodes:[{id:'dmc_sw',l:'DMC Software',j:1,s:'Dome',d:'All-in-one contracting, ops & distribution'}]},
     {title:'Distribution',color:'#6B3030',nodes:[{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Connects activity inventory to sellers'},{id:'dest_os',l:'Destination OS',j:1,s:'Alturos',d:'Destination marketing to consumers & resellers'}]},
     {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4',d:'Activity booking & add-ons'},{id:'to_sys',l:'Tour Op. System',d:'Package with flights & hotels'}]},
-    {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'GetYourGuide, Viator, etc.'},{id:'ta',l:'Travel Agencies'},{id:'social',l:'Social Commerce',d:'Instagram, TikTok bookings'}]},
+    {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'GetYourGuide, Viator, etc.'},{id:'ta',l:'Travel Agencies',d:'Agent-booked tours & excursions'},{id:'social',l:'Social Commerce',d:'Instagram, TikTok bookings'}]},
     {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure Traveler'}]},
   ]},
   vr:{icon:'🏡',label:'Vacation Rental',layers:[
@@ -759,19 +761,23 @@ function renderVC(){
 
   const chain=CHAINS[selectedSupply];
   const stack=document.createElement('div');stack.className='vc-flow-stack';
+  const skipGapLayers=new Set(['End Channels','Traveler']);
   chain.layers.forEach((layer,li)=>{
     const row=document.createElement('div');row.className='cf-layer';row.style.animationDelay=(li*0.08)+'s';
     const jcount=layer.nodes.filter(n=>n.j).length;
+    const gapcount=skipGapLayers.has(layer.title)?0:layer.nodes.filter(n=>!n.j).length;
     row.innerHTML=`<div class="cf-layer-hdr">
       <div class="cf-layer-num" style="background:${layer.color}">${li+1}</div>
       <div class="cf-layer-ttl">${layer.title}</div>
-      <div class="cf-layer-count">${layer.nodes.length} node${layer.nodes.length===1?'':'s'}${jcount?` · ${jcount} Juniper Group`:''}</div>
+      <div class="cf-layer-count">${layer.nodes.length} node${layer.nodes.length===1?'':'s'}${jcount?` · ${jcount} Juniper Group`:''}${gapcount?` · ${gapcount} Gap`:''}</div>
     </div>`;
     const nodes=document.createElement('div');nodes.className='cf-nodes-row';
     layer.nodes.forEach(nd=>{
       const n=document.createElement('div');
-      n.className=`cf-node${nd.j?' j':''}`;
-      let ih=`<div class="cf-node-ttl">${nd.l}${nd.j?' <span class="cf-jpill">Juniper Group</span>':''}</div>`;
+      const showGap=!nd.j && !skipGapLayers.has(layer.title);
+      n.className=`cf-node${nd.j?' j':''}${showGap?' gap':''}`;
+      const badgePill=nd.j?'<span class="cf-jpill">Juniper Group</span>':(showGap?'<span class="sb gap">Gap</span>':'');
+      let ih=`<div class="cf-node-ttl">${nd.l}${badgePill?' '+badgePill:''}</div>`;
       if(nd.s)ih+=`<div class="cf-node-sub">${nd.s}</div>`;
       if(nd.d)ih+=`<div class="cf-node-desc">${nd.d}</div>`;
       n.innerHTML=ih;
@@ -802,70 +808,14 @@ row.appendChild(bd);w.appendChild(row)});
 const af=document.createElement('div');af.className='flow-arrow-row';af.innerHTML='<span>▼</span>';w.appendChild(af);
 const tv=document.createElement('div');tv.className='traveler-box';tv.textContent='🧳 Traveler';w.appendChild(tv)}
 
-// ====== GRID ======
-const GD=[{id:1,n:"Core Reservation & Inventory",c:"#C0392B",groups:[{l:"Accommodation",items:[{n:"PMS",j:"gap"},{n:"CRS",j:"partial",c:"Hotetec"},{n:"RMS",j:"gap"},{n:"Guest Experience"},{n:"Hotel Ops"}]},{l:"Airlines",items:[{n:"PSS",j:"gap"},{n:"Airline Res."},{n:"DCS"}]},{l:"Cruise",items:[{n:"Cruise Res.",j:"current",c:"IST"}]},{l:"VR",items:[{n:"VR PMS"},{n:"Smart Lock"}]}]},{id:2,n:"Distribution & Connectivity",c:"#8B3A3A",groups:[{l:"Core",items:[{n:"GDS"},{n:"Connectivity Hub",j:"core",c:"Juniper TT"},{n:"XML/API"},{n:"Content Map",j:"current",c:"Vervotech"},{n:"Channel Mgr",j:"gap",c:"Hotetec"}]},{l:"Aggregation",items:[{n:"Air Agg.",j:"current",c:"Lleego"},{n:"Bedbank",j:"partial",c:"DOME"},{n:"NDC/LCC"},{n:"Train Agg."}]}]},{id:3,n:"Retail & Commerce",c:"#6B3030",groups:[{l:"Sales",items:[{n:"Booking Engine",j:"current",c:"Juniper TT +4"},{n:"OTA Platform",j:"gap"},{n:"B2B Portal"}]},{l:"Packaging",items:[{n:"Dynamic Pkg",j:"core",c:"Peakwork"},{n:"Ancillary",j:"partial",c:"Juniper TT"},{n:"Offer Mgmt"}]},{l:"TA/TO",items:[{n:"Tour Op."},{n:"Agency"},{n:"DMC Sw.",j:"current",c:"Dome"}]}]},{id:4,n:"Payments & Fintech",c:"#4A2424",groups:[{l:"Payments",items:[{n:"Gateway",j:"gap"},{n:"PSP",j:"gap"},{n:"VCC",j:"partial"},{n:"Fraud",j:"gap"},{n:"Insurance"}]}]},{id:5,n:"Customer Lifecycle",c:"#3A3A3A",groups:[{l:"CRM",items:[{n:"Travel CRM",j:"current",c:"Inspiretec"},{n:"Support",j:"partial",c:"Inspiretec"},{n:"Loyalty",j:"gap"},{n:"CDP",j:"emerging"},{n:"Personalization",j:"future"}]}]},{id:6,n:"Data & Intelligence",c:"#2C2C2C",groups:[{l:"Data",items:[{n:"Data Warehouse",j:"core",c:"Juniper TT"},{n:"BI",j:"current",c:"Juniper TT"},{n:"AI Opt.",j:"future"},{n:"Reporting"}]}]},{id:7,n:"Ops & Compliance",c:"#1A1A1A",groups:[{l:"Ops",items:[{n:"Check-in"},{n:"Trip Mgmt"},{n:"Disruption"}]},{l:"Digital",items:[{n:"CMS"},{n:"API Mgmt"},{n:"Mobile"}]},{l:"Compliance",items:[{n:"KYC"},{n:"Regulatory"}]}]}];
-
+// ====== SHARED BADGE HELPER (used by Connectivity) ======
 function badge(j){const m={core:['Core','core'],current:['Current','core'],partial:['Partial','partial'],gap:['Gap','gap'],emerging:['Emerging','future'],future:['Future','future']};const v=m[j];return v?`<span class="sb ${v[1]}">${v[0]}</span>`:''}
-let grB=false;let grJunOnly=false;
-function buildGrid(){grB=true;const w=document.getElementById('view-grid');w.innerHTML='';
-// Compute coverage stats
-let totalNodes=0,junNodes=0;
-GD.forEach(l=>l.groups.forEach(g=>g.items.forEach(it=>{totalNodes++;if(it.j&&it.j!=='gap')junNodes++})));
-const coverage=Math.round((junNodes/totalNodes)*100);
-// Stats strip
-const stats=document.createElement('div');stats.className='gv-stats';
-stats.innerHTML=`
-  <div class="gv-stat"><div class="gvs-v"><span class="hl">${junNodes}</span> <span class="um">/ ${totalNodes}</span></div><div class="gvs-l">Juniper Group-covered nodes</div></div>
-  <div class="gv-stat"><div class="gvs-v">${coverage}<span style="font-size:1rem;font-weight:700;opacity:.7">%</span></div><div class="gvs-l">Portfolio coverage</div></div>
-  <div class="gv-stat"><div class="gvs-v">${GD.length}</div><div class="gvs-l">Ecosystem layers</div></div>
-  <div class="gv-stat"><div class="gvs-v">7</div><div class="gvs-l">Supply verticals</div></div>`;
-w.appendChild(stats);
-// Sticky sub-nav
-const subnav=document.createElement('div');subnav.className='gv-subnav';
-GD.forEach(l=>{const b=document.createElement('button');b.className='gv-subnav-btn';
-  b.innerHTML=`<span class="gvn-n" style="background:${l.c}">${l.id}</span><span>${l.n}</span>`;
-  b.onclick=()=>{const el=document.getElementById('gv-sec-'+l.id);if(el)el.scrollIntoView({behavior:'smooth',block:'start'})};
-  subnav.appendChild(b)});
-w.appendChild(subnav);
-// Legend + filter row
-const ctrl=document.createElement('div');ctrl.className='gv-controls';
-ctrl.innerHTML=`
-  <div class="gv-legend">
-    <span class="gv-legend-ttl">Legend</span>
-    <span class="gv-legend-item"><span class="sb core">Core</span>Juniper Group flagship</span>
-    <span class="gv-legend-item"><span class="sb core">Current</span>Active product</span>
-    <span class="gv-legend-item"><span class="sb partial">Partial</span>Partial coverage</span>
-    <span class="gv-legend-item"><span class="sb gap">Gap</span>Not yet covered</span>
-    <span class="gv-legend-item"><span class="sb future">Future</span>Roadmap / emerging</span>
-  </div>
-  <button class="gv-filter${grJunOnly?' on':''}" id="gv-filter-btn" type="button"><span class="gvf-dot"></span>${grJunOnly?'Showing Juniper Group only':'Show Juniper Group-covered only'}</button>`;
-w.appendChild(ctrl);
-document.getElementById('gv-filter-btn').onclick=()=>{grJunOnly=!grJunOnly;buildGrid()};
-// Sections
-GD.forEach((l,li)=>{const s=document.createElement('div');s.className='gv-sec';s.id='gv-sec-'+l.id;s.style.animationDelay=(li*.04)+'s';
-s.innerHTML=`<div class="gv-hdr"><div class="gv-num" style="background:${l.c}">${l.id}</div><div class="gv-ttl">${l.n}</div></div>`;
-const g=document.createElement('div');g.className='gv-grid';
-l.groups.forEach(gr=>{const hj=gr.items.some(i=>i.j&&i.j!=='gap');
-  const cd=document.createElement('div');
-  cd.className=`gv-card${hj?' hj':''}${grJunOnly&&!hj?' hide':''}`;
-  if(hj)cd.style.borderLeft='4px solid '+l.c;
-  let h=`<div class="gc-t">${gr.l}</div>`;
-  gr.items.forEach(it=>{
-    const isJ=it.j&&it.j!=='gap';
-    const nameCls=isJ?'gc-n jclk':'gc-n';
-    h+=`<div class="gc-r"><span class="${nameCls}" data-jn="${isJ?it.n.replace(/"/g,'&quot;'):''}">${it.n}</span><div style="display:flex;gap:3px;align-items:center">${it.c?`<span class="gc-c">${it.c.split(',')[0]}</span>`:''}${it.j?badge(it.j):''}</div></div>`;
-  });
-  cd.innerHTML=h;
-  cd.querySelectorAll('.jclk').forEach(el=>{el.onclick=(ev)=>{ev.stopPropagation();const name=el.getAttribute('data-jn');if(!name)return;const nid=Object.keys(NODE_INFO).find(k=>NODE_INFO[k].title.toLowerCase().includes(name.toLowerCase().slice(0,5)));if(nid)openNodePanel(nid)}});
-  g.appendChild(cd)});
-s.appendChild(g);w.appendChild(s)})}
-// end buildGrid
 
 // ====== FOR YOU ======
 // Company types derived from each BU's stated client base across the ecosystem.
 const CLIENT_TYPES=[
   {id:'ota',icon:'💻',label:'OTA',full:'Online Travel Agency',tileTop:true,
-   narrative:"OTAs win on breadth, speed and conversion. Juniper Group's stack gives you a single booking engine wired to 500+ suppliers, AI-normalised hotel content, unified air distribution and cruise supply — all packaged in real time.",
+   narrative:"OTAs win on breadth, speed and conversion. Juniper Group's stack gives you a single booking engine wired to 500+ suppliers, AI-normalised hotel content, unified air distribution, cruise supply and Roibos's direct-contracted hotel inventory — all packaged in real time.",
    stack:[
      {g:'Core booking & retail',items:[
        {bu:'juniper-tt',p:'Booking Engine',why:'Multi-product B2B/B2C/B2B2C platform, white-label ready, used by 400+ platforms.'},
@@ -874,7 +824,8 @@ const CLIENT_TYPES=[
        {bu:'juniper-tt',p:'XML / API Hub',why:'One pipe to 500+ suppliers and 550+ clients.'},
        {bu:'vervotech',p:'Hotel & Room Mapping',why:'99%+ accurate dedup across bedbank, GDS and direct supply.'},
        {bu:'lleego',p:'Flight Aggregation',why:'GDS + NDC + direct carriers behind a single API.'},
-       {bu:'ist',p:'Cruise API',why:'30+ cruise lines, real-time cabin availability.'}]},
+       {bu:'ist',p:'Cruise API',why:'30+ cruise lines, real-time cabin availability.'},
+       {bu:'roibos',p:'B2B Hotel Supply',why:'Direct contracted hotel rates you cannot find on bedbanks — margin-accretive inventory.'}]},
      {g:'Customer lifecycle',items:[
        {bu:'inspiretec',p:'Travel CRM',why:'Convert browsers, re-engage past bookers, drive repeat revenue.'}]}
    ]},
@@ -929,7 +880,7 @@ const CLIENT_TYPES=[
        {bu:'vervotech',p:'Curated Content',why:'Clean, consistent descriptions, images and amenities everywhere you sell.'}]}
    ]},
   {id:'ta',icon:'🧳',label:'Travel Agency',full:'Travel Agency (Retail / Online)',tileTop:true,
-   narrative:"Agents need fast search across everything, strong post-booking tools, and CRM that turns a sale into a relationship. Inspiretec is the agent-first backbone, with Juniper TT and Lleego handling supply.",
+   narrative:"Agents need fast search across everything, strong post-booking tools, and CRM that turns a sale into a relationship. Inspiretec is the agent-first backbone, with Juniper TT and Lleego handling supply, and Roibos opening direct B2B hotel inventory you can't source through bedbanks.",
    stack:[
      {g:'Agent desktop',items:[
        {bu:'inspiretec',p:'Reservation System & CRM',why:'25+ years of agent-centric workflow: quote, book, amend, retain.'},
@@ -937,7 +888,8 @@ const CLIENT_TYPES=[
      {g:'Supply & search',items:[
        {bu:'juniper-tt',p:'Booking Engine',why:'Multi-product search across hotels, flights, cruise, packages.'},
        {bu:'lleego',p:'Flight Aggregation',why:'GDS + NDC + direct in one API.'},
-       {bu:'traveltek',p:'iSell Platform',why:'Especially strong for cruise-led agencies.'}]},
+       {bu:'traveltek',p:'iSell Platform',why:'Especially strong for cruise-led agencies.'},
+       {bu:'roibos',p:'B2B Hotel Supply',why:'Direct-contracted hotel inventory with better margins than bedbanks.'}]},
      {g:'Retention',items:[
        {bu:'inspiretec',p:'Loyalty & Rewards',why:'Points and tiers to lock in repeat travellers.'}]}
    ]},
