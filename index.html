@@ -41,7 +41,7 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 .hh-video-wrap{position:absolute;inset:0;z-index:0;overflow:hidden;background:#0f0f0f}
 .hh-video{position:absolute;top:50%;left:50%;min-width:100%;min-height:100%;width:auto;height:auto;transform:translate(-50%,-50%);object-fit:cover;opacity:0;transition:opacity 1.2s ease-in-out}
 .hh-video.active{opacity:1}
-.hh-video-poster{position:absolute;inset:0;background-size:cover;background-position:center;background-image:url('https://juniper-group.com/wp-content/uploads/2024/08/AdobeStock_701144251-1-scaled.jpeg');filter:brightness(.55)}
+.hh-video-poster{position:absolute;inset:0;background-size:cover;background-position:center;background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=80');filter:brightness(.55)}
 .hh-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(15,15,15,.55) 0%,rgba(20,20,20,.65) 60%,rgba(15,15,15,.78) 100%)}
 .hh-overlay::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(192,57,43,.18) 0%,transparent 55%)}
 .hh-content{position:relative;z-index:2;max-width:1600px;width:100%;margin:0 auto;padding:0 16px}
@@ -1530,6 +1530,158 @@ nav.nav:not(.tb-nav){display:none}
   .bu-info{padding:14px 18px 18px}
 }
 
+
+/* =========================================================
+   BLACK TOP BAR — investor-grade refinement
+   Single dark bar, bigger logo, larger text, white logo intact
+   ========================================================= */
+.topbar{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  padding:0 44px;
+  height:84px;
+  background:#0F0F0F;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  box-shadow:none;
+}
+.topbar .tb-brand{
+  display:flex;
+  align-items:center;
+  height:100%;
+}
+.topbar .tb-logo{
+  height:48px;
+  width:auto;
+  display:block;
+  filter:none;
+  image-rendering:-webkit-optimize-contrast;
+  image-rendering:crisp-edges;
+}
+.topbar .tb-divider{
+  width:1px;
+  height:34px;
+  background:rgba(255,255,255,.14);
+}
+.topbar .tb-title{
+  color:#fff;
+  font-size:.92rem;
+  font-weight:500;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  white-space:nowrap;
+}
+.topbar .tb-sub{
+  color:rgba(255,255,255,.55);
+  font-size:.74rem;
+  margin-left:8px;
+  font-weight:400;
+  letter-spacing:.06em;
+}
+.topbar .tb-spacer{flex:1}
+
+/* Internal navigation in the dark bar */
+.tb-nav{
+  display:flex;
+  align-items:center;
+  height:100%;
+  gap:0;
+  margin-left:28px;
+}
+.tb-nav .nav-btn{
+  background:none;
+  border:none;
+  height:84px;
+  padding:0 22px;
+  color:rgba(255,255,255,.65);
+  font-family:inherit;
+  font-size:.88rem;
+  font-weight:500;
+  letter-spacing:.005em;
+  text-transform:none;
+  cursor:pointer;
+  position:relative;
+  transition:color .25s ease;
+}
+.tb-nav .nav-btn:hover{
+  color:#fff;
+  background:transparent;
+}
+.tb-nav .nav-btn.on{
+  color:#fff;
+  font-weight:600;
+}
+.tb-nav .nav-btn.on::after{
+  content:"";
+  position:absolute;
+  left:22px;right:22px;
+  bottom:0;
+  height:2px;
+  background:var(--red);
+}
+
+/* About link — outlined button on dark bar */
+.topbar .tb-about{
+  display:inline-flex;
+  align-items:center;
+  height:40px;
+  padding:0 22px;
+  background:transparent;
+  border:1px solid rgba(255,255,255,.28);
+  color:#fff;
+  font-size:.82rem;
+  font-weight:500;
+  letter-spacing:.03em;
+  text-decoration:none;
+  border-radius:3px;
+  transition:all .25s ease;
+}
+.topbar .tb-about:hover{
+  background:var(--red);
+  border-color:var(--red);
+  color:#fff;
+}
+
+/* === MOBILE === */
+@media(max-width:900px){
+  .topbar{
+    flex-wrap:wrap;
+    height:auto;
+    padding:14px 22px;
+    gap:14px;
+    background:#0F0F0F;
+  }
+  .topbar .tb-logo{height:38px;filter:none}
+  .topbar .tb-title,
+  .topbar .tb-sub,
+  .topbar .tb-divider{display:none}
+  .tb-nav{
+    width:100%;
+    margin-left:0;
+    overflow-x:auto;
+    height:auto;
+  }
+  .tb-nav .nav-btn{
+    height:52px;
+    padding:0 14px;
+    font-size:.82rem;
+  }
+  .tb-nav .nav-btn.on::after{
+    left:14px;right:14px;
+  }
+  .topbar .tb-about{
+    margin-left:auto;
+    height:36px;
+    font-size:.76rem;
+  }
+}
+
+/* === Flush hero sections to top bar (remove white gap) === */
+#view-home,#view-vc,#view-fy{padding-top:0 !important}
+.home-hero{margin-top:0 !important}
+.vc-hero,.fy-hero{margin-top:0 !important}
+body{background:#FFFFFF}
+
 </style>
 </head>
 <body>
@@ -1749,14 +1901,18 @@ function showBU(buId){
 (function(){
   const w=document.getElementById('view-home');
   const HH_VIDEOS=[
-    // Beach — drone view of tropical coast with palm trees
+    // Tropical coast — drone over palm-lined beach
     'https://videos.pexels.com/video-files/11018437/11018437-hd_1920_1080_60fps.mp4',
-    // Skiing — ski resort panorama
-    'https://videos.pexels.com/video-files/4384957/4384957-hd_1920_1080_30fps.mp4',
+    // Aerial beach — drone over turquoise water
+    'https://videos.pexels.com/video-files/1093662/1093662-hd_1920_1080_30fps.mp4',
+    // Tropical island — Maldives-style aerial
+    'https://videos.pexels.com/video-files/856027/856027-hd_1920_1080_25fps.mp4',
     // Hotel / resort — aerial view of beautiful resort
     'https://videos.pexels.com/video-files/2169880/2169880-hd_1920_1080_30fps.mp4',
     // Cruise ship — aerial shot of cruise ship at sea
-    'https://videos.pexels.com/video-files/854976/854976-hd_1920_1080_25fps.mp4'
+    'https://videos.pexels.com/video-files/854976/854976-hd_1920_1080_25fps.mp4',
+    // Beach palms — coastal escape
+    'https://videos.pexels.com/video-files/2169307/2169307-hd_1920_1080_30fps.mp4'
   ];
   let h=`<div class="home-hero">
     <div class="hh-video-wrap">
