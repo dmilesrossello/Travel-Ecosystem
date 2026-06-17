@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Juniper Group — Travel & Hospitality Software Companies</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--red:#C0392B;--red-dark:#A93226;--red-light:#FDECEA;--red-mid:#E6A8A2;--charcoal:#2C2C2C;--charcoal-deep:#1F1F1F;--dark:#1A1A1A;--text:#2C2C2C;--text-mid:#555;--text-light:#888;--bg:#FFF;--bg-off:#F5F5F3;--bg-warm:#FAF8F5;--border:#E5E2DD;--teal:#009B9B;--teal-light:#E6F5F5;--teal-mid:#B3E0E0;--green:#00A676;--green-bg:#E8F7F1;--yellow:#D4920B;--yellow-bg:#FFF8E8;--purple:#6B4FBB;--purple-bg:#F0ECF9;--shadow:0 2px 8px rgba(0,0,0,.06)}
+:root{--red:#ED1A45;--red-dark:#C70F33;--red-light:#FCE4E9;--red-mid:#F2A6B5;--charcoal:#3B0505;--charcoal-deep:#2A0606;--dark:#1F0404;--text:#3B0505;--text-mid:#7A655F;--text-light:#A28A80;--bg:#FCF7F0;--bg-off:#F3E8DA;--bg-warm:#FFFBF5;--border:#EADFD0;--teal:#A8743C;--teal-light:#F3E7D7;--teal-mid:#E0C9AE;--green:#6E8B6A;--green-bg:#EDF1E8;--yellow:#C08A2E;--yellow-bg:#FBF1DD;--purple:#8A5A4E;--purple-bg:#F2E7E2;--shadow:0 4px 24px rgba(59,5,5,.06)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--bg);color:var(--text);font-family:'Inter','Plus Jakarta Sans',sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
 /* NAV — brand bar styled after juniper-group.com */
 .topbar{background:var(--charcoal-deep);padding:14px 40px;display:flex;align-items:center;gap:20px;border-bottom:1px solid rgba(255,255,255,.06)}
@@ -316,6 +316,95 @@ body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans
 
 .ftr{display:flex;justify-content:space-between;padding:14px 48px;max-width:1600px;margin:0 auto;border-top:1px solid var(--border);font-size:.58rem;color:var(--text-light)}
 @media(max-width:900px){.view{padding:16px 16px 32px}.home-hero{width:100vw;margin-left:calc(-50vw + 50%);margin-top:-16px;margin-bottom:24px;padding:64px 20px 56px;min-height:480px}.home-hero h1{font-size:2rem}.home-hero .hh-sub{font-size:.9rem}.csi-stat{padding:4px 14px 4px 0;margin-right:14px;margin-bottom:10px}.csi-stat .cs-val{font-size:1.15rem}.bu-grid{grid-template-columns:1fr}.detail-panel{width:100%}.topbar{padding:10px 18px;gap:12px}.topbar .tb-logo{height:26px}.topbar .tb-title,.topbar .tb-sub,.topbar .tb-divider,.topbar .tb-link{display:none}.hh-video-dots{right:20px;bottom:14px}.vc-hero{padding:40px 20px 58px;margin-top:-16px;margin-bottom:28px}.vc-hero h2{font-size:1.5rem}.vc-tiles{grid-template-columns:repeat(2,1fr);padding:0 16px;margin-top:-30px}.cf-node{flex:1 1 100%;max-width:100%}.gv-stat{flex:1 1 45%}.fy-hero{padding:40px 20px 56px;margin-top:-16px;margin-bottom:24px}.fy-hero h2{font-size:1.5rem}.fy-tile-row{grid-template-columns:repeat(3,1fr)}.fy-summary h3{font-size:1.2rem}}
+/* ===== ABANTE-INSPIRED SLEEK REFRESH ===== */
+/* Elegant serif display headings */
+.home-hero h1{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.07;letter-spacing:-.015em}
+.vc-hero h2,.fy-hero h2{font-family:'Fraunces',Georgia,serif;font-weight:500}
+.sec-title{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.01em}
+.bu-d-name,.fy-summary h3,.dp-title{font-family:'Fraunces',Georgia,serif;font-weight:600}
+.bi-name{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-.005em}
+.kv{font-family:'Fraunces',Georgia,serif;font-weight:500}
+/* Refined section accent rule */
+.sec-bar{height:2px;width:46px;border-radius:2px;opacity:.85}
+/* Rounded pill buttons (Abante style) */
+.hh-cta{border-radius:100px !important;box-shadow:none !important;font-weight:600;letter-spacing:.1em;padding:14px 30px}
+.hh-cta:hover{box-shadow:0 8px 22px rgba(237,26,69,.26) !important;transform:translateY(-1px)}
+.hh-cta.ghost{border-radius:100px !important}
+/* Nav — uppercase, airy, lettered */
+.nav{border-bottom:1px solid var(--border)}
+.nav-btn{letter-spacing:.13em;text-transform:uppercase;padding:14px 18px}
+/* Softer, warmer cards with gentle lift */
+.bu-card{border-radius:18px;background:var(--bg-warm);border:1px solid var(--border);box-shadow:none;transition:all .3s ease}
+.bu-card:hover{transform:translateY(-4px);box-shadow:0 14px 38px rgba(59,5,5,.09);border-color:var(--red-mid)}
+.bi-tag{background:var(--bg-off);color:var(--text-mid);border-radius:100px}
+.bi-acq{border-radius:100px}
+.prod-card,.fy-prod,.vc-tile,.fy-tile,.fy-dropdown{border-radius:14px}
+.kf{border-radius:14px;background:var(--bg-warm);border:1px solid var(--border)}
+.prod-card{background:var(--bg-warm);border:1px solid var(--border)}
+/* Calmer paragraph color */
+.sec-sub,.bi-desc,.bu-d-desc,.vh-sub,.fyh-sub{color:var(--text-mid)}
+/* Smoother global rendering */
+body{letter-spacing:.001em}
+
+/* ===== SERIOUS / MOTION LAYER ===== */
+/* Monogram fallback for missing logos */
+.mono{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:.9rem;letter-spacing:.03em;color:var(--red);background:var(--red-light);border-radius:8px}
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.16,.8,.24,1),transform .8s cubic-bezier(.16,.8,.24,1);will-change:opacity,transform}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+/* Logo wall — auto-scrolling */
+.lw{width:100vw;margin-left:calc(-50vw + 50%);padding:26px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-warm);overflow:hidden;position:relative}
+.lw::before,.lw::after{content:"";position:absolute;top:0;bottom:0;width:140px;z-index:2;pointer-events:none}
+.lw::before{left:0;background:linear-gradient(90deg,var(--bg-warm),rgba(255,251,245,0))}
+.lw::after{right:0;background:linear-gradient(270deg,var(--bg-warm),rgba(255,251,245,0))}
+.lw-track{display:flex;gap:56px;width:max-content;animation:lwscroll 70s linear infinite}
+.lw:hover .lw-track{animation-play-state:paused}
+.lw-item{display:flex;align-items:center;gap:11px;opacity:.65;transition:opacity .3s;white-space:nowrap}
+.lw-item:hover{opacity:1}
+.lw-item img{height:32px;width:auto;filter:grayscale(1) contrast(.9);transition:filter .3s}
+.lw-item:hover img{filter:none}
+.lw-name{font-size:.82rem;font-weight:600;color:var(--text-mid)}
+@keyframes lwscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* Numbered funnel */
+.pf3{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));max-width:1180px;margin:0 auto 56px;border:1px solid var(--border);border-radius:16px;overflow:hidden;background:var(--bg-warm)}
+.pf3 .pf{position:relative;cursor:pointer;padding:34px 30px 30px;border-right:1px solid var(--border);transition:background .35s}
+.pf3 .pf:last-child{border-right:none}
+.pf3 .pf:hover{background:var(--bg)}
+.pf-num{font-family:'Fraunces',Georgia,serif;font-size:1.35rem;color:var(--red);font-weight:500;margin-bottom:16px}
+.pf-tag{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.16em;color:var(--text-light);margin-bottom:10px}
+.pf-h{font-family:'Fraunces',Georgia,serif;font-size:1.3rem;font-weight:600;color:var(--charcoal);margin-bottom:12px;line-height:1.15}
+.pf-d{font-size:.82rem;color:var(--text-mid);line-height:1.65;margin-bottom:20px}
+.pf-go{font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--red);display:inline-flex;align-items:center;gap:8px}
+.pf-go .ar{transition:transform .3s}
+.pf3 .pf:hover .pf-go .ar{transform:translateX(5px)}
+@media(max-width:780px){.pf3 .pf{border-right:none;border-bottom:1px solid var(--border)}.pf3 .pf:last-child{border-bottom:none}}
+/* Stat row */
+.statrow{display:flex;flex-wrap:wrap;justify-content:center;margin-bottom:30px}
+.statrow .st{padding:2px 30px;border-right:1px solid var(--border);text-align:center}
+.statrow .st:last-child{border-right:none}
+.st-num{font-family:'Fraunces',Georgia,serif;font-size:1.8rem;font-weight:500;color:var(--charcoal);line-height:1}
+.st-lab{font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text-light);margin-top:8px}
+/* Cross-bucket continue band */
+.xband{width:100vw;margin-left:calc(-50vw + 50%);margin-top:52px;padding:48px}
+.xband-inner{max-width:1100px;margin:0 auto}
+.xband-lab{font-size:.62rem;text-transform:uppercase;letter-spacing:.18em;color:var(--text-light);margin-bottom:18px}
+.xgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.xcard{cursor:pointer;border:1px solid var(--border);border-radius:14px;padding:24px;background:var(--bg-warm);transition:all .3s}
+.xcard:hover{border-color:var(--red-mid);transform:translateY(-4px);box-shadow:0 14px 34px rgba(59,5,5,.08)}
+.xc-h{font-family:'Fraunces',Georgia,serif;font-size:1.12rem;font-weight:600;color:var(--charcoal);margin-bottom:6px}
+.xc-d{font-size:.78rem;color:var(--text-mid);line-height:1.55}
+.xc-go{margin-top:14px;font-size:.62rem;text-transform:uppercase;letter-spacing:.12em;color:var(--red);font-weight:700}
+/* Footer */
+.site-foot{width:100vw;margin-left:calc(-50vw + 50%);background:var(--charcoal-deep);color:rgba(255,255,255,.7);padding:50px 48px 32px}
+.foot-inner{max-width:1300px;margin:0 auto;display:flex;flex-wrap:wrap;gap:44px;justify-content:space-between}
+.foot-col h4{font-size:.6rem;text-transform:uppercase;letter-spacing:.16em;color:rgba(255,255,255,.42);margin-bottom:14px;font-weight:700}
+.foot-link{display:block;background:none;border:none;color:rgba(255,255,255,.78);font-family:inherit;font-size:.82rem;padding:5px 0;cursor:pointer;text-align:left;transition:color .2s}
+.foot-link:hover{color:#fff}
+.foot-brand{max-width:310px}
+.foot-brand .fb-t{font-family:'Fraunces',Georgia,serif;font-size:1.25rem;color:#fff;margin-bottom:10px}
+.foot-brand .fb-d{font-size:.78rem;line-height:1.65;color:rgba(255,255,255,.55)}
+.foot-bottom{max-width:1300px;margin:30px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);font-size:.68rem;color:rgba(255,255,255,.4)}
 </style>
 </head>
 <body>
@@ -431,13 +520,13 @@ facts:[{v:"Etta",l:"Platform"},{v:"Corporate",l:"Travel"},{v:"US",l:"Focus"}],ta
 ];
 
 // ====== NAV ======
-const TABS=[{id:'home',label:'Home'},{id:'vc',label:'Connectivity'},{id:'fy',label:'Capabilities'},{id:'insights',label:'Industry Insights'}];
+const TABS=[{id:'home',label:'Home'},{id:'fy',label:'For Clients'},{id:'vc',label:'For Partners'},{id:'sell',label:'Sell Your Company'},{id:'insights',label:'Industry Insights'}];
 const nav=document.getElementById('nav');const vc_c=document.getElementById('views-container');
 TABS.forEach((t,i)=>{const b=document.createElement('button');b.className=`nav-btn${i===0?' on':''}`;b.dataset.tab=t.id;b.textContent=t.label;nav.appendChild(b)});
 TABS.forEach(t=>{const v=document.createElement('div');v.className=`view${t.id==='home'?' active':''}`;v.id=`view-${t.id}`;vc_c.appendChild(v)});
 const buDV=document.createElement('div');buDV.className='view';buDV.id='view-bu';vc_c.appendChild(buDV);
 
-function showTab(id){document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('on',b.dataset.tab===id));document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(`view-${id}`).classList.add('active');closePanel();if(id==='vc'&&!vcB)buildVC();if(id==='fy'&&!fyB)buildFY()}
+function showTab(id){document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('on',b.dataset.tab===id));document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(`view-${id}`).classList.add('active');closePanel();if(id==='vc'&&!vcB)buildVC();if(id==='fy'&&!fyB)buildFY();if(id==='sell'&&!sellB)buildSELL();setTimeout(()=>scanMotion(document.getElementById('view-'+id)),40)}
 nav.addEventListener('click',e=>{if(e.target.classList.contains('nav-btn'))showTab(e.target.dataset.tab)});
 
 // ====== DETAIL PANEL ======
@@ -551,11 +640,11 @@ function showBU(buId){
         <a href="https://juniper-group.com/our-companies" target="_blank" rel="noopener" class="hh-cta ghost">Our Companies</a>
       </div>
       <div class="csi-stats">
-        <div class="csi-stat"><div class="cs-val">US$11B+</div><div class="cs-lab">Revenues</div></div>
-        <div class="csi-stat"><div class="cs-val">6</div><div class="cs-lab">Operating Groups</div></div>
-        <div class="csi-stat"><div class="cs-val">1,100+</div><div class="cs-lab">Businesses · 150+ Verticals</div></div>
-        <div class="csi-stat"><div class="cs-val">125,000+</div><div class="cs-lab">Customers · 100+ Countries</div></div>
-        <div class="csi-stat"><div class="cs-val">55,000+</div><div class="cs-lab">Employees Globally</div></div>
+        <div class="csi-stat"><div class="cs-val count">US$11B+</div><div class="cs-lab">Revenues</div></div>
+        <div class="csi-stat"><div class="cs-val count">6</div><div class="cs-lab">Operating Groups</div></div>
+        <div class="csi-stat"><div class="cs-val count">1,100+</div><div class="cs-lab">Businesses · 150+ Verticals</div></div>
+        <div class="csi-stat"><div class="cs-val count">125,000+</div><div class="cs-lab">Customers · 100+ Countries</div></div>
+        <div class="csi-stat"><div class="cs-val count">55,000+</div><div class="cs-lab">Employees Globally</div></div>
       </div>
     </div>
     <div class="hh-video-dots" id="hh-dots"></div>
@@ -565,9 +654,35 @@ function showBU(buId){
 
 
 
-  h+=`<div style="text-align:center"><div class="sec-title" style="font-size:1.3rem;display:block">Travel & Hospitality Portfolio</div><div class="sec-bar" style="margin:6px auto 6px"></div><div style="font-size:.78rem;color:var(--text-light);margin-bottom:20px">17+ Business Units · $30B GMV · 48M bookings/yr</div></div><div class="bu-grid">`;
+  // --- Auto-scrolling logo wall ---
+  h+=`<div class="reveal" style="text-align:center;margin:4px auto 18px"><div style="font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:var(--text-light)">An ecosystem of 17+ travel &amp; hospitality software companies</div></div>`;
+  const lwSet=BUS.concat(BUS).map(bu=>{
+    const logo=LOGOS[bu.id]||'';
+    const mono=bu.name.replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase();
+    const img=logo?`<img src="${logo}" alt="${bu.name}" onerror="this.outerHTML='<span class=lw-name>${bu.name}</span>'">`:`<span class="lw-name">${bu.name}</span>`;
+    return `<div class="lw-item">${img}</div>`;
+  }).join('');
+  h+=`<div class="lw reveal"><div class="lw-track">${lwSet}</div></div>`;
+
+  // --- Audience entry funnel (the journey) ---
+  h+=`<div class="reveal" style="max-width:1180px;margin:48px auto 4px;text-align:center"><div class="sec-title" style="font-size:1.4rem;display:block">Three ways to work with us</div><div class="sec-bar" style="margin:8px auto 16px"></div><div style="font-size:.82rem;color:var(--text-mid);max-width:560px;margin:0 auto 22px;line-height:1.6">Whichever path you take, you reach the same connected group of companies — and the right people within it.</div></div>`;
+  const PATHS=[
+    {tab:'fy',n:'01',tag:'If you are a client',title:'Find your travel tech stack',desc:"Tell us what kind of travel company you are and we'll map the products and business units built for you.",cta:'Explore for clients'},
+    {tab:'vc',n:'02',tag:'If you are a partner',title:'Connect to the ecosystem',desc:'See how supply, connectivity and distribution fit together across the group — and where your platform plugs in.',cta:'Explore for partners'},
+    {tab:'sell',n:'03',tag:'If you want to sell your company',title:'Find a permanent home',desc:'We acquire travel & hospitality software businesses and hold them for the long term — keep your team, brand and autonomy.',cta:'Explore M&A'}
+  ];
+  h+=`<div class="pf3 reveal">`;
+  PATHS.forEach(p=>{
+    h+=`<div class="pf" onclick="showTab('${p.tab}')"><div class="pf-num">${p.n}</div><div class="pf-tag">${p.tag}</div><div class="pf-h">${p.title}</div><div class="pf-d">${p.desc}</div><div class="pf-go">${p.cta} <span class="ar">&rarr;</span></div></div>`;
+  });
+  h+=`</div>`;
+
+  h+=`<div class="reveal" style="text-align:center"><div class="sec-title" style="font-size:1.4rem;display:block">Travel &amp; Hospitality Portfolio</div><div class="sec-bar" style="margin:8px auto 18px"></div></div>`;
+  h+=`<div class="statrow reveal"><div class="st"><div class="st-num count">17+</div><div class="st-lab">Business Units</div></div><div class="st"><div class="st-num count">$30B</div><div class="st-lab">GMV</div></div><div class="st"><div class="st-num count">48M</div><div class="st-lab">Bookings / yr</div></div></div>`;
+  h+=`<div class="bu-grid">`;
   BUS.forEach(bu=>{
-    h+=`<div class="bu-card" onclick="showBU('${bu.id}')"><div class="bu-logo"><img src="${LOGOS[bu.id]||''}" onerror="this.parentElement.innerHTML='<span style=font-size:1.2rem>🏢</span>'"></div><div class="bu-info"><div class="bi-top"><div class="bi-name">${bu.name}</div><div class="bi-acq">Acq. ${bu.a}</div></div><div class="bi-meta">${bu.hq} · Est. ${bu.f}</div><div class="bi-desc">${bu.desc}</div><div class="bi-tags">${bu.tags.map(t=>`<span class="bi-tag">${t}</span>`).join('')}</div></div><div class="bc-arrow">→</div></div>`;
+    const mono=bu.name.replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase();
+    h+=`<div class="bu-card reveal" onclick="showBU('${bu.id}')"><div class="bu-logo"><img src="${LOGOS[bu.id]||''}" onerror="this.parentElement.innerHTML='<span class=mono>${mono}</span>'"></div><div class="bu-info"><div class="bi-top"><div class="bi-name">${bu.name}</div><div class="bi-acq">Acq. ${bu.a}</div></div><div class="bi-meta">${bu.hq} · Est. ${bu.f}</div><div class="bi-desc">${bu.desc}</div><div class="bi-tags">${bu.tags.map(t=>`<span class="bi-tag">${t}</span>`).join('')}</div></div><div class="bc-arrow">&rarr;</div></div>`;
   });
   h+=`</div>`;
 
@@ -588,7 +703,8 @@ function showBU(buId){
   ];
 
   JONAS.forEach(j=>{
-    h+=`<div class="bu-card" onclick="window.open('https://www.jonashospitality.com/','_blank')" style="cursor:pointer"><div class="bu-logo"><img src="https://www.google.com/s2/favicons?domain=${j.domain}&sz=64" onerror="this.parentElement.innerHTML='<span style=font-size:1.2rem>🏨</span>'"></div><div class="bu-info"><div class="bi-top"><div class="bi-name">${j.name}</div><div class="bi-acq" style="background:#f0f0ee;color:var(--text-light)">Jonas / CSI</div></div><div class="bi-meta">Part of Jonas Hospitality (Vertus Group)</div><div class="bi-desc">${j.desc}</div><div class="bi-tags">${j.tags.map(t=>`<span class="bi-tag">${t}</span>`).join('')}</div></div></div>`;
+    const jmono=j.name.replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase();
+    h+=`<div class="bu-card reveal" onclick="window.open('https://www.jonashospitality.com/','_blank')" style="cursor:pointer"><div class="bu-logo"><img src="https://www.google.com/s2/favicons?domain=${j.domain}&sz=64" onerror="this.parentElement.innerHTML='<span class=mono>${jmono}</span>'"></div><div class="bu-info"><div class="bi-top"><div class="bi-name">${j.name}</div><div class="bi-acq" style="background:#f0f0ee;color:var(--text-light)">Jonas / CSI</div></div><div class="bi-meta">Part of Jonas Hospitality (Vertus Group)</div><div class="bi-desc">${j.desc}</div><div class="bi-tags">${j.tags.map(t=>`<span class="bi-tag">${t}</span>`).join('')}</div></div></div>`;
   });
 
   h+=`</div></div>`;
@@ -700,48 +816,48 @@ const CHAINS={
     {title:'Distribution',color:'#6B3030',nodes:[{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Routes bookings between 500+ suppliers & 550+ clients'},{id:'ch_mgr',l:'Channel Manager',s:'Hotetec',d:'Syncs rates across OTAs, GDS, metasearch'},{id:'gds',l:'GDS',d:'Amadeus, Sabre, Travelport'},{id:'bedbank',l:'Bedbank',j:1,s:'DOME',d:'Wholesale hotel marketplace'},{id:'content',l:'Content Mapping',j:1,s:'Vervotech',d:'AI-powered hotel & room normalization'}]},
     {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4',d:'Multi-channel B2B/B2C booking platform'},{id:'dyn_pkg',l:'Dynamic Packaging',j:1,s:'Peakwork',d:'Real-time flight+hotel+transfer packages'},{id:'dest_os',l:'Destination OS',j:1,s:'Alturos',d:'SaaS for destination marketing & sales'},{id:'crm',l:'Travel CRM',j:1,s:'Inspiretec',d:'Guest lifecycle & retention management'}]},
     {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'Booking.com, Expedia, etc.'},{id:'meta',l:'Metasearch',d:'Google Hotels, Trivago, Kayak'},{id:'ta',l:'Travel Agencies',d:'Traditional & online TAs'},{id:'direct',l:'Direct Booking',d:'Hotel own website & app'}]},
-    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure Traveler'},{id:'business',l:'💼 Business Traveler'}]},
+    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'Leisure Traveler'},{id:'business',l:'Business Traveler'}]},
   ]},
   airlines:{icon:'✈️',label:'Airlines',layers:[
     {title:'Core Systems',color:'#8B3A3A',nodes:[{id:'pss',l:'PSS',d:'Airline reservations, inventory & ticketing core'},{id:'rms_air',l:'Revenue Mgmt',d:'Yield optimization & fare management'}]},
     {title:'Distribution',color:'#6B3030',nodes:[{id:'gds',l:'GDS',d:'Amadeus, Sabre, Travelport'},{id:'air_agg',l:'Air Aggregator',j:1,s:'Lleego + InteRES',d:'Unified GDS + NDC + direct API'},{id:'ndc',l:'NDC / LCC',d:'New Distribution Capability — richer content'},{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Routes bookings to downstream sellers'}]},
     {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4',d:'Multi-product search & book'},{id:'dyn_pkg',l:'Dynamic Packaging',j:1,s:'Peakwork',d:'Flight + hotel + transfer bundles'},{id:'to_sys',l:'Tour Op. System',d:'Package creation & operations'},{id:'ancillary',l:'Ancillary Mgmt',j:1,s:'Juniper TT',d:'Seat selection, bags, insurance upsells'}]},
     {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'Expedia, lastminute, etc.'},{id:'ta',l:'Travel Agencies',d:'IATA agents & online TAs'},{id:'tmc',l:'Corporate TMCs',d:'Business travel management'}]},
-    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure Traveler'},{id:'business',l:'💼 Business Traveler'}]},
+    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'Leisure Traveler'},{id:'business',l:'Business Traveler'}]},
   ]},
   cruise:{icon:'🚢',label:'Cruise',layers:[
     {title:'Core Systems',color:'#8B3A3A',nodes:[{id:'cruise_res',l:'Cruise Reservation',j:1,s:'IST',d:'Cabin inventory, itineraries, 30+ cruise line APIs'},{id:'event_mgmt',l:'Event Management',j:1,s:'RezMagic',d:'Cruise events, group booking, deck maps'}]},
     {title:'Distribution',color:'#6B3030',nodes:[{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Routes cruise bookings to sellers'},{id:'gds',l:'GDS',d:'Amadeus, Sabre cruise modules'}]},
     {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Traveltek + Juniper TT',d:'Cruise search with cabin selection'},{id:'dyn_pkg',l:'Dynamic Packaging',j:1,s:'Peakwork',d:'Cruise + flight + hotel packages'},{id:'to_sys',l:'Tour Op. System',d:'Cruise-specialist tour operators'}]},
     {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'Cruise-focused OTAs'},{id:'ta',l:'Travel Agencies',d:'Cruise specialist agents'},{id:'direct',l:'Direct Booking',d:'Cruise line websites'}]},
-    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure Traveler'},{id:'group',l:'👥 Group / MICE'}]},
+    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'Leisure Traveler'},{id:'group',l:'Group / MICE'}]},
   ]},
   rail:{icon:'🚄',label:'Rail',layers:[
     {title:'Core Systems',color:'#8B3A3A',nodes:[{id:'rail_res',l:'Rail Reservation',d:'Schedules, seats, fares by operator'},{id:'ticketing',l:'Ticketing & Fares',d:'Cross-border fare calculation'}]},
     {title:'Distribution',color:'#6B3030',nodes:[{id:'train_agg',l:'Train Aggregator',d:'Multi-operator search & booking'},{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Integrates rail into travel packages'}]},
     {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4',d:'Rail + hotel + transfer booking'},{id:'dyn_pkg',l:'Dynamic Packaging',j:1,s:'Peakwork',d:'Rail-based package creation'}]},
     {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'Trainline, Omio, etc.'},{id:'ta',l:'Travel Agencies',d:'Include rail in mixed itineraries'}]},
-    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure'},{id:'business',l:'💼 Business'}]},
+    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'Leisure'},{id:'business',l:'Business'}]},
   ]},
   car:{icon:'🚗',label:'Car Rental',layers:[
     {title:'Distribution',color:'#6B3030',nodes:[{id:'car_agg',l:'Car Rental Aggregator',d:'Aggregates Hertz, Avis, Sixt, etc.'},{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Integrates car into multi-product booking'}]},
     {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4',d:'Car as standalone or package add-on'},{id:'dyn_pkg',l:'Dynamic Packaging',j:1,s:'Peakwork',d:'Flight + hotel + car bundles'}]},
     {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'Expedia, Booking.com, Kayak'},{id:'ta',l:'Travel Agencies',d:'Add car to full-trip booking'},{id:'direct',l:'Direct Booking',d:'Hertz, Avis, Sixt own sites'}]},
-    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure'},{id:'business',l:'💼 Business'}]},
+    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'Leisure'},{id:'business',l:'Business'}]},
   ]},
   activities:{icon:'🎯',label:'Tours & Activities',layers:[
     {title:'Core Systems',color:'#8B3A3A',nodes:[{id:'dmc_sw',l:'DMC Software',j:1,s:'Dome',d:'All-in-one contracting, ops & distribution'}]},
     {title:'Distribution',color:'#6B3030',nodes:[{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Connects activity inventory to sellers'},{id:'dest_os',l:'Destination OS',j:1,s:'Alturos',d:'Destination marketing to consumers & resellers'}]},
     {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4',d:'Activity booking & add-ons'},{id:'to_sys',l:'Tour Op. System',d:'Package with flights & hotels'}]},
     {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'GetYourGuide, Viator, etc.'},{id:'ta',l:'Travel Agencies',d:'Agent-booked tours & excursions'},{id:'social',l:'Social Commerce',d:'Instagram, TikTok bookings'}]},
-    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure Traveler'}]},
+    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'Leisure Traveler'}]},
   ]},
   vr:{icon:'🏡',label:'Vacation Rental',layers:[
     {title:'Core Systems',color:'#8B3A3A',nodes:[{id:'vr_pms',l:'VR PMS',d:'Calendars, pricing, owner reporting'},{id:'smart_lock',l:'Smart Lock / Check-in',d:'Digital access & self check-in'}]},
     {title:'Distribution',color:'#6B3030',nodes:[{id:'ch_mgr',l:'Channel Manager',s:'Hotetec',d:'Syncs across Airbnb, VRBO, Booking'},{id:'conn_hub',l:'Connectivity Hub',j:1,s:'Juniper TT',d:'Connects VR inventory to B2B sellers'}]},
     {title:'Packaging & Retail',color:'#4A2424',nodes:[{id:'booking',l:'Booking Engine',j:1,s:'Juniper TT +4',d:'Direct VR booking website'}]},
     {title:'End Channels',color:'var(--charcoal)',nodes:[{id:'ota',l:'OTA Platforms',d:'Airbnb, VRBO, Booking.com'},{id:'direct',l:'Direct Booking',d:'Owner/manager website'}]},
-    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'🧳 Leisure Traveler'}]},
+    {title:'Traveler',color:'var(--dark)',nodes:[{id:'leisure',l:'Leisure Traveler'}]},
   ]},
 }
 
@@ -752,9 +868,9 @@ function renderVC(){
   // Dark hero section
   const hero=document.createElement('div');hero.className='vc-hero';
   hero.innerHTML=`<div class="vc-hero-inner">
-    <div class="vh-tag">Connectivity</div>
+    <div class="vh-tag">For Partners</div>
     <h2>How Juniper Group <span class="hl">powers the travel stack</span></h2>
-    <div class="vh-sub">Select a travel product below to trace its full technology chain — from supply and inventory, through connectivity and retail, all the way to the traveler.</div>
+    <div class="vh-sub">Partners connect once and reach the whole group. Select a travel product below to trace its full technology chain — from supply and inventory, through connectivity and retail, all the way to the traveler — and see where your platform plugs in.</div>
   </div>`;
   w.appendChild(hero);
 
@@ -763,7 +879,7 @@ function renderVC(){
   Object.entries(CHAINS).forEach(([key,chain])=>{
     const t=document.createElement('div');
     t.className=`vc-tile${selectedSupply===key?' on':''}`;
-    t.innerHTML=`<span class="vt-icon">${chain.icon}</span><span class="vt-lab">${chain.label}</span>`;
+    t.innerHTML=`<span class="vt-lab">${chain.label}</span>`;
     t.onclick=()=>{selectedSupply=selectedSupply===key?null:key;renderVC()};
     tiles.appendChild(t);
   });
@@ -774,6 +890,7 @@ function renderVC(){
     const empty=document.createElement('div');empty.className='vc-empty';
     empty.innerHTML=`<b>Pick a product above</b> — hotels, airlines, cruise, rail, car rental, tours &amp; activities, or vacation rentals — to reveal its full tech chain.`;
     w.appendChild(empty);
+    w.insertAdjacentHTML('beforeend',xbandHTML('vc'));scanMotion(w);
     return;
   }
 
@@ -806,6 +923,7 @@ function renderVC(){
     stack.appendChild(row);
   });
   w.appendChild(stack);
+  w.insertAdjacentHTML('beforeend',xbandHTML('vc'));scanMotion(w);
 }
 
 renderVC();
@@ -824,7 +942,7 @@ b.style.cursor='pointer';b.onclick=()=>{const nid=Object.keys(NODE_INFO).find(k=
 ge.appendChild(b)});bd.appendChild(ge)});
 row.appendChild(bd);w.appendChild(row)});
 const af=document.createElement('div');af.className='flow-arrow-row';af.innerHTML='<span>▼</span>';w.appendChild(af);
-const tv=document.createElement('div');tv.className='traveler-box';tv.textContent='🧳 Traveler';w.appendChild(tv)}
+const tv=document.createElement('div');tv.className='traveler-box';tv.textContent='Traveler';w.appendChild(tv)}
 
 // ====== SHARED BADGE HELPER (used by Connectivity) ======
 function badge(j){const m={core:['Core','core'],current:['Current','core'],partial:['Partial','partial'],gap:['Gap','gap'],emerging:['Emerging','future'],future:['Future','future']};const v=m[j];return v?`<span class="sb ${v[1]}">${v[0]}</span>`:''}
@@ -981,7 +1099,7 @@ function buildFY(){fyB=true;const w=document.getElementById('view-fy');
   // Hero
   const hero=document.createElement('div');hero.className='fy-hero';
   hero.innerHTML=`<div class="fy-hero-inner">
-    <div class="fyh-tag">Capabilities</div>
+    <div class="fyh-tag">For Clients</div>
     <h2>Tell us who you are — we'll show you your <span class="hl">Juniper Group stack</span></h2>
     <div class="fyh-sub">Juniper Group serves the travel industry end-to-end. Pick your company type below and we'll surface the specific products and business units that fit, based on who each company in the portfolio already serves.</div>
   </div>`;
@@ -1000,7 +1118,7 @@ function buildFY(){fyB=true;const w=document.getElementById('view-fy');
   const tiles=document.createElement('div');tiles.className='fy-tile-row';
   CLIENT_TYPES.filter(c=>c.tileTop).forEach(c=>{
     const t=document.createElement('div');t.className='fy-tile';t.dataset.id=c.id;
-    t.innerHTML=`<span class="fyt-icon">${c.icon}</span><span class="fyt-lab">${c.label}</span>`;
+    t.innerHTML=`<span class="fyt-lab">${c.label}</span>`;
     t.onclick=()=>setFY(c.id);
     tiles.appendChild(t);
   });
@@ -1017,6 +1135,7 @@ function buildFY(){fyB=true;const w=document.getElementById('view-fy');
   sel.onchange=e=>setFY(e.target.value||null);
 
   renderFY();
+  w.insertAdjacentHTML('beforeend',xbandHTML('fy'));scanMotion(w);
 }
 function setFY(id){selectedFY=id;renderFY()}
 function renderFY(){
@@ -1078,6 +1197,84 @@ function renderFY(){
   });
   slot.appendChild(results);
 }
+
+// ====== SELL YOUR COMPANY (M&A) ======
+let sellB=false;
+function buildSELL(){sellB=true;const w=document.getElementById('view-sell');
+  let h=`<div style="position:relative;width:100vw;margin-left:calc(-50vw + 50%);margin-top:-24px;margin-bottom:32px;padding:64px 48px 56px;background:linear-gradient(135deg,#1a1a1a 0%,#2c2c2c 100%);overflow:hidden">
+    <div style="max-width:1000px;margin:0 auto;position:relative;z-index:2">
+      <div style="font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.2em;color:#fff;opacity:.7;margin-bottom:16px">For Founders &amp; Owners · M&amp;A</div>
+      <h2 style="font-size:2.4rem;font-weight:800;color:#fff;line-height:1.1;margin-bottom:18px;max-width:760px">Sell your company to a <span class="hl">permanent home</span></h2>
+      <div style="font-size:1rem;color:rgba(255,255,255,.85);line-height:1.65;max-width:660px;margin-bottom:28px">Juniper Group is the travel &amp; hospitality arm of Vela Software, part of Constellation Software (TSX: CSU). We acquire software businesses and hold them for the long term — we never flip them. Your company keeps its name, its team and its way of working.</div>
+      <a href="https://juniper-group.com" target="_blank" rel="noopener" class="hh-cta">Start a confidential conversation →</a>
+    </div>
+  </div>`;
+
+  // Why founders choose Juniper
+  h+=`<div style="max-width:1100px;margin:0 auto;padding:0 8px"><div style="text-align:center"><div class="sec-title" style="font-size:1.5rem;display:block">Why founders choose Juniper Group</div><div class="sec-bar" style="margin:6px auto 18px"></div></div>`;
+  const WHY=[
+    {icon:'♾️',t:'A permanent home',d:'We buy to hold — for the long term. Unlike private equity, there is no resale clock, no flip and no forced exit. Your business gets a stable owner.'},
+    {icon:'🎛️',t:'Autonomy retained',d:'Your management team keeps running the business. We keep the brand, the people and the roadmap that made you successful.'},
+    {icon:'🏛️',t:'Patient capital',d:'Backed by Constellation Software, among the most successful software acquirers in the world (TSX: CSU) — disciplined, long-term and well capitalised.'},
+    {icon:'⚡',t:'Speed &amp; certainty',d:'An experienced, repeat acquirer. We move quickly, with a straightforward process and a high degree of deal certainty.'},
+    {icon:'🌍',t:'A travel ecosystem',d:'Join 17+ travel &amp; hospitality software businesses across connectivity, distribution, packaging and corporate travel — with built-in synergies.'},
+    {icon:'🧭',t:'Legacy preserved',d:'We protect what you have built — your customers, your culture and your employees — for the long term.'}
+  ];
+  h+=`<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-bottom:40px">`;
+  WHY.forEach((x,i)=>{h+=`<div class="reveal" style="border:1px solid var(--border);border-radius:14px;padding:26px 24px;background:var(--bg-warm)"><div style="font-family:'Fraunces',Georgia,serif;font-size:1.2rem;color:var(--red);font-weight:500;margin-bottom:14px">${String(i+1).padStart(2,'0')}</div><div style="font-family:'Fraunces',Georgia,serif;font-size:1.08rem;font-weight:600;color:var(--charcoal);margin-bottom:8px">${x.t}</div><div style="font-size:.82rem;color:var(--text-mid);line-height:1.65">${x.d}</div></div>`});
+  h+=`</div>`;
+
+  // What we look for
+  h+=`<div style="text-align:center"><div class="sec-title" style="font-size:1.4rem;display:block">What we look for</div><div class="sec-bar" style="margin:6px auto 18px"></div></div>`;
+  const CRIT=[
+    'Travel &amp; hospitality software businesses (B2B, B2B2C or B2C)',
+    'Established products with a loyal customer base',
+    'Recurring or repeatable revenue',
+    'Profitable, or a clear path to profitability',
+    'A management team that wants to keep building',
+    'All sizes welcome — from founder-led to scale-ups'
+  ];
+  h+=`<div style="max-width:840px;margin:0 auto 40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:10px 28px">`;
+  CRIT.forEach(c=>{h+=`<div style="display:flex;align-items:flex-start;gap:10px;font-size:.84rem;color:var(--text);line-height:1.5"><span style="color:var(--green);font-weight:800;margin-top:1px">✓</span><span>${c}</span></div>`});
+  h+=`</div>`;
+
+  // Track record — recent travel acquisitions (dynamic from BUS)
+  const recent=BUS.filter(b=>b.a>=2023).sort((a,b)=>b.a-a.a);
+  h+=`<div style="background:var(--bg-off);border-radius:14px;padding:30px 28px;margin-bottom:36px"><div style="text-align:center"><div class="sec-title" style="font-size:1.3rem;display:block">A proven acquirer in travel</div><div class="sec-bar" style="margin:6px auto 8px"></div><div style="font-size:.78rem;color:var(--text-light);margin-bottom:20px">Recent travel &amp; hospitality software businesses welcomed into Juniper Group</div></div>`;
+  h+=`<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px">`;
+  recent.forEach(b=>{const m=b.name.replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase();h+=`<div class="reveal" onclick="showBU('${b.id}')" style="cursor:pointer;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:14px;display:flex;align-items:center;gap:10px;transition:all .25s" onmouseover="this.style.borderColor='var(--red-mid)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform='none'"><div style="width:30px;height:30px;flex-shrink:0;display:flex;align-items:center;justify-content:center"><img src="${LOGOS[b.id]||''}" style="max-width:100%;max-height:100%" onerror="this.parentElement.innerHTML='<span class=mono style=font-size:.66rem>${m}</span>'"></div><div><div style="font-size:.8rem;font-weight:700;color:var(--charcoal)">${b.name}</div><div style="font-size:.62rem;color:var(--text-light)">Acquired ${b.a}</div></div></div>`});
+  h+=`</div></div>`;
+
+  // Scale stats
+  h+=`<div class="kf-grid reveal" style="margin-bottom:36px"><div class="kf"><div class="kv count">1,100+</div><div class="kl">Businesses acquired by CSI</div></div><div class="kf"><div class="kv count">17+</div><div class="kl">Travel &amp; hospitality BUs</div></div><div class="kf"><div class="kv count">US$11B+</div><div class="kl">Constellation revenues</div></div><div class="kf"><div class="kv">Long&#8209;term</div><div class="kl">Our holding horizon</div></div></div>`;
+
+  // Contact CTA
+  h+=`<div style="text-align:center;background:linear-gradient(135deg,#1a1a1a,#2c2c2c);border-radius:14px;padding:40px 28px;margin-bottom:24px"><div style="font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:10px">Ready to talk?</div><div style="font-size:.9rem;color:rgba(255,255,255,.8);max-width:540px;margin:0 auto 22px;line-height:1.6">Conversations are always confidential and with no obligation. Whether you're ready now or simply exploring, we'd love to hear about what you have built.</div><a href="https://juniper-group.com" target="_blank" rel="noopener" class="hh-cta">Contact Juniper Group M&amp;A →</a></div>`;
+  h+=`</div>`;
+  h+=xbandHTML('sell');
+  w.innerHTML=h;scanMotion(w);
+}
+
+// ===== MOTION + FLOW LAYER =====
+const _revObs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');_revObs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -5% 0px'});
+const _cntObs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.dataset.done='1';animateCount(e.target);_cntObs.unobserve(e.target)}})},{threshold:.4});
+function scanMotion(root){if(!root)return;root.querySelectorAll('.reveal:not(.in)').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,10)*55)+'ms';_revObs.observe(el)});root.querySelectorAll('.count').forEach(el=>{if(el.dataset.done)return;if(el.dataset.c==null)el.dataset.c=el.textContent.trim();_cntObs.observe(el)})}
+function animateCount(el){const raw=el.dataset.c||el.textContent.trim();const m=raw.match(/^([^\d]*)([\d.,]+)(.*)$/);if(!m)return;const pre=m[1],suf=m[3],hasComma=m[2].indexOf(',')>-1,decs=(m[2].split('.')[1]||'').length,target=parseFloat(m[2].replace(/,/g,'')),t0=performance.now(),dur=1300;function fmt(n){let s=decs?n.toFixed(decs):Math.round(n).toString();if(hasComma)s=Math.round(n).toLocaleString('en-US');return pre+s+suf}function step(t){const p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=fmt(target*e);if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
+function xbandHTML(current){const items=[{tab:'fy',h:'For Clients',d:'Find the products and business units built for your type of travel company.',go:'Explore for clients'},{tab:'vc',h:'For Partners',d:'See how the group connects — and where your platform plugs in.',go:'Explore for partners'},{tab:'sell',h:'Sell Your Company',d:'A permanent home for travel & hospitality software founders.',go:'Explore M&A'}].filter(x=>x.tab!==current);let s=`<div class="xband reveal"><div class="xband-inner"><div class="xband-lab">Continue exploring</div><div class="xgrid">`;items.forEach(x=>{s+=`<div class="xcard" onclick="showTab('${x.tab}')"><div class="xc-h">${x.h}</div><div class="xc-d">${x.d}</div><div class="xc-go">${x.go} &rarr;</div></div>`});s+=`</div></div></div>`;return s}
+// Persistent footer across all views
+(function(){const f=document.createElement('div');f.className='site-foot';
+ const lk=(t,fn)=>`<button class="foot-link" onclick="${fn}">${t}</button>`;
+ f.innerHTML=`<div class="foot-inner">
+   <div class="foot-col foot-brand"><div class="fb-t">Juniper Group</div><div class="fb-d">The travel &amp; hospitality software portfolio of Vela Software, a Constellation Software company (TSX: CSU).</div></div>
+   <div class="foot-col"><h4>Explore</h4>${lk('Home',"showTab('home')")}${lk('For Clients',"showTab('fy')")}${lk('For Partners',"showTab('vc')")}${lk('Sell Your Company',"showTab('sell')")}${lk('Industry Insights',"showTab('insights')")}</div>
+   <div class="foot-col"><h4>Group</h4><a class="foot-link" href="https://juniper-group.com" target="_blank" rel="noopener">Juniper Group</a><a class="foot-link" href="https://www.velasoftwaregroup.com" target="_blank" rel="noopener">Vela Software</a><a class="foot-link" href="https://www.csisoftware.com" target="_blank" rel="noopener">Constellation Software</a></div>
+   <div class="foot-col"><h4>Get in touch</h4><a class="foot-link" href="https://juniper-group.com" target="_blank" rel="noopener">Partner with us</a><a class="foot-link" href="https://juniper-group.com" target="_blank" rel="noopener">Become a client</a><a class="foot-link" href="https://juniper-group.com" target="_blank" rel="noopener">Sell your company</a></div>
+ </div>
+ <div class="foot-bottom">© ${new Date().getFullYear()} Juniper Group. An operating portfolio of Vela Software / Constellation Software (TSX: CSU).</div>`;
+ document.getElementById('views-container').insertAdjacentElement('afterend',f);
+})();
+// Initial reveal/counter scan for the eager Home view
+scanMotion(document.getElementById('view-home'));
 </script>
 </body>
 </html>
