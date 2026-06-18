@@ -466,6 +466,76 @@ body{letter-spacing:.001em}
 .ev-ph button{position:absolute;top:-7px;right:-7px;width:20px;height:20px;border-radius:50%;border:none;background:var(--red);color:#fff;cursor:pointer;font-size:.72rem;line-height:1}
 .ev-file{font-size:.76rem;color:var(--text-mid)}
 .ev-empty{font-size:.8rem;color:var(--text-light);padding:8px 0}
+/* ===== KPI BAND ===== */
+.kpi-band{display:flex;flex-wrap:wrap;justify-content:center;max-width:1040px;margin:0 auto;border:1px solid var(--border);border-radius:16px;background:var(--bg-warm);overflow:hidden}
+.kpi{flex:1 1 150px;text-align:center;padding:24px 16px;border-right:1px solid var(--border)}
+.kpi:last-child{border-right:none}
+.kpi-v{font-family:'Fraunces',Georgia,serif;font-size:2rem;font-weight:600;color:var(--charcoal);line-height:1}
+.kpi-l{font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-light);margin-top:9px}
+@media(max-width:700px){.kpi{flex-basis:33%;border-bottom:1px solid var(--border)}}
+/* ===== PORTFOLIO SOLUTIONS ===== */
+.sol-wrap{display:grid;grid-template-columns:260px 1fr;gap:32px;max-width:1320px;margin:0 auto;align-items:start}
+.sol-side{position:sticky;top:14px}
+.sol-search{width:100%;font-family:inherit;font-size:.84rem;padding:11px 15px;border:1px solid var(--border);border-radius:100px;background:var(--bg-warm);margin-bottom:20px;color:var(--text)}
+.sol-search:focus{outline:none;border-color:var(--red)}
+.sol-group{margin-bottom:18px}
+.sol-glabel{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-light);margin-bottom:10px}
+.sol-chips{display:flex;flex-wrap:wrap;gap:7px}
+.sol-chip{font-family:inherit;font-size:.72rem;color:var(--text-mid);background:var(--bg-warm);border:1px solid var(--border);border-radius:100px;padding:6px 12px;cursor:pointer;transition:all .2s}
+.sol-chip:hover{border-color:var(--red-mid);color:var(--text)}
+.sol-chip.on{background:var(--red);border-color:var(--red);color:#fff}
+.sol-clear{font-family:inherit;font-size:.7rem;color:var(--text-light);background:none;border:none;cursor:pointer;text-decoration:underline;padding:4px 0;margin-top:4px}
+.sol-count{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-light);margin-bottom:14px}
+.sol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:14px}
+.sol-card{background:var(--bg-warm);border:1px solid var(--border);border-radius:14px;padding:20px;cursor:pointer;transition:all .25s;display:flex;flex-direction:column}
+.sol-card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(59,5,5,.08);border-color:var(--red-mid)}
+.sol-bu{display:flex;align-items:center;gap:8px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-light);margin-bottom:10px}
+.sol-bu img{height:15px;width:auto}
+.sol-name{font-family:'Fraunces',Georgia,serif;font-size:1.1rem;font-weight:600;color:var(--charcoal);margin-bottom:7px;line-height:1.2}
+.sol-desc{font-size:.8rem;color:var(--text-mid);line-height:1.55;margin-bottom:12px;flex:1}
+.sol-tags{display:flex;flex-wrap:wrap;gap:5px}
+.sol-tag{font-size:.58rem;background:var(--bg-off);color:var(--text-mid);border-radius:100px;padding:3px 9px}
+.sol-empty{grid-column:1/-1;text-align:center;color:var(--text-mid);padding:44px 0;font-size:.92rem}
+@media(max-width:760px){.sol-wrap{grid-template-columns:1fr}.sol-side{position:static}}
+/* ===== ADMIN ===== */
+.adm-h{font-family:'Fraunces',Georgia,serif;font-size:1.15rem;font-weight:600;color:var(--charcoal);margin-bottom:14px}
+.adm-bu-list{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.adm-bu{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 13px;border:1px solid var(--border);border-radius:10px;font-size:.85rem;color:var(--charcoal)}
+.adm-bu .pt-ghost{padding:5px 11px;font-size:.58rem}
+/* ===== GROUP AT A GLANCE — in hero, white, beside title ===== */
+.home-hero .hh-content{display:flex;justify-content:space-between;align-items:center;gap:50px;flex-wrap:wrap}
+.hh-main{flex:1 1 440px}
+.hh-glance{flex:0 0 auto;border-left:1px solid rgba(255,255,255,.22);padding-left:36px}
+.hg-eyebrow{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.18em;color:rgba(255,255,255,.65);margin-bottom:20px}
+.hg-grid{display:grid;grid-template-columns:repeat(3,auto);gap:26px 44px}
+.hg-v{font-family:'Fraunces',Georgia,serif;font-size:2.9rem;font-weight:500;color:#fff;line-height:1}
+.hg-l{font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;color:rgba(255,255,255,.7);margin-top:9px;max-width:140px}
+@media(max-width:900px){.home-hero .hh-content{align-items:flex-start}.hh-glance{border-left:none;padding-left:0;margin-top:12px}.hg-grid{grid-template-columns:repeat(3,1fr);gap:18px 18px}.hg-v{font-size:2rem}}
+/* (legacy below-hero glance, no longer used) */
+.glance{display:flex;align-items:center;justify-content:center;gap:44px;flex-wrap:wrap;max-width:1120px;margin:54px auto 0}
+.glance-head{flex:0 0 auto}
+.glance-head .sec-title{line-height:1.08}
+.glance-kpis{display:flex;flex-wrap:wrap;padding-left:44px;border-left:1px solid var(--border)}
+.glance .kpi{flex:0 0 auto;padding:6px 26px;border-right:1px solid var(--border);border-bottom:none;text-align:center}
+.glance .kpi:last-child{border-right:none}
+.glance .kpi-v{font-size:1.75rem}
+.glance .kpi-l{margin-top:6px}
+@media(max-width:860px){.glance{gap:22px}.glance-head{flex-basis:100%;text-align:center}.glance-head .sec-bar{margin-left:auto;margin-right:auto}.glance-head .sec-title br{display:none}.glance-kpis{border-left:none;padding-left:0;justify-content:center}.glance .kpi{padding:10px 18px;border-bottom:1px solid var(--border)}}
+/* ===== TOP BAR LINKS ===== */
+#tb-links{display:inline-flex;gap:22px;align-items:center}
+/* ===== PORTFOLIO — cleaner look & feel ===== */
+.bu-grid{grid-template-columns:repeat(auto-fill,minmax(345px,1fr));gap:16px;margin-bottom:8px}
+.bu-card{padding:22px;gap:18px;align-items:center;border-radius:16px}
+.bu-logo{width:92px;height:52px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:8px}
+.bu-logo img{max-width:76px;max-height:36px}
+.bu-info .bi-top{margin-bottom:5px}
+.bu-info .bi-name{font-size:1.05rem}
+.bu-info .bi-meta{font-size:.6rem;text-transform:uppercase;letter-spacing:.07em;color:var(--text-light);margin-bottom:8px}
+.bu-info .bi-desc{font-size:.75rem;line-height:1.5}
+.bu-info .bi-tags{gap:5px;margin-top:9px}
+.bu-info .bi-tag{font-size:.55rem;padding:3px 9px;border:none;background:var(--bg-off);color:var(--text-mid)}
+.bu-info .bi-acq{font-size:.52rem;padding:3px 9px;background:var(--red-light);color:var(--red)}
+.bc-arrow{display:none}
 </style>
 </head>
 <body>
@@ -475,7 +545,7 @@ body{letter-spacing:.001em}
   <div class="tb-divider"></div>
   <div class="tb-title">Travel &amp; Hospitality <span class="tb-sub">Ecosystem</span></div>
   <div class="tb-spacer"></div>
-  <a href="https://juniper-group.com" target="_blank" rel="noopener" class="tb-link">Juniper Group</a>
+  <span id="tb-links"></span>
   <button class="tb-link" onclick="showTab('portal')" style="background:none;border:1px solid rgba(255,255,255,.28);padding:7px 16px;border-radius:100px;cursor:pointer;font-family:inherit">BU Portal</button>
 </div>
 <nav class="nav" id="nav"></nav>
@@ -580,18 +650,24 @@ products:[{n:"Etta Platform",d:"Full-service cloud and mobile corporate travel b
 facts:[{v:"Etta",l:"Platform"},{v:"Corporate",l:"Travel"},{v:"US",l:"Focus"}],tags:["Corporate Travel","Booking","NDC","Mobile"]},
 ];
 // Apply business-unit leader edits saved locally in this browser
+try{const _nb=JSON.parse(localStorage.getItem('jg_newbus')||'[]');if(Array.isArray(_nb))_nb.forEach(b=>{if(b&&b.id&&!BUS.find(x=>x.id===b.id))BUS.push(b)});}catch(e){}
 try{const _ov=JSON.parse(localStorage.getItem('jg_overrides')||'{}');BUS.forEach(b=>{if(_ov[b.id])Object.assign(b,_ov[b.id])});}catch(e){}
+try{const _del=JSON.parse(localStorage.getItem('jg_deleted')||'[]');if(Array.isArray(_del)&&_del.length){for(let i=BUS.length-1;i>=0;i--)if(_del.indexOf(BUS[i].id)>-1)BUS.splice(i,1)}}catch(e){}
 let EVENTS={};try{EVENTS=JSON.parse(localStorage.getItem('jg_events')||'{}')}catch(e){EVENTS={}}
+let KPIS=[{v:'17',l:'Business Units'},{v:'$30B+',l:'Annual GMV'},{v:'48M+',l:'Bookings / yr'},{v:'650K+',l:'Hotels'},{v:'600+',l:'Airlines'},{v:'100+',l:'Countries'}];
+try{const _k=JSON.parse(localStorage.getItem('jg_kpis')||'null');if(Array.isArray(_k)&&_k.length)KPIS=_k;}catch(e){}
+let TOPLINKS=[{label:'Juniper Group',url:'https://juniper-group.com'}];
+try{const _t=JSON.parse(localStorage.getItem('jg_toplinks')||'null');if(Array.isArray(_t))TOPLINKS=_t;}catch(e){}
 
 // ====== NAV ======
-const TABS=[{id:'home',label:'Home'},{id:'fy',label:'For Clients'},{id:'vc',label:'For Partners'},{id:'sell',label:'Sell Your Company'},{id:'events',label:'Events'},{id:'insights',label:'Industry Insights'}];
+const TABS=[{id:'home',label:'Juniper Group Travel'},{id:'solutions',label:'Portfolio Solutions'},{id:'sell',label:'Sell Your Company'},{id:'events',label:'Events'},{id:'insights',label:'Industry Insights'}];
 const nav=document.getElementById('nav');const vc_c=document.getElementById('views-container');
 TABS.forEach((t,i)=>{const b=document.createElement('button');b.className=`nav-btn${i===0?' on':''}`;b.dataset.tab=t.id;b.textContent=t.label;nav.appendChild(b)});
 TABS.forEach(t=>{const v=document.createElement('div');v.className=`view${t.id==='home'?' active':''}`;v.id=`view-${t.id}`;vc_c.appendChild(v)});
 const buDV=document.createElement('div');buDV.className='view';buDV.id='view-bu';vc_c.appendChild(buDV);
 const portalDV=document.createElement('div');portalDV.className='view';portalDV.id='view-portal';vc_c.appendChild(portalDV);
 
-function showTab(id){document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('on',b.dataset.tab===id));document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(`view-${id}`).classList.add('active');closePanel();if(id==='vc'&&!vcB)buildVC();if(id==='fy'&&!fyB)buildFY();if(id==='sell'&&!sellB)buildSELL();if(id==='events')buildEvents();if(id==='portal')buildPortal();setTimeout(()=>scanMotion(document.getElementById('view-'+id)),40)}
+function showTab(id){document.querySelectorAll('.nav-btn').forEach(b=>b.classList.toggle('on',b.dataset.tab===id));document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(`view-${id}`).classList.add('active');closePanel();if(id==='solutions')buildSolutions();if(id==='sell'&&!sellB)buildSELL();if(id==='events')buildEvents();if(id==='insights')buildInsights();if(id==='portal')buildPortal();setTimeout(()=>scanMotion(document.getElementById('view-'+id)),40)}
 nav.addEventListener('click',e=>{if(e.target.classList.contains('nav-btn'))showTab(e.target.dataset.tab)});
 
 // ====== DETAIL PANEL ======
@@ -699,25 +775,19 @@ function showBU(buId){
     </div>
     <div class="hh-overlay"></div>
     <div class="hh-content">
-      <div class="hh-tag">Constellation Software › Vela Software › Juniper Group</div>
-      <h1>Travel &amp; Hospitality<br><span class="hl">Software</span> Ecosystem</h1>
-      <div class="hh-sub">An Operating Portfolio of Vela Software, a Constellation Software ("CSI") company. Since 1995, CSI acquires, manages and builds vertical market software businesses, listed on the Toronto Stock Exchange (TSX: CSU) since 2006.</div>
-      <div class="hh-cta-row">
-        <a href="https://juniper-group.com/about-us" target="_blank" rel="noopener" class="hh-cta">Learn More <span style="font-size:.9rem">→</span></a>
-        <a href="https://juniper-group.com/our-companies" target="_blank" rel="noopener" class="hh-cta ghost">Our Companies</a>
+      <div class="hh-main">
+        <div class="hh-tag">Constellation Software › Vela Software › Juniper Group</div>
+        <h1>Travel &amp; Hospitality<br><span class="hl">Software</span> Ecosystem</h1>
       </div>
-      <div class="csi-stats">
-        <div class="csi-stat"><div class="cs-val count">US$11B+</div><div class="cs-lab">Revenues</div></div>
-        <div class="csi-stat"><div class="cs-val count">6</div><div class="cs-lab">Operating Groups</div></div>
-        <div class="csi-stat"><div class="cs-val count">1,100+</div><div class="cs-lab">Businesses · 150+ Verticals</div></div>
-        <div class="csi-stat"><div class="cs-val count">125,000+</div><div class="cs-lab">Customers · 100+ Countries</div></div>
-        <div class="csi-stat"><div class="cs-val count">55,000+</div><div class="cs-lab">Employees Globally</div></div>
+      <div class="hh-glance">
+        <div class="hg-eyebrow">The group at a glance</div>
+        <div class="hg-grid">${KPIS.map(k=>`<div class="hg-kpi"><div class="hg-v count">${k.v}</div><div class="hg-l">${k.l}</div></div>`).join('')}</div>
       </div>
     </div>
     <div class="hh-video-dots" id="hh-dots"></div>
   </div>`;
 
-  h+=`<div style="display:flex;align-items:center;justify-content:center;gap:0;margin:28px 0 32px;flex-direction:column"><div style="display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap"><a href="https://www.csisoftware.com" target="_blank" rel="noopener" style="display:block;opacity:.7;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.7"><img src="${LOGOS['csi']}" style="height:44px;display:block" alt="Constellation Software"></a><div style="font-size:1.2rem;color:var(--border)">›</div><a href="https://www.velasoftwaregroup.com" target="_blank" rel="noopener" style="display:block;opacity:.7;transition:opacity .2s" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.7"><img src="${LOGOS['vela']}" style="height:44px;display:block" alt="Vela Software"></a><div style="font-size:1.2rem;color:var(--border)">›</div><a href="https://juniper-group.com" target="_blank" rel="noopener" style="display:block;transition:opacity .2s"><img src="${LOGOS['juniper-group']}" style="height:44px;display:block" alt="Juniper Group"></a></div></div>`;
+  // (Juniper Group lineage logo removed per request)
 
 
 
@@ -731,21 +801,8 @@ function showBU(buId){
   }).join('');
   h+=`<div class="lw reveal"><div class="lw-track">${lwSet}</div></div>`;
 
-  // --- Audience entry funnel (the journey) ---
-  h+=`<div class="reveal" style="max-width:1180px;margin:48px auto 4px;text-align:center"><div class="sec-title" style="font-size:1.4rem;display:block">Three ways to work with us</div><div class="sec-bar" style="margin:8px auto 16px"></div><div style="font-size:.82rem;color:var(--text-mid);max-width:560px;margin:0 auto 22px;line-height:1.6">Whichever path you take, you reach the same connected group of companies — and the right people within it.</div></div>`;
-  const PATHS=[
-    {tab:'fy',n:'01',tag:'If you are a client',title:'Find your travel tech stack',desc:"Tell us what kind of travel company you are and we'll map the products and business units built for you.",cta:'Explore for clients'},
-    {tab:'vc',n:'02',tag:'If you are a partner',title:'Connect to the ecosystem',desc:'See how supply, connectivity and distribution fit together across the group — and where your platform plugs in.',cta:'Explore for partners'},
-    {tab:'sell',n:'03',tag:'If you want to sell your company',title:'Find a permanent home',desc:'We acquire travel & hospitality software businesses and hold them for the long term — keep your team, brand and autonomy.',cta:'Explore M&A'}
-  ];
-  h+=`<div class="pf3 reveal">`;
-  PATHS.forEach(p=>{
-    h+=`<div class="pf" onclick="showTab('${p.tab}')"><div class="pf-num">${p.n}</div><div class="pf-tag">${p.tag}</div><div class="pf-h">${p.title}</div><div class="pf-d">${p.desc}</div><div class="pf-go">${p.cta} <span class="ar">&rarr;</span></div></div>`;
-  });
-  h+=`</div>`;
-
-  h+=`<div class="reveal" style="text-align:center"><div class="sec-title" style="font-size:1.4rem;display:block">Travel &amp; Hospitality Portfolio</div><div class="sec-bar" style="margin:8px auto 18px"></div></div>`;
-  h+=`<div class="statrow reveal"><div class="st"><div class="st-num count">17+</div><div class="st-lab">Business Units</div></div><div class="st"><div class="st-num count">$30B</div><div class="st-lab">GMV</div></div><div class="st"><div class="st-num count">48M</div><div class="st-lab">Bookings / yr</div></div></div>`;
+  // (Travel KPIs now live in the hero, beside the title)
+  h+=`<div class="reveal" style="text-align:center;margin-top:8px"><div class="sec-title" style="font-size:1.4rem;display:block">Travel &amp; Hospitality Portfolio</div><div class="sec-bar" style="margin:8px auto 18px"></div></div>`;
   h+=`<div class="bu-grid">`;
   BUS.forEach(bu=>{
     const mono=bu.name.replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase();
@@ -845,13 +902,8 @@ function showBU(buId){
   })();
 })();
 
-// ====== BUILD INSIGHTS TAB ======
-(function(){
-  const w=document.getElementById('view-insights');
-  let h=`<div style="text-align:center;margin-bottom:24px"><div class="sec-title" style="font-size:1.5rem;display:block">Industry Insights & Trends</div><div class="sec-bar" style="margin:6px auto 8px"></div><div style="font-size:.8rem;color:var(--text-light);margin-bottom:4px">Curated reading from leading strategy firms on the future of travel technology</div></div>`;
-  h+=`<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px">`;
-
-  const ARTICLES=[
+// ====== INDUSTRY INSIGHTS (editable via admin) ======
+let INSIGHTS=[
     {title:"Agentic AI Could Upend the Travel Industry",source:"McKinsey",color:"#003C71",url:"https://www.mckinsey.com/industries/travel/our-insights"},
     {title:"Four Emerging Themes in Business Travel",source:"McKinsey",color:"#003C71",url:"https://www.mckinsey.com/industries/travel/our-insights/four-emerging-themes-in-business-travel"},
     {title:"Travel Industry Trends & the PE Opportunity",source:"McKinsey",color:"#003C71",url:"https://www.mckinsey.com/industries/private-capital/our-insights/travel-industry-trends-and-the-opportunity-for-private-equity"},
@@ -862,15 +914,17 @@ function showBU(buId){
     {title:"Travel & Tourism Thought Leadership",source:"BCG",color:"#2D8C3C",url:"https://www.bcg.com/industries/travel-tourism/insights"},
     {title:"Travel, Logistics & Infrastructure: M&A 2025",source:"McKinsey",color:"#003C71",url:"https://www.mckinsey.com/capabilities/m-and-a/our-insights/travel-logistics-and-infrastructure-firms-are-finding-opportunities-in-technology-changing-consumer-demographics-and-global-trade"},
     {title:"7 Travel & Hospitality Trends That Defined 2025",source:"Lighthouse",color:"#FF6B35",url:"https://www.mylighthouse.com/resources/blog/7-travel-and-hospitality-trends-2025"},
-  ];
-
-  ARTICLES.forEach(a=>{
-    h+=`<a href="${a.url}" target="_blank" rel="noopener" style="text-decoration:none;display:block;border-radius:10px;overflow:hidden;border:1px solid var(--border);transition:all .25s;cursor:pointer" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 6px 20px rgba(0,0,0,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'"><div style="background:${a.color};padding:28px 22px 24px;position:relative;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end"><img src="https://www.google.com/s2/favicons?domain=${a.url.split('/')[2]}&sz=64" style="height:32px;position:absolute;top:14px;left:18px;opacity:.9;border-radius:4px;background:rgba(255,255,255,.15);padding:3px"><div style="position:absolute;top:16px;right:14px;font-size:.5rem;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;border:1px solid rgba(255,255,255,.2);padding:2px 8px;border-radius:3px">${a.source}</div><div style="font-size:.92rem;font-weight:800;color:#fff;line-height:1.25">${a.title}</div></div><div style="background:var(--bg);padding:10px 16px;display:flex;align-items:center;justify-content:space-between"><span style="font-size:.6rem;color:var(--text-light)">Read report →</span><span style="font-size:.56rem;color:var(--text-light)">${a.source}</span></div></a>`;
+];
+try{const _i=JSON.parse(localStorage.getItem('jg_insights')||'null');if(Array.isArray(_i)&&_i.length)INSIGHTS=_i;}catch(e){}
+function buildInsights(){const w=document.getElementById('view-insights');
+  let h=`<div class="reveal" style="text-align:center;margin-bottom:24px"><div class="sec-title" style="font-size:1.5rem;display:block">Industry Insights &amp; Trends</div><div class="sec-bar" style="margin:6px auto 8px"></div><div style="font-size:.8rem;color:var(--text-light);margin-bottom:4px">Curated reading from leading strategy firms on the future of travel technology</div></div>`;
+  h+=`<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px">`;
+  INSIGHTS.forEach(a=>{
+    h+=`<a class="reveal" href="${ptEsc(a.url)}" target="_blank" rel="noopener" style="text-decoration:none;display:block;border-radius:12px;overflow:hidden;border:1px solid var(--border);transition:all .25s;cursor:pointer" onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 10px 26px rgba(59,5,5,.1)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'"><div style="background:${ptEsc(a.color)||'#2C2C2C'};padding:28px 22px 24px;position:relative;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end"><img src="https://www.google.com/s2/favicons?domain=${(a.url||'').split('/')[2]||''}&sz=64" style="height:32px;position:absolute;top:14px;left:18px;opacity:.9;border-radius:4px;background:rgba(255,255,255,.15);padding:3px"><div style="position:absolute;top:16px;right:14px;font-size:.5rem;font-weight:700;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em;border:1px solid rgba(255,255,255,.2);padding:2px 8px;border-radius:3px">${ptEsc(a.source)}</div><div style="font-family:'Fraunces',Georgia,serif;font-size:1.02rem;font-weight:600;color:#fff;line-height:1.2">${ptEsc(a.title)}</div></div><div style="background:var(--bg);padding:10px 16px;display:flex;align-items:center;justify-content:space-between"><span style="font-size:.6rem;color:var(--text-light)">Read report &rarr;</span><span style="font-size:.56rem;color:var(--text-light)">${ptEsc(a.source)}</span></div></a>`;
   });
-
   h+=`</div>`;
-  w.innerHTML=h;
-})();
+  w.innerHTML=h;scanMotion(w);
+}
 
 // ====== CONNECTIVITY — Progressive Reveal ======
 let vcB=false;
@@ -1327,13 +1381,13 @@ const _revObs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting
 const _cntObs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.dataset.done='1';animateCount(e.target);_cntObs.unobserve(e.target)}})},{threshold:.4});
 function scanMotion(root){if(!root)return;root.querySelectorAll('.reveal:not(.in)').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,10)*55)+'ms';_revObs.observe(el)});root.querySelectorAll('.count').forEach(el=>{if(el.dataset.done)return;if(el.dataset.c==null)el.dataset.c=el.textContent.trim();_cntObs.observe(el)})}
 function animateCount(el){const raw=el.dataset.c||el.textContent.trim();const m=raw.match(/^([^\d]*)([\d.,]+)(.*)$/);if(!m)return;const pre=m[1],suf=m[3],hasComma=m[2].indexOf(',')>-1,decs=(m[2].split('.')[1]||'').length,target=parseFloat(m[2].replace(/,/g,'')),t0=performance.now(),dur=1300;function fmt(n){let s=decs?n.toFixed(decs):Math.round(n).toString();if(hasComma)s=Math.round(n).toLocaleString('en-US');return pre+s+suf}function step(t){const p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,3);el.textContent=fmt(target*e);if(p<1)requestAnimationFrame(step)}requestAnimationFrame(step)}
-function xbandHTML(current){const items=[{tab:'fy',h:'For Clients',d:'Find the products and business units built for your type of travel company.',go:'Explore for clients'},{tab:'vc',h:'For Partners',d:'See how the group connects — and where your platform plugs in.',go:'Explore for partners'},{tab:'sell',h:'Sell Your Company',d:'A permanent home for travel & hospitality software founders.',go:'Explore M&A'}].filter(x=>x.tab!==current);let s=`<div class="xband reveal"><div class="xband-inner"><div class="xband-lab">Continue exploring</div><div class="xgrid">`;items.forEach(x=>{s+=`<div class="xcard" onclick="showTab('${x.tab}')"><div class="xc-h">${x.h}</div><div class="xc-d">${x.d}</div><div class="xc-go">${x.go} &rarr;</div></div>`});s+=`</div></div></div>`;return s}
+function xbandHTML(current){const items=[{tab:'solutions',h:'Portfolio Solutions',d:'Explore every product across the group — filter by client, content source and industry.',go:'Browse solutions'},{tab:'sell',h:'Sell Your Company',d:'A permanent home for travel & hospitality software founders.',go:'Explore M&A'},{tab:'events',h:'Events',d:'Trade shows, conferences and webinars across the portfolio.',go:'View calendar'}].filter(x=>x.tab!==current);let s=`<div class="xband reveal"><div class="xband-inner"><div class="xband-lab">Continue exploring</div><div class="xgrid">`;items.forEach(x=>{s+=`<div class="xcard" onclick="showTab('${x.tab}')"><div class="xc-h">${x.h}</div><div class="xc-d">${x.d}</div><div class="xc-go">${x.go} &rarr;</div></div>`});s+=`</div></div></div>`;return s}
 // Persistent footer across all views
 (function(){const f=document.createElement('div');f.className='site-foot';
  const lk=(t,fn)=>`<button class="foot-link" onclick="${fn}">${t}</button>`;
  f.innerHTML=`<div class="foot-inner">
    <div class="foot-col foot-brand"><div class="fb-t">Juniper Group</div><div class="fb-d">The travel &amp; hospitality software portfolio of Vela Software, a Constellation Software company (TSX: CSU).</div></div>
-   <div class="foot-col"><h4>Explore</h4>${lk('Home',"showTab('home')")}${lk('For Clients',"showTab('fy')")}${lk('For Partners',"showTab('vc')")}${lk('Sell Your Company',"showTab('sell')")}${lk('Industry Insights',"showTab('insights')")}</div>
+   <div class="foot-col"><h4>Explore</h4>${lk('Juniper Group Travel',"showTab('home')")}${lk('Portfolio Solutions',"showTab('solutions')")}${lk('Sell Your Company',"showTab('sell')")}${lk('Events',"showTab('events')")}${lk('Industry Insights',"showTab('insights')")}</div>
    <div class="foot-col"><h4>Group</h4><a class="foot-link" href="https://juniper-group.com" target="_blank" rel="noopener">Juniper Group</a><a class="foot-link" href="https://www.velasoftwaregroup.com" target="_blank" rel="noopener">Vela Software</a><a class="foot-link" href="https://www.csisoftware.com" target="_blank" rel="noopener">Constellation Software</a></div>
    <div class="foot-col"><h4>Get in touch</h4><a class="foot-link" href="https://juniper-group.com" target="_blank" rel="noopener">Partner with us</a><a class="foot-link" href="https://juniper-group.com" target="_blank" rel="noopener">Become a client</a><a class="foot-link" href="https://juniper-group.com" target="_blank" rel="noopener">Sell your company</a></div>
  </div>
@@ -1342,11 +1396,15 @@ function xbandHTML(current){const items=[{tab:'fy',h:'For Clients',d:'Find the p
 })();
 // Initial reveal/counter scan for the eager Home view
 scanMotion(document.getElementById('view-home'));
+// Render editable top-bar links
+function renderTopLinks(){const el=document.getElementById('tb-links');if(!el)return;el.innerHTML=(TOPLINKS||[]).map(l=>`<a href="${ptEsc(l.url)}" target="_blank" rel="noopener" class="tb-link">${ptEsc(l.label)}</a>`).join('');}
+renderTopLinks();
 
 // ===== BUSINESS UNIT PORTAL =====
 let portalUser=null;
 function ptEsc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function buildPortal(){const w=document.getElementById('view-portal');
+  if(portalUser==='__admin__'){buildAdmin();return}
   if(!portalUser){
     w.innerHTML=`<div class="pt-wrap"><div class="pt-card">
       <div class="pt-tag">Business Unit Portal</div>
@@ -1359,7 +1417,7 @@ function buildPortal(){const w=document.getElementById('view-portal');
       <input class="pt-in" id="pt-pass" type="password" placeholder="Password">
       <div class="pt-err" id="pt-err"></div>
       <button class="pt-btn" id="pt-login">Sign in &rarr;</button>
-      <div class="pt-note">Each business unit signs in with its own company name. This is a front-end demo: edits are saved in this browser only.</div>
+      <div class="pt-note">Business units sign in with their company name. Administrators sign in with the username <b>admin</b> to manage all site content. Front-end demo: edits are saved in this browser only.</div>
     </div></div>`;
     document.getElementById('pt-login').onclick=portalLogin;
     document.getElementById('pt-pass').addEventListener('keydown',e=>{if(e.key==='Enter')portalLogin()});
@@ -1368,10 +1426,10 @@ function buildPortal(){const w=document.getElementById('view-portal');
   const bu=BUS.find(b=>b.id===portalUser);
   w.innerHTML=`<div class="pt-wrap2">
     <div class="pt-bar"><div><div class="pt-tag">Signed in as</div><div class="pt-co">${ptEsc(bu.name)}</div></div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="pt-ghost" onclick="showBU('${bu.id}')">View public page</button><button class="pt-ghost" id="pt-logout">Log out</button></div></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="pt-ghost" onclick="showBU('${bu.id}')">View public page</button><button class="pt-ghost" id="pt-logout">${adminMode?'&larr; Back to admin':'Log out'}</button></div></div>
     <div class="pt-form">
       <div class="pt-row2">
-        <div><label class="pt-l">Company name</label><input class="pt-in" value="${ptEsc(bu.name)}" disabled></div>
+        <div><label class="pt-l">Company name</label><input class="pt-in" id="f-name" value="${ptEsc(bu.name)}" ${adminMode?'':'disabled'}></div>
         <div><label class="pt-l">Website URL</label><input class="pt-in" id="f-url" value="${ptEsc(bu.url)}"></div>
       </div>
       <div class="pt-row2">
@@ -1394,19 +1452,23 @@ function buildPortal(){const w=document.getElementById('view-portal');
   (bu.facts||[]).forEach(f=>ptAddFact(f.v,f.l));
   (bu.products||[]).forEach(p=>ptAddProd(p.n,p.d));
   portalEvents=JSON.parse(JSON.stringify(EVENTS[bu.id]||[]));ptRenderEvents();
-  document.getElementById('pt-logout').onclick=()=>{portalUser=null;buildPortal()};
+  document.getElementById('pt-logout').onclick=()=>{if(adminMode){portalUser='__admin__';buildPortal()}else{portalUser=null;buildPortal()}};
   document.getElementById('pt-save').onclick=portalSave;
 }
-function portalLogin(){const u=document.getElementById('pt-user').value.trim();const p=document.getElementById('pt-pass').value;const bu=BUS.find(b=>b.name.toLowerCase()===u.toLowerCase());if(!bu||p!=='12345'){document.getElementById('pt-err').textContent='Incorrect company name or password.';return}portalUser=bu.id;buildPortal()}
+function portalLogin(){const u=document.getElementById('pt-user').value.trim();const p=document.getElementById('pt-pass').value;
+  if(u.toLowerCase()==='admin'&&p==='12345'){portalUser='__admin__';adminMode=false;buildPortal();return}
+  const bu=BUS.find(b=>b.name.toLowerCase()===u.toLowerCase());if(!bu||p!=='12345'){document.getElementById('pt-err').textContent='Incorrect company name or password.';return}portalUser=bu.id;adminMode=false;buildPortal()}
 function ptAddFact(v,l){const wrap=document.getElementById('f-facts');const row=document.createElement('div');row.className='pt-kv';row.innerHTML=`<input class="pt-in pt-fv" placeholder="Value (e.g. 550+)" value="${ptEsc(v)}"><input class="pt-in pt-fl" placeholder="Label (e.g. Clients)" value="${ptEsc(l)}"><button class="pt-del" onclick="this.parentElement.remove()">&times;</button>`;wrap.appendChild(row)}
 function ptAddProd(n,d){const wrap=document.getElementById('f-prods');const row=document.createElement('div');row.className='pt-pp';row.innerHTML=`<input class="pt-in pt-pn" placeholder="Product name" value="${ptEsc(n)}"><input class="pt-in pt-pd" placeholder="Short description" value="${ptEsc(d)}"><button class="pt-del" onclick="this.parentElement.remove()">&times;</button>`;wrap.appendChild(row)}
 function portalSave(){const bu=BUS.find(b=>b.id===portalUser);if(!bu)return;const g=id=>{const el=document.getElementById(id);return el?el.value:''};
+  const nm=g('f-name').trim();if(nm)bu.name=nm;
   bu.url=g('f-url').trim();bu.hq=g('f-hq').trim();bu.gm=g('f-gm').trim();bu.desc=g('f-desc').trim();
   const fv=parseInt(g('f-f'),10);if(!isNaN(fv))bu.f=fv;const av=parseInt(g('f-a'),10);if(!isNaN(av))bu.a=av;
   bu.tags=g('f-tags').split(',').map(s=>s.trim()).filter(Boolean);
   bu.facts=[].slice.call(document.querySelectorAll('#f-facts .pt-kv')).map(r=>({v:r.querySelector('.pt-fv').value.trim(),l:r.querySelector('.pt-fl').value.trim()})).filter(x=>x.v||x.l);
   bu.products=[].slice.call(document.querySelectorAll('#f-prods .pt-pp')).map(r=>({n:r.querySelector('.pt-pn').value.trim(),d:r.querySelector('.pt-pd').value.trim()})).filter(x=>x.n);
-  try{const ov=JSON.parse(localStorage.getItem('jg_overrides')||'{}');ov[bu.id]={url:bu.url,hq:bu.hq,gm:bu.gm,f:bu.f,a:bu.a,desc:bu.desc,tags:bu.tags,facts:bu.facts,products:bu.products};localStorage.setItem('jg_overrides',JSON.stringify(ov));}catch(e){}
+  try{const ov=JSON.parse(localStorage.getItem('jg_overrides')||'{}');ov[bu.id]={name:bu.name,url:bu.url,hq:bu.hq,gm:bu.gm,f:bu.f,a:bu.a,desc:bu.desc,tags:bu.tags,facts:bu.facts,products:bu.products};localStorage.setItem('jg_overrides',JSON.stringify(ov));}catch(e){}
+  if(bu.id.indexOf('custom-')===0){try{let nb=JSON.parse(localStorage.getItem('jg_newbus')||'[]');const full={id:bu.id,name:bu.name,hq:bu.hq,f:bu.f,a:bu.a,gm:bu.gm,url:bu.url,desc:bu.desc,tags:bu.tags,facts:bu.facts,products:bu.products};const k=nb.findIndex(x=>x.id===bu.id);if(k>-1)nb[k]=full;else nb.push(full);localStorage.setItem('jg_newbus',JSON.stringify(nb));}catch(e){}}
   EVENTS[bu.id]=JSON.parse(JSON.stringify(portalEvents));try{localStorage.setItem('jg_events',JSON.stringify(EVENTS))}catch(e){}
   const s=document.getElementById('pt-saved');if(s){s.textContent='Saved ✓';setTimeout(()=>{s.textContent=''},2600)}
 }
@@ -1458,6 +1520,94 @@ function buildEvents(){const w=document.getElementById('view-events');
   h+=`<div class="ev-agenda">`;let cur='';
   all.forEach(ev=>{const mk=ev.date?ev.date.slice(0,7):'TBC';const ml=ev.date?new Date(ev.date+'T00:00').toLocaleDateString('en-US',{month:'long',year:'numeric'}):'Date to be confirmed';if(mk!==cur){cur=mk;h+=`<div class="ev-month">${ml}</div>`}h+=evCard(ev)});
   h+=`</div>`;w.innerHTML=h;scanMotion(w);
+}
+
+// ===== PORTFOLIO SOLUTIONS (faceted catalog) =====
+const FACETS={
+'juniper-tt':{client:['OTA','DMC','Bedbank / Wholesaler','Tour Operator','Travel Agency'],source:['Hotel','Air','Cruise','Packages','Content & Data'],industry:['Distribution & Connectivity','Leisure']},
+'peakwork':{client:['Tour Operator','OTA','Airline','Travel Agency'],source:['Packages','Hotel','Air'],industry:['Distribution & Connectivity','Leisure']},
+'cangooroo':{client:['OTA','DMC','Bedbank / Wholesaler','Tour Operator'],source:['Hotel','Tours & Activities','Packages'],industry:['Distribution & Connectivity','Leisure']},
+'vervotech':{client:['OTA','Bedbank / Wholesaler','Tour Operator'],source:['Hotel','Content & Data'],industry:['Distribution & Connectivity','Hospitality']},
+'ist':{client:['Travel Agency','OTA','Tour Operator'],source:['Cruise'],industry:['Cruise','Distribution & Connectivity']},
+'roibos':{client:['Hotel & Chain','Tour Operator','Travel Agency','OTA'],source:['Hotel'],industry:['Hospitality','Distribution & Connectivity']},
+'alturos':{client:['DMO','Hotel & Chain','Travel Agency'],source:['Tours & Activities','Packages'],industry:['Destinations','Leisure']},
+'lleego':{client:['Travel Agency','Tour Operator','TMC / Corporate'],source:['Air','Rail','Car'],industry:['Distribution & Connectivity','Corporate Travel']},
+'traveltek':{client:['Travel Agency','Tour Operator','OTA'],source:['Cruise','Air','Hotel','Packages'],industry:['Cruise','Leisure','Distribution & Connectivity']},
+'dome':{client:['DMC','Tour Operator'],source:['Tours & Activities','Hotel','Packages'],industry:['Destinations','Distribution & Connectivity']},
+'hotetec':{client:['Hotel & Chain','Vacation Rental'],source:['Hotel'],industry:['Hospitality','Distribution & Connectivity']},
+'interes':{client:['Travel Agency','Tour Operator'],source:['Air'],industry:['Distribution & Connectivity']},
+'rezmagic':{client:['Travel Agency','Tour Operator'],source:['Cruise'],industry:['Cruise']},
+'inspiretec':{client:['Tour Operator','Travel Agency'],source:['Packages','Content & Data'],industry:['Leisure','Distribution & Connectivity']},
+'derbysoft':{client:['Hotel & Chain','OTA','TMC / Corporate','Bedbank / Wholesaler'],source:['Hotel','Content & Data'],industry:['Hospitality','Distribution & Connectivity']},
+'pkfare':{client:['OTA','Travel Agency','TMC / Corporate','Tour Operator'],source:['Air','Hotel'],industry:['Distribution & Connectivity']},
+'deem':{client:['TMC / Corporate','Travel Agency'],source:['Air','Hotel','Car'],industry:['Corporate Travel']}
+};
+const SOL_GROUPS=[
+ {key:'client',label:'Client',opts:['OTA','Tour Operator','Travel Agency','DMC','Bedbank / Wholesaler','Hotel & Chain','Airline','Cruise Line','TMC / Corporate','DMO','Vacation Rental']},
+ {key:'source',label:'Content source',opts:['Hotel','Air','Cruise','Rail','Car','Tours & Activities','Packages','Content & Data']},
+ {key:'industry',label:'Industry',opts:['Leisure','Corporate Travel','Cruise','Hospitality','Distribution & Connectivity','Destinations']}
+];
+let solState={client:new Set(),source:new Set(),industry:new Set(),bu:new Set(),q:''};
+function solList(){const out=[];BUS.forEach(bu=>{const f=FACETS[bu.id]||{client:[],source:[],industry:[]};(bu.products||[]).forEach(p=>out.push({buId:bu.id,buName:bu.name,name:p.n,desc:p.d,client:f.client||[],source:f.source||[],industry:f.industry||[]}))});return out}
+function solMatch(s){const groups=['client','source','industry'];for(let gi=0;gi<groups.length;gi++){const set=solState[groups[gi]];if(set.size){let ok=false;s[groups[gi]].forEach(v=>{if(set.has(v))ok=true});if(!ok)return false}}if(solState.bu.size&&!solState.bu.has(s.buId))return false;if(solState.q){const q=solState.q.toLowerCase();if((s.name+' '+s.desc+' '+s.buName).toLowerCase().indexOf(q)<0)return false}return true}
+function buildSolutions(){const w=document.getElementById('view-solutions');
+  let h=`<div class="reveal" style="text-align:center;margin:8px auto 4px"><div class="sec-title" style="font-size:1.6rem;display:block">Portfolio Solutions</div><div class="sec-bar" style="margin:8px auto 14px"></div><div style="font-size:.84rem;color:var(--text-mid);max-width:640px;margin:0 auto 26px;line-height:1.6">Every product across the Juniper Group travel portfolio. Filter by your client type, the content you source, your industry, or by company.</div></div>`;
+  h+=`<div class="sol-wrap"><aside class="sol-side">`;
+  h+=`<input class="sol-search" id="sol-q" placeholder="Search solutions…" oninput="solState.q=this.value;solRender()">`;
+  SOL_GROUPS.forEach(g=>{h+=`<div class="sol-group"><div class="sol-glabel">${g.label}</div><div class="sol-chips">`+g.opts.map(o=>`<button class="sol-chip" data-g="${g.key}" data-v="${ptEsc(o)}" onclick="solToggle(this)">${ptEsc(o)}</button>`).join('')+`</div></div>`});
+  h+=`<div class="sol-group"><div class="sol-glabel">Portfolio company</div><div class="sol-chips">`+BUS.slice().sort((a,b)=>a.name<b.name?-1:1).map(b=>`<button class="sol-chip" data-g="bu" data-v="${b.id}" onclick="solToggle(this)">${ptEsc(b.name)}</button>`).join('')+`</div></div>`;
+  h+=`<button class="sol-clear" onclick="solClear()">Clear all filters</button>`;
+  h+=`</aside><div class="sol-main"><div class="sol-count" id="sol-count"></div><div class="sol-grid" id="sol-results"></div></div></div>`;
+  w.innerHTML=h;solRender();
+}
+function solToggle(el){const g=el.dataset.g,v=el.dataset.v,set=solState[g];if(set.has(v)){set.delete(v);el.classList.remove('on')}else{set.add(v);el.classList.add('on')}solRender()}
+function solClear(){solState={client:new Set(),source:new Set(),industry:new Set(),bu:new Set(),q:''};const root=document.getElementById('view-solutions');if(root)root.querySelectorAll('.sol-chip').forEach(c=>c.classList.remove('on'));const q=document.getElementById('sol-q');if(q)q.value='';solRender()}
+function solRender(){const list=solList().filter(solMatch);const res=document.getElementById('sol-results');const cnt=document.getElementById('sol-count');if(cnt)cnt.textContent=list.length+' solution'+(list.length===1?'':'s');if(!res)return;
+  if(!list.length){res.innerHTML=`<div class="sol-empty">No solutions match these filters. <button class="pt-add" onclick="solClear()">Clear filters</button></div>`;return}
+  res.innerHTML=list.map(s=>{const bu=BUS.find(b=>b.id===s.buId);const mono=s.buName.replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase();const logo=bu&&LOGOS[bu.id]?`<img src="${LOGOS[bu.id]}" onerror="this.outerHTML='<span class=ev-mono>${mono}</span>'">`:`<span class="ev-mono">${mono}</span>`;const tags=s.client.concat(s.source).slice(0,4);
+    return `<div class="sol-card reveal" onclick="showBU('${s.buId}')"><div class="sol-bu">${logo}<span>${ptEsc(s.buName)}</span></div><div class="sol-name">${ptEsc(s.name)}</div><div class="sol-desc">${ptEsc(s.desc)}</div><div class="sol-tags">${tags.map(t=>`<span class="sol-tag">${ptEsc(t)}</span>`).join('')}</div></div>`}).join('');
+  scanMotion(res);
+}
+
+// ===== ADMIN BACK OFFICE =====
+let admKpiBuf=[],admInsBuf=[],adminMode=false;
+function buildAdmin(){const w=document.getElementById('view-portal');
+  let h=`<div class="pt-wrap2">
+    <div class="pt-bar"><div><div class="pt-tag">Website back office</div><div class="pt-co">Administrator</div></div><div><button class="pt-ghost" id="pt-logout">Log out</button></div></div>
+    <div class="pt-note" style="margin:4px 0 18px">Manage site content here. Company pages, Solutions, Events and Insights update immediately; the home page (KPIs &amp; portfolio grid) updates after a page reload.</div>
+    <div class="pt-form"><div class="adm-h">Travel KPIs — home “group at a glance”</div><div id="adm-kpis"></div><button class="pt-add" onclick="admAddKpi()">+ Add KPI</button><div class="pt-save-row"><span class="pt-saved" id="adm-kpi-saved"></span><button class="pt-btn" onclick="admSaveKpis()">Save KPIs</button></div></div>
+    <div class="pt-form" style="margin-top:16px"><div class="adm-h">Top bar links</div><div class="pt-note" style="margin:0 0 10px">Links shown in the top bar, each with its web address. The BU Portal button is always shown.</div><div id="adm-top"></div><button class="pt-add" onclick="admAddTop()">+ Add link</button><div class="pt-save-row"><span class="pt-saved" id="adm-top-saved"></span><button class="pt-btn" onclick="admSaveTop()">Save links</button></div></div>
+    <div class="pt-form" style="margin-top:16px"><div class="adm-h">Business units</div><div class="adm-bu-list">`+BUS.map(b=>`<div class="adm-bu"><span>${ptEsc(b.name)}</span><span><button class="pt-ghost" onclick="admEditBU('${b.id}')">Edit</button> <button class="pt-ghost" onclick="admDelBU('${b.id}')">Delete</button></span></div>`).join('')+`</div><button class="pt-add" onclick="admAddBU()">+ Add business unit</button></div>
+    <div class="pt-form" style="margin-top:16px"><div class="adm-h">Industry insights</div><div id="adm-ins"></div><button class="pt-add" onclick="admAddIns()">+ Add article</button><div class="pt-save-row"><span class="pt-saved" id="adm-ins-saved"></span><button class="pt-btn" onclick="admSaveIns()">Save insights</button></div></div>
+  </div>`;
+  w.innerHTML=h;
+  document.getElementById('pt-logout').onclick=()=>{portalUser=null;adminMode=false;buildPortal()};
+  admKpiBuf=JSON.parse(JSON.stringify(KPIS));admRenderKpis();
+  admTopBuf=JSON.parse(JSON.stringify(TOPLINKS));admRenderTop();
+  admInsBuf=JSON.parse(JSON.stringify(INSIGHTS));admRenderIns();
+}
+let admTopBuf=[];
+function admRenderTop(){const wrap=document.getElementById('adm-top');if(!wrap)return;wrap.innerHTML=admTopBuf.map((t,i)=>`<div class="pt-kv"><input class="pt-in" oninput="admTopBuf[${i}].label=this.value" value="${ptEsc(t.label)}" placeholder="Label (e.g. Juniper Group)"><input class="pt-in" oninput="admTopBuf[${i}].url=this.value" value="${ptEsc(t.url)}" placeholder="https://…"><button class="pt-del" onclick="admDelTop(${i})">&times;</button></div>`).join('')}
+function admAddTop(){admTopBuf.push({label:'',url:''});admRenderTop()}
+function admDelTop(i){admTopBuf.splice(i,1);admRenderTop()}
+function admSaveTop(){TOPLINKS=admTopBuf.filter(t=>t.label&&t.url);try{localStorage.setItem('jg_toplinks',JSON.stringify(TOPLINKS))}catch(e){}renderTopLinks();const s=document.getElementById('adm-top-saved');if(s){s.textContent='Saved ✓';setTimeout(()=>s.textContent='',3000)}}
+function admRenderKpis(){const wrap=document.getElementById('adm-kpis');if(!wrap)return;wrap.innerHTML=admKpiBuf.map((k,i)=>`<div class="pt-kv"><input class="pt-in" oninput="admKpiBuf[${i}].v=this.value" value="${ptEsc(k.v)}" placeholder="Value (e.g. 650K+)"><input class="pt-in" oninput="admKpiBuf[${i}].l=this.value" value="${ptEsc(k.l)}" placeholder="Label (e.g. Hotels)"><button class="pt-del" onclick="admDelKpi(${i})">&times;</button></div>`).join('')}
+function admAddKpi(){admKpiBuf.push({v:'',l:''});admRenderKpis()}
+function admDelKpi(i){admKpiBuf.splice(i,1);admRenderKpis()}
+function admSaveKpis(){KPIS=admKpiBuf.filter(k=>k.v||k.l);try{localStorage.setItem('jg_kpis',JSON.stringify(KPIS))}catch(e){}const s=document.getElementById('adm-kpi-saved');if(s){s.textContent='Saved ✓ — reload to update home';setTimeout(()=>s.textContent='',3500)}}
+function admRenderIns(){const wrap=document.getElementById('adm-ins');if(!wrap)return;wrap.innerHTML=admInsBuf.map((a,i)=>`<div class="ev-edit"><div class="pt-row2"><div><label class="pt-l">Title</label><input class="pt-in" oninput="admInsBuf[${i}].title=this.value" value="${ptEsc(a.title)}"></div><div><label class="pt-l">Source</label><input class="pt-in" oninput="admInsBuf[${i}].source=this.value" value="${ptEsc(a.source)}"></div></div><div class="pt-row2"><div><label class="pt-l">Link URL</label><input class="pt-in" oninput="admInsBuf[${i}].url=this.value" value="${ptEsc(a.url)}"></div><div><label class="pt-l">Accent colour</label><input class="pt-in" oninput="admInsBuf[${i}].color=this.value" value="${ptEsc(a.color)}" placeholder="#003C71"></div></div><div style="text-align:right;margin-top:6px"><button class="pt-del" onclick="admDelIns(${i})">&times;</button></div></div>`).join('')}
+function admAddIns(){admInsBuf.push({title:'',source:'',url:'',color:'#2C2C2C'});admRenderIns()}
+function admDelIns(i){admInsBuf.splice(i,1);admRenderIns()}
+function admSaveIns(){INSIGHTS=admInsBuf.filter(a=>a.title);try{localStorage.setItem('jg_insights',JSON.stringify(INSIGHTS))}catch(e){}buildInsights();const s=document.getElementById('adm-ins-saved');if(s){s.textContent='Saved ✓';setTimeout(()=>s.textContent='',3000)}}
+function admEditBU(id){adminMode=true;portalUser=id;buildPortal()}
+function admDelBU(id){if(!confirm('Remove this business unit from the website?'))return;const idx=BUS.findIndex(b=>b.id===id);if(idx>-1)BUS.splice(idx,1);
+  try{const del=JSON.parse(localStorage.getItem('jg_deleted')||'[]');if(del.indexOf(id)<0)del.push(id);localStorage.setItem('jg_deleted',JSON.stringify(del));}catch(e){}
+  try{let nb=JSON.parse(localStorage.getItem('jg_newbus')||'[]');nb=nb.filter(b=>b.id!==id);localStorage.setItem('jg_newbus',JSON.stringify(nb));}catch(e){}
+  buildAdmin();
+}
+function admAddBU(){const id='custom-'+Date.now();const yr=new Date().getFullYear();const nb={id:id,name:'New Company',hq:'',f:yr,a:yr,gm:'',url:'',desc:'',products:[],facts:[],tags:[]};BUS.push(nb);
+  try{const arr=JSON.parse(localStorage.getItem('jg_newbus')||'[]');arr.push(nb);localStorage.setItem('jg_newbus',JSON.stringify(arr));}catch(e){}
+  admEditBU(id);
 }
 </script>
 </body>
