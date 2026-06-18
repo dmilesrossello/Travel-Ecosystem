@@ -360,10 +360,10 @@ body{letter-spacing:.001em}
 .lw::after{right:0;background:linear-gradient(270deg,var(--bg-warm),rgba(255,251,245,0))}
 .lw-track{display:flex;gap:56px;width:max-content;animation:lwscroll 70s linear infinite}
 .lw:hover .lw-track{animation-play-state:paused}
-.lw-item{display:flex;align-items:center;gap:11px;opacity:.65;transition:opacity .3s;white-space:nowrap;text-decoration:none}
+.lw-item{display:flex;align-items:center;gap:11px;opacity:.92;transition:opacity .3s;white-space:nowrap;text-decoration:none}
 a.lw-item{cursor:pointer}
 .lw-item:hover{opacity:1}
-.lw-item img{height:32px;width:auto;filter:grayscale(1) contrast(.9);transition:filter .3s}
+.lw-item img{height:38px;width:auto;filter:none;transition:opacity .3s}
 .lw-item:hover img{filter:none}
 .lw-name{font-size:.82rem;font-weight:600;color:var(--text-mid)}
 @keyframes lwscroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -734,9 +734,15 @@ let TABSOFF=[];try{const _to=JSON.parse(localStorage.getItem('jg_tabsoff')||'[]'
 let ACCOUNTS={admin:'12345',bu:{}};try{const _ac=JSON.parse(localStorage.getItem('jg_accounts')||'null');if(_ac&&typeof _ac==='object')ACCOUNTS=Object.assign({admin:'12345',bu:{}},_ac);}catch(e){}
 function buPass(id){return (ACCOUNTS.bu&&ACCOUNTS.bu[id])||'12345';}
 var _phCache={};
-function phLogo(name){const key=name||'Logo';if(_phCache[key])return _phCache[key];try{const c=document.createElement('canvas');c.width=300;c.height=100;const x=c.getContext('2d');x.clearRect(0,0,300,100);x.fillStyle='#2C2C2C';x.textAlign='center';x.textBaseline='middle';let fs=28;x.font='700 '+fs+'px Aptos,"Segoe UI",Arial,sans-serif';while(x.measureText(key).width>268&&fs>11){fs-=1;x.font='700 '+fs+'px Aptos,"Segoe UI",Arial,sans-serif';}x.fillText(key,150,44);x.fillStyle='#ED1A45';x.fillRect(129,70,42,3);return _phCache[key]=c.toDataURL('image/png');}catch(e){return ''}}
+function phLogo(name){const key=name||'Logo';if(_phCache[key])return _phCache[key];try{const c=document.createElement('canvas');c.width=340;c.height=110;const x=c.getContext('2d');x.clearRect(0,0,340,110);
+  let hsh=0;for(let i=0;i<key.length;i++)hsh=key.charCodeAt(i)+((hsh<<5)-hsh);const hue=Math.abs(hsh)%360;
+  const cx=46,cy=55,r=36;x.beginPath();x.arc(cx,cy,r,0,Math.PI*2);x.fillStyle='hsl('+hue+',52%,44%)';x.fill();
+  const parts=key.replace(/[^A-Za-z0-9 ]/g,' ').split(/\s+/).filter(Boolean);let ini=(parts.length>1?(parts[0][0]+parts[1][0]):key.replace(/[^A-Za-z0-9]/g,'').slice(0,2)).toUpperCase();
+  x.fillStyle='#fff';x.textAlign='center';x.textBaseline='middle';x.font='700 30px Aptos,"Segoe UI",Arial,sans-serif';x.fillText(ini,cx,cy+1);
+  x.fillStyle='#2C2C2C';x.textAlign='left';x.textBaseline='middle';let fs=27;const nx=cx+r+16;x.font='700 '+fs+'px Aptos,"Segoe UI",Arial,sans-serif';while(x.measureText(key).width>(340-nx-10)&&fs>11){fs-=1;x.font='700 '+fs+'px Aptos,"Segoe UI",Arial,sans-serif';}x.fillText(key,nx,cy);
+  return _phCache[key]=c.toDataURL('image/png');}catch(e){return ''}}
 function domFrom(u){if(!u)return '';return String(u).replace(/^https?:\/\//,'').replace(/^www\./,'').split('/')[0]}
-function buLogo(b){if(!b)return phLogo('');if(b.logo)return b.logo;if(LOGOS[b.id])return LOGOS[b.id];if(b.url)return 'https://logo.clearbit.com/'+domFrom(b.url);return phLogo(b.name)}
+function buLogo(b){if(!b)return phLogo('');if(b.logo)return b.logo;if(LOGOS[b.id])return LOGOS[b.id];return phLogo(b.name)}
 function phFix(img){if(!img)return;img.onerror=null;img.src=phLogo(img.getAttribute('data-ph')||'')}
 function buEmail(b){return (b&&b.email)|| (b&&b.url?('info@'+domFrom(b.url)):'')}
 let LOG=[];try{const _lg=JSON.parse(localStorage.getItem('jg_log')||'[]');if(Array.isArray(_lg))LOG=_lg;}catch(e){}
@@ -1487,7 +1493,7 @@ function renderTopLinks(){const el=document.getElementById('tb-links');if(!el)re
 renderTopLinks();
 // Render the moving client banner (logos from client websites)
 function renderMarquee(){const t=document.getElementById('lw-track');if(!t)return;const list=(CLIENTS||[]);t.innerHTML=list.concat(list).map(c=>{
-  const src=c.logo||(c.domain?'https://logo.clearbit.com/'+domFrom(c.domain):phLogo(c.name));
+  const src=c.logo||phLogo(c.name);
   const inner=`<img src="${src}" alt="${ptEsc(c.name)}" data-ph="${ptEsc(c.name)}" onerror="phFix(this)">`;
   const link=c.link||(c.domain?'https://'+c.domain:'');
   return link?`<a class="lw-item" href="${ptEsc(link)}" target="_blank" rel="noopener" title="${ptEsc(c.name)}">${inner}</a>`:`<div class="lw-item" title="${ptEsc(c.name)}">${inner}</div>`;
