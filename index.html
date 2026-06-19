@@ -587,6 +587,7 @@ a.lw-item{cursor:pointer}
 .adm-sub-body{margin-top:8px;font-size:.76rem;color:var(--text-mid);line-height:1.55;display:flex;flex-direction:column;gap:3px}
 .adm-sellrow{display:grid;grid-template-columns:1fr 110px auto auto auto auto;gap:8px;align-items:center;margin-bottom:8px}
 .adm-req{font-size:.64rem;display:flex;align-items:center;gap:4px;white-space:nowrap;color:var(--text-mid)}
+.adm-sellopts{grid-column:1/-1;margin-top:2px}
 @media(max-width:620px){.adm-sellrow{grid-template-columns:1fr 1fr;gap:6px}}
 /* product editor row (name, desc, link, delete) */
 .pt-pp{grid-template-columns:1fr 1fr 1fr 36px}
@@ -607,6 +608,18 @@ a.lw-item{cursor:pointer}
 .adm-log-act.in{background:var(--green-bg);color:var(--green)}
 .adm-log-act.out{background:var(--red-light);color:var(--red)}
 .adm-log-ts{font-size:.7rem;color:var(--text-light);font-variant-numeric:tabular-nums}
+/* CSI KPI band on Sell page — large & centred */
+.csikpi{margin:8px auto 44px;display:flex;justify-content:center}
+.csikpi-in{display:flex;flex-wrap:wrap;justify-content:center;gap:0;max-width:1000px}
+.csikpi .kf{flex:1 1 200px;text-align:center;padding:18px 28px;border-right:1px solid var(--border)}
+.csikpi .kf:last-child{border-right:none}
+.csikpi .kv{font-size:3rem;font-weight:800;color:var(--charcoal);line-height:1}
+.csikpi .kl{font-size:.74rem;color:var(--text-light);margin-top:10px;letter-spacing:.02em}
+@media(max-width:760px){.csikpi .kf{flex-basis:45%;border-right:none;border-bottom:1px solid var(--border);padding:16px}.csikpi .kv{font-size:2.2rem}}
+/* cross-page CTA band */
+.cta-band{width:100vw;margin-left:calc(-50vw + 50%);margin-top:54px;padding:48px 32px;background:linear-gradient(135deg,#1a1a1a,#2c2c2c);text-align:center}
+.cta-h{font-size:1.5rem;font-weight:800;color:#fff;margin-bottom:10px}
+.cta-d{font-size:.9rem;color:rgba(255,255,255,.82);max-width:580px;margin:0 auto 22px;line-height:1.6}
 /* ===== APTOS EVERYWHERE ===== */
 *{font-family:'Aptos','Aptos Display','Segoe UI',system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif !important}
 /* Colour Juniper logo in the nav (light-friendly asset, no filter) */
@@ -724,7 +737,7 @@ let KPIS=[{v:'17',l:'Business Units'},{v:'$30B+',l:'Annual GMV'},{v:'48M+',l:'Bo
 try{const _k=JSON.parse(localStorage.getItem('jg_kpis')||'null');if(Array.isArray(_k)&&_k.length)KPIS=_k;}catch(e){}
 let TOPLINKS=[{label:'Juniper Group',url:'https://juniper-group.com'}];
 try{const _t=JSON.parse(localStorage.getItem('jg_toplinks')||'null');if(Array.isArray(_t))TOPLINKS=_t;}catch(e){}
-let SELLFORM=[{key:'company',label:'Company name',type:'text',req:true},{key:'contact',label:'Your name',type:'text',req:true},{key:'email',label:'Email',type:'email',req:true},{key:'phone',label:'Phone',type:'text',req:false},{key:'website',label:'Company website',type:'text',req:false},{key:'hq',label:'Headquarters (country)',type:'text',req:false},{key:'sector',label:'Sector / vertical',type:'text',req:false},{key:'revenue',label:'Approx. annual revenue',type:'text',req:false},{key:'ebitda',label:'Approx. EBITDA',type:'text',req:false},{key:'employees',label:'Number of employees',type:'text',req:false},{key:'message',label:'Anything you would like to share',type:'textarea',req:false}];
+let SELLFORM=[{key:'company',label:'Company name',type:'text',req:true},{key:'contact',label:'Your name',type:'text',req:true},{key:'email',label:'Email',type:'email',req:true},{key:'phone',label:'Phone',type:'text',req:false},{key:'website',label:'Company website',type:'text',req:false},{key:'hq',label:'Headquarters (country)',type:'text',req:false},{key:'sector',label:'Sector / vertical',type:'select',req:false,opts:['Hotel & Hospitality','Air & Transport','Cruise','OTA / Online Distribution','Tour Operator / DMC','Corporate Travel / TMC','Connectivity & Technology','Destination / DMO','Other']},{key:'revenue',label:'Approx. annual revenue',type:'select',req:false,opts:['Under $1M','$1M – $5M','$5M – $10M','$10M – $25M','$25M – $50M','$50M+']},{key:'ebitda',label:'Approx. EBITDA',type:'select',req:false,opts:['Pre-profit','$0 – $1M','$1M – $5M','$5M – $10M','$10M+']},{key:'employees',label:'Number of employees',type:'select',req:false,opts:['1 – 10','11 – 50','51 – 200','201 – 500','500+']},{key:'timeline',label:'Timeline to explore a sale',type:'select',req:false,opts:['Actively exploring now','Within 6–12 months','12–24 months','Just gathering information']},{key:'message',label:'Anything you would like to share',type:'textarea',req:false}];
 try{const _sf=JSON.parse(localStorage.getItem('jg_sellform')||'null');if(Array.isArray(_sf)&&_sf.length)SELLFORM=_sf;}catch(e){}
 let SUBMISSIONS=[];try{const _su=JSON.parse(localStorage.getItem('jg_submissions')||'[]');if(Array.isArray(_su))SUBMISSIONS=_su;}catch(e){}
 let CLIENTS=[{name:'Expedia',domain:'expedia.com'},{name:'Booking.com',domain:'booking.com'},{name:'Hotelbeds',domain:'hotelbeds.com'},{name:'Trip.com',domain:'trip.com'},{name:'Agoda',domain:'agoda.com'},{name:'WebBeds',domain:'webbeds.com'},{name:'Amadeus',domain:'amadeus.com'},{name:'Sabre',domain:'sabre.com'},{name:'Travelport',domain:'travelport.com'},{name:'Klook',domain:'klook.com'},{name:'Kiwi.com',domain:'kiwi.com'},{name:'Priceline',domain:'priceline.com'},{name:'Traveloka',domain:'traveloka.com'},{name:'Marriott',domain:'marriott.com'},{name:'Hilton',domain:'hilton.com'},{name:'IHG',domain:'ihg.com'},{name:'Accor',domain:'accor.com'},{name:'Wyndham',domain:'wyndhamhotels.com'},{name:'Hyatt',domain:'hyatt.com'},{name:'TUI',domain:'tui.com'},{name:'Despegar',domain:'despegar.com'},{name:'Trivago',domain:'trivago.com'}];
@@ -746,7 +759,8 @@ function phLogo(name){const key=name||'Logo';if(_phCache[key])return _phCache[ke
     +'</svg>';
   return _phCache[key]='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);}
 function domFrom(u){if(!u)return '';return String(u).replace(/^https?:\/\//,'').replace(/^www\./,'').split('/')[0]}
-function buLogo(b){if(!b)return phLogo('');if(b.logo)return b.logo;if(LOGOS[b.id])return LOGOS[b.id];return phLogo(b.name)}
+function favLogo(dom){return 'https://www.google.com/s2/favicons?domain='+encodeURIComponent(dom)+'&sz=128'}
+function buLogo(b){if(!b)return phLogo('');if(b.logo)return b.logo;const d=domFrom(b.url);if(d)return favLogo(d);if(LOGOS[b.id])return LOGOS[b.id];return phLogo(b.name)}
 function phFix(img){if(!img)return;img.onerror=null;img.src=phLogo(img.getAttribute('data-ph')||'')}
 function buEmail(b){return (b&&b.email)|| (b&&b.url?('info@'+domFrom(b.url)):'')}
 let LOG=[];try{const _lg=JSON.parse(localStorage.getItem('jg_log')||'[]');if(Array.isArray(_lg))LOG=_lg;}catch(e){}
@@ -756,11 +770,11 @@ let portalForgot=false;
 try{const _bo=JSON.parse(localStorage.getItem('jg_buorder')||'null');if(Array.isArray(_bo)&&_bo.length){BUS.sort((a,b)=>{let ia=_bo.indexOf(a.id),ib=_bo.indexOf(b.id);if(ia<0)ia=9999;if(ib<0)ib=9999;return ia-ib})}}catch(e){}
 
 // ====== NAV ======
-const TABS=[{id:'home',label:'Juniper Group Travel'},{id:'solutions',label:'Portfolio Solutions'},{id:'sell',label:'Sell Your Company'},{id:'events',label:'Events'},{id:'insights',label:'Industry Insights'}];
+const TABS=[{id:'home',label:'Travel & Hospitality Portfolio'},{id:'solutions',label:'Portfolio Solutions'},{id:'sell',label:'Sell Your Company'},{id:'events',label:'Events'},{id:'insights',label:'Industry Insights'}];
 const nav=document.getElementById('nav');const vc_c=document.getElementById('views-container');
 function buildNav(){nav.innerHTML='';
   nav.insertAdjacentHTML('beforeend',`<button class="nav-logo" onclick="showTab('home')" title="Juniper Group"><img src="${LOGOS['juniper-group']}" alt="Juniper Group"></button>`);
-  TABS.forEach(t=>{if(t.id!=='home'&&TABSOFF.indexOf(t.id)>-1)return;const b=document.createElement('button');b.className='nav-btn'+(t.id==='home'?' on':'');b.dataset.tab=t.id;b.textContent=t.label;nav.appendChild(b)});
+  TABS.forEach(t=>{if(t.id==='home')return;if(TABSOFF.indexOf(t.id)>-1)return;const b=document.createElement('button');b.className='nav-btn';b.dataset.tab=t.id;b.textContent=t.label;nav.appendChild(b)});
   nav.insertAdjacentHTML('beforeend',`<span class="nav-spacer"></span><span id="tb-links"></span><button class="nav-portal" onclick="showTab('portal')">BU Portal</button>`);
   renderTopLinks();
 }
@@ -922,11 +936,12 @@ function showBU(buId){
   ];
 
   JONAS.forEach(j=>{
-    const jmono=j.name.replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase();
-    h+=`<div class="bu-card reveal" onclick="window.open('https://www.jonashospitality.com/','_blank')" style="cursor:pointer"><div class="bu-logo"><img src="https://www.google.com/s2/favicons?domain=${j.domain}&sz=64" onerror="this.parentElement.innerHTML='<span class=mono>${jmono}</span>'"></div><div class="bu-info"><div class="bi-top"><div class="bi-name">${j.name}</div><div class="bi-acq" style="background:#f0f0ee;color:var(--text-light)">Jonas / CSI</div></div><div class="bi-meta">Part of Jonas Hospitality (Vertus Group)</div><div class="bi-desc">${j.desc}</div><div class="bi-tags">${j.tags.map(t=>`<span class="bi-tag">${t}</span>`).join('')}</div></div></div>`;
+    const items=(j.tags||[]).map(t=>`<li>${ptEsc(t)}</li>`).join('');
+    h+=`<div class="bu-card2 reveal" onclick="window.open('https://www.jonashospitality.com/','_blank')" title="${ptEsc(j.name)}"><div class="bu2-logo"><img src="${favLogo(domFrom(j.domain))}" alt="${ptEsc(j.name)}" data-ph="${ptEsc(j.name)}" onerror="phFix(this)"></div><ul class="bu2-prods">${items}</ul></div>`;
   });
 
   h+=`</div></div>`;
+  h+=ctaHTML();
 
   w.innerHTML=h;
 
@@ -1462,7 +1477,7 @@ function buildSELL(){sellB=true;const w=document.getElementById('view-sell');
   h+=`</div></div>`;
 
   // Scale stats
-  h+=`<div class="kf-grid reveal" style="margin-bottom:36px"><div class="kf"><div class="kv count">1,100+</div><div class="kl">Businesses acquired by CSI</div></div><div class="kf"><div class="kv count">17+</div><div class="kl">Travel &amp; hospitality BUs</div></div><div class="kf"><div class="kv count">US$11B+</div><div class="kl">Constellation revenues</div></div><div class="kf"><div class="kv">Long&#8209;term</div><div class="kl">Our holding horizon</div></div></div>`;
+  h+=`<div class="csikpi reveal"><div class="csikpi-in"><div class="kf"><div class="kv count">1,100+</div><div class="kl">Businesses acquired by CSI</div></div><div class="kf"><div class="kv count">17+</div><div class="kl">Travel &amp; hospitality BUs</div></div><div class="kf"><div class="kv count">US$11B+</div><div class="kl">Constellation revenues</div></div><div class="kf"><div class="kv">Long&#8209;term</div><div class="kl">Our holding horizon</div></div></div></div>`;
 
   // Contact CTA
   h+=`<div style="text-align:center;background:linear-gradient(135deg,#1a1a1a,#2c2c2c);border-radius:14px;padding:40px 28px;margin-bottom:28px"><div style="font-size:1.4rem;font-weight:800;color:#fff;margin-bottom:10px">Ready to talk?</div><div style="font-size:.9rem;color:rgba(255,255,255,.8);max-width:540px;margin:0 auto 22px;line-height:1.6">Conversations are always confidential and with no obligation. Whether you're ready now or simply exploring, we'd love to hear about what you have built.</div><button class="hh-cta" onclick="sellScroll()">Start a confidential conversation →</button></div>`;
@@ -1483,7 +1498,7 @@ function xbandHTML(current){const items=[{tab:'solutions',h:'Portfolio Solutions
  const lk=(t,fn)=>`<button class="foot-link" onclick="${fn}">${t}</button>`;
  f.innerHTML=`<div class="foot-inner">
    <div class="foot-col foot-brand"><div class="fb-t">Juniper Group</div><div class="fb-d">The travel &amp; hospitality software portfolio of Vela Software, a Constellation Software company (TSX: CSU).</div></div>
-   <div class="foot-col"><h4>Explore</h4>${lk('Juniper Group Travel',"showTab('home')")}${lk('Portfolio Solutions',"showTab('solutions')")}${lk('Sell Your Company',"showTab('sell')")}${lk('Events',"showTab('events')")}${lk('Industry Insights',"showTab('insights')")}</div>
+   <div class="foot-col"><h4>Explore</h4>${lk('Travel &amp; Hospitality Portfolio',"showTab('home')")}${lk('Portfolio Solutions',"showTab('solutions')")}${lk('Sell Your Company',"showTab('sell')")}${lk('Events',"showTab('events')")}${lk('Industry Insights',"showTab('insights')")}</div>
    <div class="foot-col"><h4>Group</h4><a class="foot-link" href="https://juniper-group.com" target="_blank" rel="noopener">Juniper Group</a><a class="foot-link" href="https://www.velasoftwaregroup.com" target="_blank" rel="noopener">Vela Software</a><a class="foot-link" href="https://www.csisoftware.com" target="_blank" rel="noopener">Constellation Software</a></div>
    <div class="foot-col"><h4>Get in touch</h4><a class="foot-link" href="https://juniper-group.com" target="_blank" rel="noopener">Partner with us</a><a class="foot-link" href="https://juniper-group.com" target="_blank" rel="noopener">Become a client</a><a class="foot-link" href="https://juniper-group.com" target="_blank" rel="noopener">Sell your company</a></div>
  </div>
@@ -1497,7 +1512,7 @@ function renderTopLinks(){const el=document.getElementById('tb-links');if(!el)re
 renderTopLinks();
 // Render the moving client banner (logos from client websites)
 function renderMarquee(){const t=document.getElementById('lw-track');if(!t)return;const list=(CLIENTS||[]);t.innerHTML=list.concat(list).map(c=>{
-  const src=c.logo||phLogo(c.name);
+  const src=c.logo||(c.domain?favLogo(domFrom(c.domain)):phLogo(c.name));
   const inner=`<img src="${src}" alt="${ptEsc(c.name)}" data-ph="${ptEsc(c.name)}" onerror="phFix(this)">`;
   const link=c.link||(c.domain?'https://'+c.domain:'');
   return link?`<a class="lw-item" href="${ptEsc(link)}" target="_blank" rel="noopener" title="${ptEsc(c.name)}">${inner}</a>`:`<div class="lw-item" title="${ptEsc(c.name)}">${inner}</div>`;
@@ -1708,6 +1723,7 @@ function buildSolutions(){const w=document.getElementById('view-solutions');
   h+=`<div class="sol-views"><button class="sol-vbtn${solView==='grid'?' on':''}" id="sv-grid" onclick="solSetView('grid')">Grid</button><button class="sol-vbtn${solView==='grouped'?' on':''}" id="sv-grouped" onclick="solSetView('grouped')">By company</button></div>`;
   h+=`</div>`;
   h+=`<div class="sol-shell"><div class="sol-count" id="sol-count"></div><div id="sol-results"></div></div>`;
+  h+=ctaHTML();
   w.innerHTML=h;solRender();
 }
 function solSetView(v){solView=v;const a=document.getElementById('sv-grid'),b=document.getElementById('sv-grouped');if(a)a.classList.toggle('on',v==='grid');if(b)b.classList.toggle('on',v==='grouped');solRender()}
@@ -1731,7 +1747,7 @@ function solRender(){const res=document.getElementById('sol-results');const cnt=
 let admKpiBuf=[],admInsBuf=[],adminMode=false;
 let adminTab='home';
 function buildAdmin(){const w=document.getElementById('view-portal');
-  const tabs=[['home','Juniper Group Travel'],['solutions','Portfolio Solutions'],['sell','Sell Your Company'],['events','Events'],['insights','Industry Insights'],['settings','Settings & Accounts']];
+  const tabs=[['home','Travel & Hospitality Portfolio'],['solutions','Portfolio Solutions'],['sell','Sell Your Company'],['events','Events'],['insights','Industry Insights'],['settings','Settings & Accounts']];
   let h=`<div class="pt-wrap2"><div class="pt-bar"><div><div class="pt-tag">Website back office</div><div class="pt-co">Administrator</div></div><div><button class="pt-ghost" id="pt-logout">Log out</button></div></div><div class="adm-tabs">`+tabs.map(t=>`<button class="adm-tab${adminTab===t[0]?' on':''}" onclick="admGo('${t[0]}')">${t[1]}</button>`).join('')+`</div><div id="adm-body"></div></div>`;
   w.innerHTML=h;
   document.getElementById('pt-logout').onclick=()=>{logEvent('admin','logout');portalUser=null;adminMode=false;buildPortal()};
@@ -1833,16 +1849,18 @@ function admAddBU(){const id='custom-'+Date.now();const yr=new Date().getFullYea
 
 // ===== SELL YOUR COMPANY — M&A enquiry form =====
 function sellFormHTML(){let f=`<div id="sell-form" class="pt-form" style="max-width:680px;margin:6px auto 0"><div class="adm-h">Start a confidential conversation</div><div class="pt-note" style="margin:0 0 14px">Tell us a little about your company. All enquiries are treated in strict confidence for M&amp;A discussions.</div>`;
-  (SELLFORM||[]).forEach(fl=>{f+=`<label class="pt-l">${ptEsc(fl.label)}${fl.req?' *':''}</label>`+(fl.type==='textarea'?`<textarea class="pt-in pt-ta" id="sf-${ptEsc(fl.key)}"></textarea>`:`<input class="pt-in" type="${fl.type==='email'?'email':'text'}" id="sf-${ptEsc(fl.key)}">`)});
+  (SELLFORM||[]).forEach(fl=>{f+=`<label class="pt-l">${ptEsc(fl.label)}${fl.req?' *':''}</label>`+(fl.type==='textarea'?`<textarea class="pt-in pt-ta" id="sf-${ptEsc(fl.key)}"></textarea>`:fl.type==='select'?`<select class="pt-in" id="sf-${ptEsc(fl.key)}"><option value="">Select…</option>`+(fl.opts||[]).map(o=>`<option>${ptEsc(o)}</option>`).join('')+`</select>`:`<input class="pt-in" type="${fl.type==='email'?'email':'text'}" id="sf-${ptEsc(fl.key)}">`)});
   f+=`<div class="pt-err" id="sell-msg"></div><button class="pt-btn" onclick="sellSubmit()">Submit enquiry</button></div>`;return f}
 function sellScroll(){const el=document.getElementById('sell-form');if(el)el.scrollIntoView({behavior:'smooth',block:'start'})}
+function goSell(){showTab('sell');setTimeout(()=>{const el=document.getElementById('sell-form');if(el)el.scrollIntoView({behavior:'smooth',block:'start'})},140)}
+function ctaHTML(){return `<div class="cta-band reveal"><div class="cta-h">Thinking about your company's next chapter?</div><div class="cta-d">Juniper Group acquires travel &amp; hospitality software businesses and holds them for the long term — your team, brand and autonomy stay intact.</div><button class="hh-cta" onclick="goSell()">Start a confidential conversation &rarr;</button></div>`}
 function sellSubmit(){const data={};let missing=false;(SELLFORM||[]).forEach(fl=>{const el=document.getElementById('sf-'+fl.key);const v=el?el.value.trim():'';if(fl.req&&!v)missing=true;data[fl.key]=v});if(missing){const m=document.getElementById('sell-msg');if(m)m.textContent='Please complete the required fields (*).';return}SUBMISSIONS.push({ts:new Date().toISOString(),data:data});try{localStorage.setItem('jg_submissions',JSON.stringify(SUBMISSIONS))}catch(e){}const wrap=document.getElementById('sell-form');if(wrap)wrap.innerHTML=`<div class="adm-h">Thank you</div><div class="pt-note">Your details have been received in confidence. Our corporate development team will be in touch shortly.</div>`}
 let admSellBuf=[];
-function admRenderSellForm(){const wrap=document.getElementById('adm-sell');if(!wrap)return;wrap.innerHTML=admSellBuf.map((f,i)=>`<div class="adm-sellrow"><input class="pt-in" oninput="admSellBuf[${i}].label=this.value" value="${ptEsc(f.label)}" placeholder="Field label"><select class="pt-in" onchange="admSellBuf[${i}].type=this.value"><option value="text"${f.type==='text'?' selected':''}>Text</option><option value="email"${f.type==='email'?' selected':''}>Email</option><option value="textarea"${f.type==='textarea'?' selected':''}>Long text</option></select><label class="adm-req"><input type="checkbox" ${f.req?'checked':''} onchange="admSellBuf[${i}].req=this.checked"> Req</label><button class="pt-ghost" onclick="admSellMove(${i},-1)">&uarr;</button><button class="pt-ghost" onclick="admSellMove(${i},1)">&darr;</button><button class="pt-del" onclick="admSellDel(${i})">&times;</button></div>`).join('')}
-function admSellAdd(){admSellBuf.push({key:'f'+Date.now(),label:'New field',type:'text',req:false});admRenderSellForm()}
+function admRenderSellForm(){const wrap=document.getElementById('adm-sell');if(!wrap)return;wrap.innerHTML=admSellBuf.map((f,i)=>`<div class="adm-sellrow"><input class="pt-in" oninput="admSellBuf[${i}].label=this.value" value="${ptEsc(f.label)}" placeholder="Field label"><select class="pt-in" onchange="admSellBuf[${i}].type=this.value;admRenderSellForm()"><option value="text"${f.type==='text'?' selected':''}>Text</option><option value="email"${f.type==='email'?' selected':''}>Email</option><option value="textarea"${f.type==='textarea'?' selected':''}>Long text</option><option value="select"${f.type==='select'?' selected':''}>Dropdown</option></select><label class="adm-req"><input type="checkbox" ${f.req?'checked':''} onchange="admSellBuf[${i}].req=this.checked"> Req</label><button class="pt-ghost" onclick="admSellMove(${i},-1)">&uarr;</button><button class="pt-ghost" onclick="admSellMove(${i},1)">&darr;</button><button class="pt-del" onclick="admSellDel(${i})">&times;</button>`+(f.type==='select'?`<input class="pt-in adm-sellopts" oninput="admSellBuf[${i}].opts=this.value.split(',').map(s=>s.trim()).filter(Boolean)" value="${ptEsc((f.opts||[]).join(', '))}" placeholder="Dropdown options, comma separated">`:'')+`</div>`).join('')}
+function admSellAdd(){admSellBuf.push({key:'f'+Date.now(),label:'New field',type:'text',req:false,opts:[]});admRenderSellForm()}
 function admSellDel(i){admSellBuf.splice(i,1);admRenderSellForm()}
 function admSellMove(i,dir){const j=i+dir;if(j<0||j>=admSellBuf.length)return;const t=admSellBuf[i];admSellBuf[i]=admSellBuf[j];admSellBuf[j]=t;admRenderSellForm()}
-function admSellSave(){SELLFORM=admSellBuf.filter(f=>f.label).map(f=>({key:f.key||('f'+Math.random().toString(36).slice(2,7)),label:f.label,type:f.type||'text',req:!!f.req}));try{localStorage.setItem('jg_sellform',JSON.stringify(SELLFORM))}catch(e){}const s=document.getElementById('adm-sell-saved');if(s){s.textContent='Saved ✓';setTimeout(()=>s.textContent='',3000)}}
+function admSellSave(){SELLFORM=admSellBuf.filter(f=>f.label).map(f=>({key:f.key||('f'+Math.random().toString(36).slice(2,7)),label:f.label,type:f.type||'text',req:!!f.req,opts:f.opts||[]}));try{localStorage.setItem('jg_sellform',JSON.stringify(SELLFORM))}catch(e){}const s=document.getElementById('adm-sell-saved');if(s){s.textContent='Saved ✓';setTimeout(()=>s.textContent='',3000)}}
 function admRenderSubs(){const wrap=document.getElementById('adm-subs');if(!wrap)return;if(!SUBMISSIONS.length){wrap.innerHTML='<div style="font-size:.8rem;color:var(--text-light)">No submissions yet.</div>';return}
   wrap.innerHTML=SUBMISSIONS.map((s,i)=>{const d=s.data||{};const title=d.company||d[Object.keys(d)[0]]||'Submission';const date=(s.ts||'').slice(0,10);return `<div class="adm-sub"><div class="adm-sub-hd"><span>${ptEsc(title)}</span><span class="adm-sub-meta">${ptEsc(date)}<button class="pt-del" onclick="admSubDel(${i})">&times;</button></span></div><div class="adm-sub-body">`+(SELLFORM||[]).map(f=>d[f.key]?`<div><b>${ptEsc(f.label)}:</b> ${ptEsc(d[f.key])}</div>`:'').join('')+`</div></div>`}).join('')}
 function admSubDel(i){if(!confirm('Delete this submission?'))return;SUBMISSIONS.splice(i,1);try{localStorage.setItem('jg_submissions',JSON.stringify(SUBMISSIONS))}catch(e){}admRenderSubs();}
