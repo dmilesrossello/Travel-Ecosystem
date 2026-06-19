@@ -475,17 +475,16 @@ a.lw-item{cursor:pointer}
 .kpi-l{font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-light);margin-top:9px}
 @media(max-width:700px){.kpi{flex-basis:33%;border-bottom:1px solid var(--border)}}
 /* ===== PORTFOLIO SOLUTIONS ===== */
-.sol-wrap{display:grid;grid-template-columns:260px 1fr;gap:32px;max-width:1320px;margin:0 auto;align-items:start}
-.sol-side{position:sticky;top:14px}
-.sol-search{width:100%;font-family:inherit;font-size:.84rem;padding:11px 15px;border:1px solid var(--border);border-radius:100px;background:var(--bg-warm);margin-bottom:20px;color:var(--text)}
+.sol-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;max-width:1320px;margin:0 auto 18px;padding:14px 16px;background:var(--bg-warm);border:1px solid var(--border);border-radius:14px}
+.sol-shell{max-width:1320px;margin:0 auto}
+.sol-search{flex:1 1 220px;font-family:inherit;font-size:.82rem;padding:10px 15px;border:1px solid var(--border);border-radius:100px;background:var(--bg);color:var(--text)}
 .sol-search:focus{outline:none;border-color:var(--red)}
-.sol-group{margin-bottom:18px}
-.sol-glabel{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-light);margin-bottom:10px}
-.sol-chips{display:flex;flex-wrap:wrap;gap:7px}
-.sol-chip{font-family:inherit;font-size:.72rem;color:var(--text-mid);background:var(--bg-warm);border:1px solid var(--border);border-radius:100px;padding:6px 12px;cursor:pointer;transition:all .2s}
-.sol-chip:hover{border-color:var(--red-mid);color:var(--text)}
-.sol-chip.on{background:var(--red);border-color:var(--red);color:#fff}
-.sol-clear{font-family:inherit;font-size:.7rem;color:var(--text-light);background:none;border:none;cursor:pointer;text-decoration:underline;padding:4px 0;margin-top:4px}
+.sol-sel{font-family:inherit;font-size:.78rem;color:var(--text);background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:9px 12px;cursor:pointer;max-width:190px}
+.sol-sel:focus{outline:none;border-color:var(--red)}
+.sol-clear{font-family:inherit;font-size:.7rem;font-weight:600;color:var(--red);background:none;border:none;cursor:pointer;padding:4px 8px}
+.sol-clear:hover{text-decoration:underline}
+.sol-bar .sol-views{margin-left:auto}
+@media(max-width:620px){.sol-sel,.sol-search{flex:1 1 100%;max-width:none}.sol-bar .sol-views{margin-left:0;width:100%}}
 .sol-count{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-light);margin-bottom:14px}
 .sol-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:14px}
 .sol-card{background:var(--bg-warm);border:1px solid var(--border);border-radius:14px;padding:20px;cursor:pointer;transition:all .25s;display:flex;flex-direction:column}
@@ -734,13 +733,18 @@ let TABSOFF=[];try{const _to=JSON.parse(localStorage.getItem('jg_tabsoff')||'[]'
 let ACCOUNTS={admin:'12345',bu:{}};try{const _ac=JSON.parse(localStorage.getItem('jg_accounts')||'null');if(_ac&&typeof _ac==='object')ACCOUNTS=Object.assign({admin:'12345',bu:{}},_ac);}catch(e){}
 function buPass(id){return (ACCOUNTS.bu&&ACCOUNTS.bu[id])||'12345';}
 var _phCache={};
-function phLogo(name){const key=name||'Logo';if(_phCache[key])return _phCache[key];try{const c=document.createElement('canvas');c.width=340;c.height=110;const x=c.getContext('2d');x.clearRect(0,0,340,110);
+function phLogo(name){const key=name||'Logo';if(_phCache[key])return _phCache[key];
   let hsh=0;for(let i=0;i<key.length;i++)hsh=key.charCodeAt(i)+((hsh<<5)-hsh);const hue=Math.abs(hsh)%360;
-  const cx=46,cy=55,r=36;x.beginPath();x.arc(cx,cy,r,0,Math.PI*2);x.fillStyle='hsl('+hue+',52%,44%)';x.fill();
-  const parts=key.replace(/[^A-Za-z0-9 ]/g,' ').split(/\s+/).filter(Boolean);let ini=(parts.length>1?(parts[0][0]+parts[1][0]):key.replace(/[^A-Za-z0-9]/g,'').slice(0,2)).toUpperCase();
-  x.fillStyle='#fff';x.textAlign='center';x.textBaseline='middle';x.font='700 30px Aptos,"Segoe UI",Arial,sans-serif';x.fillText(ini,cx,cy+1);
-  x.fillStyle='#2C2C2C';x.textAlign='left';x.textBaseline='middle';let fs=27;const nx=cx+r+16;x.font='700 '+fs+'px Aptos,"Segoe UI",Arial,sans-serif';while(x.measureText(key).width>(340-nx-10)&&fs>11){fs-=1;x.font='700 '+fs+'px Aptos,"Segoe UI",Arial,sans-serif';}x.fillText(key,nx,cy);
-  return _phCache[key]=c.toDataURL('image/png');}catch(e){return ''}}
+  const parts=key.replace(/[^A-Za-z0-9 ]/g,' ').split(/\s+/).filter(Boolean);
+  let ini=(parts.length>1?(parts[0][0]+parts[1][0]):key.replace(/[^A-Za-z0-9]/g,'').slice(0,2)).toUpperCase()||'JG';
+  const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  const nm=esc(key.length>22?key.slice(0,21)+'…':key);
+  const svg='<svg xmlns="http://www.w3.org/2000/svg" width="340" height="110" viewBox="0 0 340 110">'
+    +'<circle cx="46" cy="55" r="36" fill="hsl('+hue+',52%,44%)"/>'
+    +'<text x="46" y="56" font-family="Aptos,Segoe UI,Arial,sans-serif" font-size="30" font-weight="700" fill="#ffffff" text-anchor="middle" dominant-baseline="central">'+esc(ini)+'</text>'
+    +'<text x="98" y="56" font-family="Aptos,Segoe UI,Arial,sans-serif" font-size="26" font-weight="700" fill="#2C2C2C" dominant-baseline="central">'+nm+'</text>'
+    +'</svg>';
+  return _phCache[key]='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);}
 function domFrom(u){if(!u)return '';return String(u).replace(/^https?:\/\//,'').replace(/^www\./,'').split('/')[0]}
 function buLogo(b){if(!b)return phLogo('');if(b.logo)return b.logo;if(LOGOS[b.id])return LOGOS[b.id];return phLogo(b.name)}
 function phFix(img){if(!img)return;img.onerror=null;img.src=phLogo(img.getAttribute('data-ph')||'')}
@@ -1696,18 +1700,21 @@ function solCard(s){const bu=BUS.find(b=>b.id===s.buId);const logo=`<img src="${
 function solMatch(s){const groups=['client','source','industry'];for(let gi=0;gi<groups.length;gi++){const set=solState[groups[gi]];if(set.size){let ok=false;s[groups[gi]].forEach(v=>{if(set.has(v))ok=true});if(!ok)return false}}if(solState.bu.size&&!solState.bu.has(s.buId))return false;if(solState.q){const q=solState.q.toLowerCase();if((s.name+' '+s.desc+' '+s.buName).toLowerCase().indexOf(q)<0)return false}return true}
 function buildSolutions(){const w=document.getElementById('view-solutions');
   let h=`<div class="reveal" style="text-align:center;margin:8px auto 4px"><div class="sec-title" style="font-size:1.6rem;display:block">Portfolio Solutions</div><div class="sec-bar" style="margin:8px auto 14px"></div><div style="font-size:.84rem;color:var(--text-mid);max-width:640px;margin:0 auto 26px;line-height:1.6">Every product across the Juniper Group travel portfolio. Filter by your client type, the content you source, your industry, or by company.</div></div>`;
-  h+=`<div class="sol-wrap"><aside class="sol-side">`;
+  h+=`<div class="sol-bar">`;
   h+=`<input class="sol-search" id="sol-q" placeholder="Search solutions…" oninput="solState.q=this.value;solRender()">`;
-  SOL_GROUPS.forEach(g=>{h+=`<div class="sol-group"><div class="sol-glabel">${g.label}</div><div class="sol-chips">`+g.opts.map(o=>`<button class="sol-chip" data-g="${g.key}" data-v="${ptEsc(o)}" onclick="solToggle(this)">${ptEsc(o)}</button>`).join('')+`</div></div>`});
-  h+=`<div class="sol-group"><div class="sol-glabel">Portfolio company</div><div class="sol-chips">`+solOrderedBUS().map(b=>`<button class="sol-chip" data-g="bu" data-v="${b.id}" onclick="solToggle(this)">${ptEsc(b.name)}</button>`).join('')+`</div></div>`;
-  h+=`<button class="sol-clear" onclick="solClear()">Clear all filters</button>`;
-  h+=`</aside><div class="sol-main"><div class="sol-toolbar"><div class="sol-count" id="sol-count"></div><div class="sol-views"><button class="sol-vbtn${solView==='grid'?' on':''}" id="sv-grid" onclick="solSetView('grid')">Grid</button><button class="sol-vbtn${solView==='grouped'?' on':''}" id="sv-grouped" onclick="solSetView('grouped')">By company</button></div></div><div id="sol-results"></div></div></div>`;
+  SOL_GROUPS.forEach(g=>{h+=`<select class="sol-sel" data-g="${g.key}" onchange="solPick(this)"><option value="">${g.label}: all</option>`+g.opts.map(o=>`<option value="${ptEsc(o)}">${ptEsc(o)}</option>`).join('')+`</select>`});
+  h+=`<select class="sol-sel" data-g="bu" onchange="solPick(this)"><option value="">Company: all</option>`+solOrderedBUS().map(b=>`<option value="${b.id}">${ptEsc(b.name)}</option>`).join('')+`</select>`;
+  h+=`<button class="sol-clear" id="sol-clear" onclick="solClear()" style="display:none">Clear</button>`;
+  h+=`<div class="sol-views"><button class="sol-vbtn${solView==='grid'?' on':''}" id="sv-grid" onclick="solSetView('grid')">Grid</button><button class="sol-vbtn${solView==='grouped'?' on':''}" id="sv-grouped" onclick="solSetView('grouped')">By company</button></div>`;
+  h+=`</div>`;
+  h+=`<div class="sol-shell"><div class="sol-count" id="sol-count"></div><div id="sol-results"></div></div>`;
   w.innerHTML=h;solRender();
 }
 function solSetView(v){solView=v;const a=document.getElementById('sv-grid'),b=document.getElementById('sv-grouped');if(a)a.classList.toggle('on',v==='grid');if(b)b.classList.toggle('on',v==='grouped');solRender()}
-function solToggle(el){const g=el.dataset.g,v=el.dataset.v,set=solState[g];if(set.has(v)){set.delete(v);el.classList.remove('on')}else{set.add(v);el.classList.add('on')}solRender()}
-function solClear(){solState={client:new Set(),source:new Set(),industry:new Set(),bu:new Set(),q:''};const root=document.getElementById('view-solutions');if(root)root.querySelectorAll('.sol-chip').forEach(c=>c.classList.remove('on'));const q=document.getElementById('sol-q');if(q)q.value='';solRender()}
-function solRender(){const res=document.getElementById('sol-results');const cnt=document.getElementById('sol-count');if(!res)return;
+function solPick(sel){const g=sel.dataset.g,v=sel.value;solState[g]=new Set(v?[v]:[]);solRender()}
+function solActive(){return solState.client.size||solState.source.size||solState.industry.size||solState.bu.size||(solState.q&&solState.q.length)}
+function solClear(){solState={client:new Set(),source:new Set(),industry:new Set(),bu:new Set(),q:''};const root=document.getElementById('view-solutions');if(root){root.querySelectorAll('.sol-sel').forEach(s=>s.value='');}const q=document.getElementById('sol-q');if(q)q.value='';solRender()}
+function solRender(){const res=document.getElementById('sol-results');const cnt=document.getElementById('sol-count');const cl=document.getElementById('sol-clear');if(cl)cl.style.display=solActive()?'inline-block':'none';if(!res)return;
   if(solView==='grouped'){
     const bus=solOrderedBUS();let html='',total=0,cos=0;
     bus.forEach(bu=>{const prods=solProductsOf(bu).filter(solMatch);if(!prods.length)return;total+=prods.length;cos++;const logo=`<img src="${buLogo(bu)}" data-ph="${ptEsc(bu.name)}" onerror="phFix(this)">`;
