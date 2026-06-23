@@ -575,6 +575,7 @@ a.lw-item{cursor:pointer}
 .bu2-prods{list-style:none;padding:0;margin:0;width:100%;display:flex;flex-direction:column}
 .bu2-prods li{font-size:.76rem;color:var(--text-mid);line-height:1.4;padding:7px 0;border-top:1px solid var(--border)}
 .bu2-prods li:first-child{border-top:none}
+.bu2-name{font-weight:700;font-size:.95rem;color:var(--charcoal);text-align:center;margin-top:4px}
 /* admin tabs + submissions */
 .adm-tabs{display:flex;flex-wrap:wrap;gap:2px;border-bottom:1px solid var(--border);margin-bottom:20px}
 .adm-tab{background:none;border:none;border-bottom:2px solid transparent;font-family:inherit;font-size:.72rem;font-weight:700;letter-spacing:.03em;color:var(--text-light);padding:10px 14px;cursor:pointer;transition:all .2s;white-space:nowrap}
@@ -727,13 +728,21 @@ facts:[{v:"600+",l:"Airlines"},{v:"650K+",l:"Hotels"},{v:"2,000+",l:"Clients"},{
 desc:"Corporate travel management platform (Etta) for booking, trip management and expense control — cloud and mobile tools for finance teams, HR and travel managers. Acquired by Juniper Group from Travelport in 2026.",
 products:[{n:"Etta Platform",d:"Full-service cloud and mobile corporate travel booking and management."},{n:"Deem Mobile",d:"On-the-go trip management for travelers and travel managers."},{n:"NDC Content",d:"Expansive airline NDC content support."},{n:"EcoCheck",d:"Carbon emissions visibility for more sustainable business travel."},{n:"Travel SafetyCheck",d:"Real-time health and safety information for duty of care."}],
 facts:[{v:"Etta",l:"Platform"},{v:"Corporate",l:"Travel"},{v:"US",l:"Focus"}],tags:["Corporate Travel","Booking","NDC","Mobile"]},
+{id:"vizergy",name:"Vizergy",hq:"Jacksonville, USA",f:2002,a:2025,url:"https://vizergy.com",gm:"",desc:"Hotel digital marketing platform — booking engine, website design, paid media and performance analytics for direct revenue growth.",products:[{n:"Booking Engine"},{n:"Website Design"},{n:"Digital Marketing"}],facts:[{v:"Hotels",l:"Focus"},{v:"Direct",l:"Revenue"}],tags:["Digital Marketing","Booking Engine","Hospitality"]},
+{id:"leonardo",name:"Leonardo",hq:"Toronto, Canada",f:1995,a:2025,url:"https://leonardoworldwide.com",gm:"",desc:"Enterprise visual media management — hotel imagery, galleries and content distribution to travel channels and hotel websites.",products:[{n:"Media Management"},{n:"Content Distribution"},{n:"Hotel Galleries"}],facts:[{v:"Content",l:"Media"},{v:"Global",l:"Distribution"}],tags:["Content","Media","Hospitality"]},
+{id:"ariane",name:"Ariane",hq:"Suresnes, France",f:1998,a:2024,url:"https://ariane.com",gm:"",desc:"Market leader in cloud-based self-service kiosk and mobile check-in/out for hotels, integrated with leading PMS platforms.",products:[{n:"Self Check-in Kiosks"},{n:"Mobile Check-in"}],facts:[{v:"Kiosks",l:"Self-service"},{v:"Cloud",l:"Platform"}],tags:["Self Check-in","Kiosks","Hospitality"]},
+{id:"bookassist",name:"Bookassist",hq:"Dublin, Ireland",f:1999,a:2024,url:"https://bookassist.com",gm:"",desc:"Direct-booking technology and digital marketing for hotels — booking engine, web design, metasearch and campaign management.",products:[{n:"Booking Engine"},{n:"Web Design"},{n:"Digital Marketing"}],facts:[{v:"Direct",l:"Booking"},{v:"Global",l:"Hotels"}],tags:["Booking Engine","Digital Marketing","Hospitality"]},
+{id:"aptech",name:"Aptech",hq:"Pittsburgh, USA",f:1970,a:2024,url:"https://aptech-inc.com",gm:"",desc:"Pioneer in hospitality-specific financial software — enterprise accounting, business intelligence, budgeting and forecasting for hotels.",products:[{n:"Hospitality Accounting"},{n:"Business Intelligence"},{n:"Budgeting & Forecasting"}],facts:[{v:"Finance",l:"Hospitality"},{v:"BI",l:"Analytics"}],tags:["Accounting","BI","Hospitality"]},
+{id:"ownerrel",name:"Owner Relations",hq:"USA",f:2005,a:2025,url:"https://ownerrelations.com",gm:"",desc:"Owner accounting and relations software for resorts and managed properties — statements, trust accounting and owner portals.",products:[{n:"Owner Statements"},{n:"Trust Accounting"},{n:"Owner Portal"}],facts:[{v:"Owners",l:"Accounting"},{v:"Resorts",l:"Focus"}],tags:["Owner Accounting","Resort Mgmt","Hospitality"]},
+{id:"b4checkin",name:"B4CheckIn",hq:"Halifax, Canada",f:2007,a:2024,url:"https://b4checkin.com",gm:"",desc:"Cloud-based hospitality platform — online check-in, secure payments, booking engine and real-time rate and availability tools.",products:[{n:"Online Check-in"},{n:"Payments"},{n:"Booking Engine"}],facts:[{v:"Check-in",l:"Cloud"},{v:"Payments",l:"Secure"}],tags:["Check-in","Payments","Hospitality"]},
+{id:"achiga",name:"Achiga",hq:"USA",f:2015,a:2025,url:"https://achiga.com",gm:"",desc:"Hospitality data and analytics — unifying property data into actionable insight and reporting across hotel operations.",products:[{n:"Hospitality Analytics"},{n:"Data Platform"}],facts:[{v:"Data",l:"Analytics"},{v:"Hotels",l:"Insight"}],tags:["Data","Analytics","Hospitality"]},
 ];
 // Apply business-unit leader edits saved locally in this browser
 try{const _nb=JSON.parse(localStorage.getItem('jg_newbus')||'[]');if(Array.isArray(_nb))_nb.forEach(b=>{if(b&&b.id&&!BUS.find(x=>x.id===b.id))BUS.push(b)});}catch(e){}
 try{const _ov=JSON.parse(localStorage.getItem('jg_overrides')||'{}');BUS.forEach(b=>{if(_ov[b.id])Object.assign(b,_ov[b.id])});}catch(e){}
 try{const _del=JSON.parse(localStorage.getItem('jg_deleted')||'[]');if(Array.isArray(_del)&&_del.length){for(let i=BUS.length-1;i>=0;i--)if(_del.indexOf(BUS[i].id)>-1)BUS.splice(i,1)}}catch(e){}
 let EVENTS={};try{EVENTS=JSON.parse(localStorage.getItem('jg_events')||'{}')}catch(e){EVENTS={}}
-let KPIS=[{v:'17',l:'Business Units'},{v:'$30B+',l:'Annual GMV'},{v:'48M+',l:'Bookings / yr'},{v:'650K+',l:'Hotels'},{v:'600+',l:'Airlines'},{v:'100+',l:'Countries'}];
+let KPIS=[{v:'25',l:'Business Units'},{v:'$30B+',l:'Annual GMV'},{v:'48M+',l:'Bookings / yr'},{v:'650K+',l:'Hotels'},{v:'600+',l:'Airlines'},{v:'100+',l:'Countries'}];
 try{const _k=JSON.parse(localStorage.getItem('jg_kpis')||'null');if(Array.isArray(_k)&&_k.length)KPIS=_k;}catch(e){}
 let TOPLINKS=[{label:'Juniper Group',url:'https://juniper-group.com'}];
 try{const _t=JSON.parse(localStorage.getItem('jg_toplinks')||'null');if(Array.isArray(_t))TOPLINKS=_t;}catch(e){}
@@ -760,8 +769,10 @@ function phLogo(name){const key=name||'Logo';if(_phCache[key])return _phCache[ke
   return _phCache[key]='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);}
 function domFrom(u){if(!u)return '';return String(u).replace(/^https?:\/\//,'').replace(/^www\./,'').split('/')[0]}
 function favLogo(dom){return 'https://www.google.com/s2/favicons?domain='+encodeURIComponent(dom)+'&sz=128'}
-function buLogo(b){if(!b)return phLogo('');if(b.logo)return b.logo;const d=domFrom(b.url);if(d)return favLogo(d);if(LOGOS[b.id])return LOGOS[b.id];return phLogo(b.name)}
+function brandLogo(dom){return 'https://cdn.brandfetch.io/'+dom+'/w/512/h/160'}
+function buLogo(b){if(!b)return phLogo('');if(b.logo)return b.logo;if(LOGOS[b.id])return LOGOS[b.id];const d=domFrom(b.url);return d?brandLogo(d):phLogo(b.name)}
 function phFix(img){if(!img)return;img.onerror=null;img.src=phLogo(img.getAttribute('data-ph')||'')}
+function logoFallback(img){if(!img)return;const dom=img.getAttribute('data-dom')||'';if(!img.getAttribute('data-step')&&dom){img.setAttribute('data-step','fav');img.src=favLogo(dom);return}img.onerror=null;img.src=phLogo(img.getAttribute('data-ph')||'')}
 function buEmail(b){return (b&&b.email)|| (b&&b.url?('info@'+domFrom(b.url)):'')}
 let LOG=[];try{const _lg=JSON.parse(localStorage.getItem('jg_log')||'[]');if(Array.isArray(_lg))LOG=_lg;}catch(e){}
 function logEvent(user,action){LOG.push({ts:new Date().toISOString(),user:user||'',action:action});if(LOG.length>1000)LOG=LOG.slice(-1000);try{localStorage.setItem('jg_log',JSON.stringify(LOG))}catch(e){}}
@@ -858,7 +869,7 @@ function showBU(buId){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   buDV.classList.add('active');
   let h=`<div class="bu-d-back" onclick="showTab('home')">← Back to Portfolio</div>`;
-  h+=`<div class="bu-d-top"><div class="bu-d-logo"><img src="${buLogo(bu)}" data-ph="${ptEsc(bu.name)}" onerror="phFix(this)"></div><div><div class="bu-d-name">${bu.name}</div><div class="bu-d-meta"><span>${bu.hq}</span><span>Founded ${bu.f}</span><span>Acquired ${bu.a}</span>${bu.gm?`<span>GM: ${bu.gm}</span>`:''}</div></div></div>`;
+  h+=`<div class="bu-d-top"><div class="bu-d-logo"><img src="${buLogo(bu)}" data-dom="${ptEsc(domFrom(bu.url))}" data-ph="${ptEsc(bu.name)}" onerror="logoFallback(this)"></div><div><div class="bu-d-name">${bu.name}</div><div class="bu-d-meta"><span>${bu.hq}</span><span>Founded ${bu.f}</span><span>Acquired ${bu.a}</span>${bu.gm?`<span>GM: ${bu.gm}</span>`:''}</div></div></div>`;
   h+=`<div class="bu-d-desc">${bu.desc}</div>`;
   h+=`<a class="bu-d-link" href="${bu.url}" target="_blank" rel="noopener">Visit Website →</a>`;
   if(bu.facts){h+=`<div class="kf-grid">`;bu.facts.forEach(f=>{h+=`<div class="kf"><div class="kv">${f.v}</div><div class="kl">${f.l}</div></div>`});h+=`</div>`}
@@ -915,32 +926,10 @@ function showBU(buId){
   BUS.forEach(bu=>{
     const mono=bu.name.replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase();
     const prods=(bu.products||[]).map(p=>`<li>${p.link?`<a href="${ptEsc(p.link)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${ptEsc(p.n)}</a>`:ptEsc(p.n)}</li>`).join('');
-    h+=`<div class="bu-card2 reveal" onclick="showBU('${bu.id}')" title="${ptEsc(bu.name)}"><div class="bu2-logo"><img src="${buLogo(bu)}" alt="${ptEsc(bu.name)}" data-ph="${ptEsc(bu.name)}" onerror="phFix(this)"></div><ul class="bu2-prods">${prods}</ul></div>`;
+    h+=`<div class="bu-card2 reveal" onclick="showBU('${bu.id}')" title="${ptEsc(bu.name)}"><div class="bu2-logo"><img src="${buLogo(bu)}" alt="${ptEsc(bu.name)}" data-dom="${ptEsc(domFrom(bu.url))}" data-ph="${ptEsc(bu.name)}" onerror="logoFallback(this)"></div><ul class="bu2-prods">${prods}</ul></div>`;
   });
   h+=`</div>`;
 
-  // Other CSI Travel BUs — Jonas Hospitality
-  h+=`<div style="margin-top:40px"><div style="text-align:center"><div class="sec-title" style="font-size:1.15rem;display:block">Other CSI Travel Business Units</div><div class="sec-bar" style="margin:6px auto 8px"></div><div style="font-size:.7rem;color:var(--text-light);margin-bottom:16px">Jonas Hospitality — a portfolio of Vertus Group (Jonas Software / CSI) serving 60,000+ hotels globally</div></div><div class="bu-grid">`;
-
-  const JONAS=[
-    {name:"Aptech",domain:"aptechsolutions.com",desc:"Pioneer in hospitality-specific financial software — enterprise accounting, BI, budgeting and forecasting for hotels and resorts.",tags:["Accounting","BI","Budgeting"]},
-    {name:"Ariane Systems",domain:"ariane.com",desc:"Market leader in cloud-based self-service kiosk solutions for hotel check-in/out, with welcome dashboards and PMS integration.",tags:["Self Check-in","Kiosks","Cloud"]},
-    {name:"b4checkin",domain:"b4checkin.com",desc:"Cloud-based tools for hospitality — secure online payment portals, booking engines, and real-time rate and availability management.",tags:["Payments","Booking Engine","Rate Mgmt"]},
-    {name:"Bookassist",domain:"bookassist.com",desc:"Partners with hotels to drive direct bookings through booking engines, web design, digital marketing, and metasearch management.",tags:["Booking Engine","Web Design","Marketing"]},
-    {name:"Jonas Chorum",domain:"jonaschorum.com",desc:"Cloud-based PMS with central reservation system, restaurant and retail POS, and multi-property management. 5,800+ hotel installations.",tags:["PMS","CRS","POS","Cloud"]},
-    {name:"Leonardo",domain:"leonardoworldwide.com",desc:"Enterprise media management for hotel listings and galleries, content feeds for travel channels, and hotel website management.",tags:["Content Mgmt","Media","Distribution"]},
-    {name:"Springer-Miller Systems",domain:"springermiller.com",desc:"Globally recognized leader in fully integrated hotel and resort management software (SMS|Host PMS) with owner fulfillment and mobile solutions.",tags:["PMS","Resort Mgmt","Owner Portal"]},
-    {name:"SpaSoft",domain:"spaabordsoftware.com",desc:"Industry-leading all-in-one spa and activity management solution with online booking, advanced reporting, and cloud/on-premise deployment.",tags:["Spa Mgmt","Activity Booking","Reporting"]},
-    {name:"Jonas Unify",domain:"jonashospitality.com",desc:"Unified customer data platform connecting disparate hotel systems, enabling cross-system itineraries and targeted marketing through guest data.",tags:["CDP","Integration","Guest Data"]},
-    {name:"Vizergy",domain:"vizergy.com",desc:"Hotel digital marketing platform — booking engines, web design, paid advertising, and performance analytics for direct revenue growth.",tags:["Digital Marketing","Booking Engine","Analytics"]},
-  ];
-
-  JONAS.forEach(j=>{
-    const items=(j.tags||[]).map(t=>`<li>${ptEsc(t)}</li>`).join('');
-    h+=`<div class="bu-card2 reveal" onclick="window.open('https://www.jonashospitality.com/','_blank')" title="${ptEsc(j.name)}"><div class="bu2-logo"><img src="${favLogo(domFrom(j.domain))}" alt="${ptEsc(j.name)}" data-ph="${ptEsc(j.name)}" onerror="phFix(this)"></div><ul class="bu2-prods">${items}</ul></div>`;
-  });
-
-  h+=`</div></div>`;
   h+=ctaHTML();
 
   w.innerHTML=h;
@@ -1512,8 +1501,8 @@ function renderTopLinks(){const el=document.getElementById('tb-links');if(!el)re
 renderTopLinks();
 // Render the moving client banner (logos from client websites)
 function renderMarquee(){const t=document.getElementById('lw-track');if(!t)return;const list=(CLIENTS||[]);t.innerHTML=list.concat(list).map(c=>{
-  const src=c.logo||(c.domain?favLogo(domFrom(c.domain)):phLogo(c.name));
-  const inner=`<img src="${src}" alt="${ptEsc(c.name)}" data-ph="${ptEsc(c.name)}" onerror="phFix(this)">`;
+  const src=c.logo||(c.domain?brandLogo(domFrom(c.domain)):phLogo(c.name));
+  const inner=`<img src="${src}" alt="${ptEsc(c.name)}" data-dom="${c.domain?ptEsc(domFrom(c.domain)):''}" data-ph="${ptEsc(c.name)}" onerror="logoFallback(this)">`;
   const link=c.link||(c.domain?'https://'+c.domain:'');
   return link?`<a class="lw-item" href="${ptEsc(link)}" target="_blank" rel="noopener" title="${ptEsc(c.name)}">${inner}</a>`:`<div class="lw-item" title="${ptEsc(c.name)}">${inner}</div>`;
 }).join('');}
@@ -1697,7 +1686,15 @@ const FACETS={
 'inspiretec':{client:['Tour Operator','Travel Agency'],source:['Packages','Content & Data'],industry:['Leisure','Distribution & Connectivity']},
 'derbysoft':{client:['Hotel & Chain','OTA','TMC / Corporate','Bedbank / Wholesaler'],source:['Hotel','Content & Data'],industry:['Hospitality','Distribution & Connectivity']},
 'pkfare':{client:['OTA','Travel Agency','TMC / Corporate','Tour Operator'],source:['Air','Hotel'],industry:['Distribution & Connectivity']},
-'deem':{client:['TMC / Corporate','Travel Agency'],source:['Air','Hotel','Car'],industry:['Corporate Travel']}
+'deem':{client:['TMC / Corporate','Travel Agency'],source:['Air','Hotel','Car'],industry:['Corporate Travel']},
+'vizergy':{client:['Hotel & Chain'],source:['Hotel'],industry:['Hospitality','Distribution & Connectivity']},
+'leonardo':{client:['Hotel & Chain','OTA'],source:['Hotel','Content & Data'],industry:['Hospitality']},
+'ariane':{client:['Hotel & Chain'],source:['Hotel'],industry:['Hospitality']},
+'bookassist':{client:['Hotel & Chain'],source:['Hotel'],industry:['Hospitality','Distribution & Connectivity']},
+'aptech':{client:['Hotel & Chain'],source:['Hotel'],industry:['Hospitality']},
+'ownerrel':{client:['Hotel & Chain'],source:['Hotel'],industry:['Hospitality']},
+'b4checkin':{client:['Hotel & Chain'],source:['Hotel'],industry:['Hospitality']},
+'achiga':{client:['Hotel & Chain'],source:['Hotel','Content & Data'],industry:['Hospitality']}
 };
 const SOL_GROUPS=[
  {key:'client',label:'Client',opts:['OTA','Tour Operator','Travel Agency','DMC','Bedbank / Wholesaler','Hotel & Chain','Airline','Cruise Line','TMC / Corporate','DMO','Vacation Rental']},
@@ -1711,7 +1708,7 @@ let solView=SOLCFG.mode==='grouped'?'grouped':'grid';
 function solOrderedBUS(){const order=SOLCFG.order||[];const hidden=new Set(SOLCFG.hidden||[]);const byId={};BUS.forEach(b=>byId[b.id]=b);const out=[];order.forEach(id=>{if(byId[id]&&!hidden.has(id))out.push(byId[id])});BUS.forEach(b=>{if(order.indexOf(b.id)<0&&!hidden.has(b.id))out.push(b)});return out}
 function solProductsOf(bu){const f=FACETS[bu.id]||{client:[],source:[],industry:[]};return (bu.products||[]).map(p=>({buId:bu.id,buName:bu.name,name:p.n,desc:p.d,link:p.link||'',client:f.client||[],source:f.source||[],industry:f.industry||[]}))}
 function solList(){const out=[];solOrderedBUS().forEach(bu=>{solProductsOf(bu).forEach(s=>out.push(s))});return out}
-function solCard(s){const bu=BUS.find(b=>b.id===s.buId);const logo=`<img src="${buLogo(bu)}" data-ph="${ptEsc(s.buName)}" onerror="phFix(this)">`;const tags=s.client.concat(s.source).slice(0,4);const nm=s.link?`<a href="${ptEsc(s.link)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${ptEsc(s.name)} &rarr;</a>`:ptEsc(s.name);return `<div class="sol-card reveal" onclick="showBU('${s.buId}')"><div class="sol-bu">${logo}<span>${ptEsc(s.buName)}</span></div><div class="sol-name">${nm}</div><div class="sol-desc">${ptEsc(s.desc)}</div><div class="sol-tags">${tags.map(t=>`<span class="sol-tag">${ptEsc(t)}</span>`).join('')}</div></div>`}
+function solCard(s){const bu=BUS.find(b=>b.id===s.buId);const logo=`<img src="${buLogo(bu)}" data-dom="${ptEsc(domFrom(bu&&bu.url))}" data-ph="${ptEsc(s.buName)}" onerror="logoFallback(this)">`;const tags=s.client.concat(s.source).slice(0,4);const nm=s.link?`<a href="${ptEsc(s.link)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${ptEsc(s.name)} &rarr;</a>`:ptEsc(s.name);return `<div class="sol-card reveal" onclick="showBU('${s.buId}')"><div class="sol-bu">${logo}<span>${ptEsc(s.buName)}</span></div><div class="sol-name">${nm}</div><div class="sol-desc">${ptEsc(s.desc)}</div><div class="sol-tags">${tags.map(t=>`<span class="sol-tag">${ptEsc(t)}</span>`).join('')}</div></div>`}
 function solMatch(s){const groups=['client','source','industry'];for(let gi=0;gi<groups.length;gi++){const set=solState[groups[gi]];if(set.size){let ok=false;s[groups[gi]].forEach(v=>{if(set.has(v))ok=true});if(!ok)return false}}if(solState.bu.size&&!solState.bu.has(s.buId))return false;if(solState.q){const q=solState.q.toLowerCase();if((s.name+' '+s.desc+' '+s.buName).toLowerCase().indexOf(q)<0)return false}return true}
 function buildSolutions(){const w=document.getElementById('view-solutions');
   let h=`<div class="reveal" style="text-align:center;margin:8px auto 4px"><div class="sec-title" style="font-size:1.6rem;display:block">Portfolio Solutions</div><div class="sec-bar" style="margin:8px auto 14px"></div><div style="font-size:.84rem;color:var(--text-mid);max-width:640px;margin:0 auto 26px;line-height:1.6">Every product across the Juniper Group travel portfolio. Filter by your client type, the content you source, your industry, or by company.</div></div>`;
@@ -1733,7 +1730,7 @@ function solClear(){solState={client:new Set(),source:new Set(),industry:new Set
 function solRender(){const res=document.getElementById('sol-results');const cnt=document.getElementById('sol-count');const cl=document.getElementById('sol-clear');if(cl)cl.style.display=solActive()?'inline-block':'none';if(!res)return;
   if(solView==='grouped'){
     const bus=solOrderedBUS();let html='',total=0,cos=0;
-    bus.forEach(bu=>{const prods=solProductsOf(bu).filter(solMatch);if(!prods.length)return;total+=prods.length;cos++;const logo=`<img src="${buLogo(bu)}" data-ph="${ptEsc(bu.name)}" onerror="phFix(this)">`;
+    bus.forEach(bu=>{const prods=solProductsOf(bu).filter(solMatch);if(!prods.length)return;total+=prods.length;cos++;const logo=`<img src="${buLogo(bu)}" data-dom="${ptEsc(domFrom(bu.url))}" data-ph="${ptEsc(bu.name)}" onerror="logoFallback(this)">`;
       html+=`<div class="sol-coh reveal"><div class="sol-co-hd" onclick="showBU('${bu.id}')">${logo}<span class="sol-co-name">${ptEsc(bu.name)}</span><span class="sol-co-count">${prods.length} product${prods.length===1?'':'s'}</span></div><div class="sol-grid">`+prods.map(solCard).join('')+`</div></div>`});
     if(cnt)cnt.textContent=total+' solution'+(total===1?'':'s')+' · '+cos+' compan'+(cos===1?'y':'ies');
     res.innerHTML=html||`<div class="sol-empty">No solutions match these filters. <button class="pt-add" onclick="solClear()">Clear filters</button></div>`;scanMotion(res);return;
